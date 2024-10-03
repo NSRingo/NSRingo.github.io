@@ -2,6 +2,18 @@ import { ModuleInstall } from '@components/module-install'
 
 # WeatherKit
 
+## 安装链接
+
+<ModuleInstall
+  urlPrefix='https://github.com/NSRingo/WeatherKit/releases/latest/download/'
+  urls={{
+    loon: 'WeatherKit.plugin',
+    surge: 'WeatherKit.sgmodule',
+    qx: 'WeatherKit.snippet',
+    stash: 'WeatherKit.stoverride'
+  }}
+/>
+
 :::tip{title=最低支持}
 
 - iOS 18 beta (22A5282m)
@@ -43,15 +55,3 @@ import { ModuleInstall } from '@components/module-install'
   - 默认开启，将中国空气质量标准换算为最新美国空气质量标准
 
 ## 配置方法
-
-## 安装链接
-
-<ModuleInstall
-  urlPrefix='https://github.com/NSRingo/WeatherKit/releases/latest/download/'
-  urls={{
-    loon: 'WeatherKit.plugin',
-    surge: 'WeatherKit.sgmodule',
-    qx: 'WeatherKit.snippet',
-    stash: 'WeatherKit.stoverride'
-  }}
-/>

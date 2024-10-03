@@ -1,11 +1,37 @@
-.tab-label {
+.label {
   display: flex;
   align-items: center;
-  img {
-    display: block;
+
+  .icon {
     width: 1.25em;
     height: 1.25em;
     margin-right: .5em;
-    border-radius: 2px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-size: cover;
+  }
+
+  .icon-loon {
+    background-image: url('./icons/loon.webp');
+  }
+
+  .icon-surge {
+    background-image: url('./icons/surge.webp');
+  }
+
+  .icon-qx {
+    background-image: url('./icons/qx.webp');
+  }
+
+  .icon-stash {
+    background-image: url('./icons/stash.webp');
+  }
+
+  .icon-egern {
+    background-image: url('./icons/egern.webp');
+  }
+
+  .icon-shadowrocket {
+    background-image: url('./icons/shadowrocket.webp');
   }
 }

@@ -1,16 +1,20 @@
 {
-  "name": "rspress-doc-template",
+  "name": "@iringo/nsringo.github.io",
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "dev": "rspress dev",
     "build": "rspress build",
     "preview": "rspress preview"
   },
   "dependencies": {
+    "react": "^18.3.1",
     "rspress": "^1.31.0"
   },
   "devDependencies": {
-    "@types/node": "^16"
+    "@biomejs/biome": "^1.9.3",
+    "@types/node": "^16",
+    "@types/react": "^18.3.11"
   }
 }

@@ -2,36 +2,49 @@
 pageType: home
 
 hero:
-  name: iRingo
-  text: 解锁完整的 Apple功能和集成服务
-  tagline: iRingo tagline
+  name:  iRingo
+  text: 解锁完整的 Apple 功能和集成服务
+  # tagline: iRingo tagline
   actions:
     - theme: brand
       text: Quick Start
       link: /guide/
     - theme: alt
       text: GitHub
-      link: https://github.com/web-infra-dev/rspress
+      link: https://github.com/NSRingo
   image:
     src: /rspress-icon.png
     alt: iRingo Logo
 features:
-  - title: Blazing fast build speed
-    details: The core compilation module is based on the Rust front-end toolchain, providing a more ultimate development experience.
-    icon: 🏃🏻‍♀️
-  - title: Support for MDX content writing
-    details: MDX is a powerful way to write content, allowing you to use React components in Markdown.
-    icon: 📦
-  - title: Built-in full-text search
-    details: Automatically generates a full-text search index for you during construction, providing out-of-the-box full-text search capabilities.
-    icon: 🎨
-  - title: Simpler I18n solution
-    details: With the built-in I18n solution, you can easily provide multi-language support for documents or components.
-    icon: 🌍
-  - title: Static site generation
-    details: In production, it automatically builds into static HTML files, which can be easily deployed anywhere.
-    icon: 🌈
-  - title: Providing multiple custom capabilities
-    details: Through its extension mechanism, you can easily extend theme UI and build process.
-    icon: 🔥
+  - icon: 🌤
+    title: 天气服务
+    details: 解锁全部天气数据类型；替换「空气质量」数据；添加「未来一小时降水强度」信息。
+
+  - icon: 📍
+    title: 定位服务
+    details: 可强制「定位服务」通过基于网络的地区检测结果始终为用户设置的地区，过程中无需关闭定位、走代理线路、更改国家地区语言等操作。
+
+  - icon: 🗺️
+    title: 地图
+    details: 全面自定义特定版本与功能的「 Maps」及其具体服务。
+
+  - icon: 🟥
+    title: Apple 智能与 Siri
+    details: 将「Siri 请求」改为国际版。
+
+  - icon: 📺
+    title:  TV
+    details: 可自定义  TV app 功能与语言支持。
+
+  - icon: 📰
+    title:  News
+    details: 可正常使用「 News」并自定义部分设置与参数。
+
+  - icon: ✈
+    title: TestFlight
+    details: 全面自定义「TestFlight」。
+
+  - icon: ⌚️
+    title:  Watch
+    details: 为  Watch 进行单独设置。
 ---

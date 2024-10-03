@@ -1,0 +1,11 @@
+.tab-label {
+  display: flex;
+  align-items: center;
+  img {
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: .5em;
+    border-radius: 2px;
+  }
+}

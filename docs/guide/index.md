@@ -208,3 +208,15 @@ console.log(b);
 ## Rustify MDX compiler
 
 You can enable Rustify MDX compiler by following config:
+
+## Mention
+
+```md
+- @VirgilClyne
+- @baranwang
+```
+
+**Ouput:**
+
+- @VirgilClyne
+- @baranwang

@@ -23,4 +23,8 @@ export default defineConfig({
       },
     ],
   },
+  markdown: {
+    mdxRs: false,
+    remarkPlugins: [[require('remark-github')]],
+  },
 });

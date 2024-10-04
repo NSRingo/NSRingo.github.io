@@ -53,7 +53,7 @@ const TabContent: React.FC<{ type: SupportedApp; url: string }> = ({ type, url }
   const urlToOpen = urlTemplate ? urlTemplate(url) : url;
   return (
     <>
-      {url}
+      <a href={url}>{url.split('/').pop()}</a>
       <h3>一键安装</h3>
       {urlToOpen && <a href={urlToOpen}>一键安装</a>}
     </>

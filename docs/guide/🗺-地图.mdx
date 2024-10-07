@@ -1,0 +1,154 @@
+import { ModuleInstall } from '@components'
+
+# 🗺 地图
+## 简介
+* 保持模块启用，即可全面自定义特定版本与功能的「Maps」及其具体服务。
+* 注:
+  * ~~iOS 15.1起，[`📍定位服务`](./📍-定位服务)的[`动态(Dynamic)配置文件`](./📍-定位服务#动态dynamic配置文件)为`🇨🇳CN`时，`指南针`无经纬度与海拔~~
+  * `V3版`可通过`[定位漂移]`选项控制是否启用`坐标`功能与指南针`经纬度`
+
+## 使用说明
+### 🆕V3版
+* 以下功能在BoxJs设置好后，冷启动一次地图 app 即刻生效
+* 🚧 持续施工中
+* 启用`坐标`功能与指南针`经纬度`: 
+    * `[定位漂移]`改为`Apple（🈶️坐标，使用🇺🇳WGS-84坐标）`
+* 查看不同地区与版本的`卫星图像`
+  * 仅查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`
+    * `[卫星图像]`改为`🇨🇳中国四维`
+  * 查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
+    * `[卫星图像]`改为`混合`(默认)
+  * 查看🇨🇳中国过期`2D 卫星图像`与🇺🇳国际非主要城市的`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
+    * `[卫星图像]`改为`🇺🇳DigitalGlobe`
+* 启用`俯瞰(Flyover)`功能
+  * `[调度器]`改为`Apple（维基百科/Yelp/Booking）`（非必需，如非此选项，则无`俯瞰(Flyover)`按钮，但可在3D卫星地图下手动俯瞰）
+  * `[卫星图像]`改为`混合`或`🇺🇳DigitalGlobe（🇨🇳:2D | 🇺🇳:3D）`
+  * `[飞行俯瞰]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
+* 启用`四处看看(Look Around)`功能
+  * `[四处看看]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
+* 注：[`⌚️ WATCH`](./⌚%EF%B8%8F-WATCH)部分功能有单独的设置面板，不随[`📍定位服务`](./📍-定位服务)模块内的配置而变更
+
+### V2版
+* 详见[`📍定位服务#使用说明`](./📍-定位服务#使用说明)
+
+### V1版
+* 如启用本模块后重新打开`地图`未生效，可按照下列步骤激活:
+  * 未装有SIM卡的iOS/iPadOS/macOS设备，可省略`✈️飞行模式`相关步骤
+  1. 保持`Wi-Fi`或`有线网络`连接
+  2. 启用`Apple_Maps_*.sgmodule`模块
+  3. 开启`✈️飞行模式`
+  4. 重新打开一次`地图`应用
+  5. 此时应在`Surge`的`最近请求`或`Quantumult X`的`网络活动`中观察到:
+     1. `基于网络的地区检测`的`gspe1-ssl.ls.apple.com`链接
+     2. 设置`地图`区域的`gspe35-ssl.ls.apple.com`链接
+  6. 查看地图角标是否有`高德地图`
+  7. 关闭`✈️飞行模式`
+  8. 正常使用
+
+## 功能列表
+### 🆕V3版
+* 修改默认(Defaults)配置
+  * 终结点(Endpoint): https://configuration.ls.apple.com/config/defaults
+  * 已知启用的功能
+      * `地图`-`路线`-`步行`-`现实世界中的路线`
+      * `地图`-`路线`-`步行`-`导航准确性`
+      * `地图`-`为“地图”提供助力`-`评分与照片`
+      * `地图`-`为“地图”提供助力`-`显示评分和照片建议`
+
+* 指定通告(Announcements)配置版本
+  * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/config/announcements
+  * 已知影响的功能
+    - [ ] 无已知影响
+
+* 指定动态(Dynamic)配置版本
+  * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/geo_manifest/dynamic/config
+
+* 指定`调度器(Dispatcher)`API版本
+  * 终结点(Endpoint): 
+    * 国际版: https://gsp-ssl.ls.apple.com/dispatcher.arpc
+    * 高德版: https://dispatcher.is.autonavi.com/dispatcher
+  * 已知影响的功能
+    - [x] `地图`内公共`指南`(来自第三方机构的城市与景点旅游指南)
+    - [x] `地图`内查询与搜索功能
+    - [x] `地图`内地标与地点的基础信息
+    - [x] `地图`内兴趣点(POI)的高级信息(来自`大众点评`或`Yelp`等第三方的商户信息)
+
+* ~~指定`导航与ETA(Directions & ETA)`API版本~~
+  * 终结点(Endpoint): 
+    * 国际版: https://gsp-ssl.ls.apple.com/directions.arpc
+    * 高德版: https://direction2.is.autonavi.com/direction
+  * 已知影响的功能
+    - [x] `地图`的导航功能
+
+* ~~指定`评分和照片(Rating and Photo, RAP)`API版本~~
+
+* 指定`定位漂移(Location Shift)`API版本
+  * 终结点(Endpoint):
+    * 高德版: https://shift.is.autonavi.com/localshift
+
+* ~~指定`瓦片地图(Tiles Map)`数据源~~
+  * 终结点(Endpoint):
+    * 国际版: https://gspe19-ssl.ls.apple.com/tile.vf
+    * 高德版: https://gspe19-cn-ssl.ls.apple.com/tiles
+  * 已知影响的功能
+    - [x] `地图`的图层数据
+
+* 指定`卫星图像(Satellite Map)`数据源
+
+* ~~指定`交通状况(Traffic)`数据源~~
+  * 终结点(Endpoint):
+    * 国际版: https://gspe12-ssl.ls.apple.com/traffic
+    * 高德版: https://gspe12-cn-ssl.ls.apple.com/traffic
+  * 已知影响的功能
+    - [x] `地图`的交通浏览与路况信息
+
+* ~~指定`兴趣点(Point of Interest, POI)`数据源~~
+
+* 指定`飞行俯瞰(Flyover)`数据源
+
+* 指定`四处看看(Look Around)`数据源
+
+### V2版
+* 修改`默认(Defaults)配置`
+* 指定`动态(Dynamic)配置`版本
+* 指定`调度器(Dispatcher)`版本
+* 指定`导航与ETA(Directions & ETA)`版本
+* 指定`交通状况(Traffic)`版本
+* 详细说明见[`📍定位服务#功能列表`](./📍-定位服务#功能列表)
+
+### V1版
+* 指定`动态(Dynamic)配置`版本
+
+## 配置方法
+* 方法1: 直接使用
+  * 默认设置为目前同时启用功能最多的配置
+* 方法2: 配合`BoxJs`及订阅使用
+  * 安装方法及下载链接详见: [🧰 BoxJs](../../BoxJs/wiki)
+* 方法3: 配合`argument`字段使用:
+  * 此方法可以将相关脚本及配置固化到Loon、Surge或Stash的配置文件中
+  * Loon与Surge可以使用[@baranwang](https://github.com/baranwang)的[Surge模块Argument代理](https://sgmodule-argument-proxy.vercel.app/)直接生成带配置的专属模块
+    * [Surge模块Argument代理](https://sgmodule-argument-proxy.vercel.app/)的[使用说明](https://github.com/baranwang/sgmodule-argument-proxy#readme)
+  * `argument`内容如下:
+```
+🆕V3版:
+Switch=true&Geo_manifest.Dynamic.Config.Country_code.default=CN&Geo_manifest.Dynamic.Config.Country_code.watchOS=US
+```
+
+## 安装链接
+<ModuleInstall
+  urlPrefix='https://github.com/NSRingo/GeoServices/releases/latest/download/'
+  urls={{
+    loon: 'Maps.plugin',
+    surge: 'Maps.sgmodule',
+    qx: 'Maps.snippet',
+    stash: 'Maps.stoverride',
+    shadowrocket: 'Maps.srmodule'
+  }}
+/>
+
+## 更新日志
+* v3.1.x ~ v3.4.x
+  * 功能更新
+    1. 增加`地图`动态配置文件全面修改与自定义功能
+  * 优化与修复
+    1. `地图`默认配置修改功能现在总是启用全部已知功能，不再提供 BoxJs 选项

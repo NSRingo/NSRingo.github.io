@@ -13,14 +13,23 @@ interface ChangeLogPluginOptions {
 export function changelogPlugin({ baseRoutePath = 'changelog', repos = [] }: ChangeLogPluginOptions): RspressPlugin {
   return {
     name: 'changelog',
-    addPages: async () => {
+    addPages: async (_, isProd) => {
+      const needFetch = isProd || process.env.NODE_ENV === 'production';
       const pages: AdditionalPage[] = [];
       for (const repo of repos) {
-        process.stdout.write(`Fetching releases for ${repo.name}...`);
         try {
-          const res = await fetch(`https://api.github.com/repos/${repo.repo}/releases`);
-          process.stdout.write(' - done\n');
-          const data = await res.json();
+          let data = [];
+          process.stdout.write(`Fetching releases for ${repo.name}...`);
+          if (needFetch) {
+            const res = await fetch(`https://api.github.com/repos/${repo.repo}/releases`);
+            process.stdout.write(' - done\n');
+            const resp = await res.json();
+            if (Array.isArray(resp)) {
+              data = resp;
+            }
+          } else {
+            process.stdout.write(' - skipped\n');
+          }
           let content = `---\ntitle: ${repo.name} - 更新日志\n---\n# ${repo.name}`;
           if (data?.length) {
             for (const release of data) {

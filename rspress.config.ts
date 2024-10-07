@@ -1,6 +1,7 @@
-import path from 'node:path';
 import fs from 'node:fs';
+import path from 'node:path';
 import { defineConfig } from 'rspress/config';
+import { changelogPlugin } from './plugins/changelog';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
@@ -27,4 +28,35 @@ export default defineConfig({
     mdxRs: false,
     remarkPlugins: [[require('remark-github')]],
   },
+  plugins: [
+    changelogPlugin({
+      repos: [
+        {
+          name: '🌤 天气服务',
+          path: 'weather-kit',
+          repo: 'NSRingo/WeatherKit',
+        },
+        {
+          name: '📍 定位服务',
+          path: 'geo-services',
+          repo: 'NSRingo/GeoServices',
+        },
+        {
+          name: '🟥 Apple智能与Siri',
+          path: 'siri',
+          repo: 'NSRingo/Siri',
+        },
+        {
+          name: '📺 TV',
+          path: 'tv',
+          repo: 'NSRingo/TV',
+        },
+        {
+          name: '📰 News',
+          path: 'news',
+          repo: 'NSRingo/News',
+        },
+      ],
+    }),
+  ],
 });

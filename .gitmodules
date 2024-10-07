@@ -1,0 +1,3 @@
+[submodule "wiki/weather-kit"]
+	path = wiki/weather-kit
+	url = https://github.com/NSRingo/WeatherKit.wiki.git

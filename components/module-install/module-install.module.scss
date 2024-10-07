@@ -42,9 +42,11 @@
     background-color: var(--rp-c-bg);
     border-radius: var(--rp-radius);
     margin: 0.5rem 0;
-    padding: 12px;
+    padding: 0.75rem;
+
     a {
       color: var(--rp-c-link);
+
       &:hover {
         opacity: 0.85;
       }
@@ -54,4 +56,11 @@
 
 .url-wrap {
   overflow-x: auto;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--rp-c-text-2);
 }

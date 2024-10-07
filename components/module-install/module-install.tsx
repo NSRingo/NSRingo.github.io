@@ -1,9 +1,11 @@
-import { useMemo } from 'react';
-import { Tabs, Tab, EditLink } from 'rspress/theme';
+import { Children, cloneElement, createElement, isValidElement, useMemo } from 'react';
+import { Badge, Tab, Tabs } from 'rspress/theme';
 
 import styles from './module-install.module.scss';
 
-type SupportedApp = 'loon' | 'surge' | 'qx' | 'stash' | 'egern' | 'shadowrocket';
+const SUPPORTED_APP = ['loon', 'surge', 'qx', 'stash', 'egern', 'shadowrocket'] as const;
+
+type SupportedApp = (typeof SUPPORTED_APP)[number];
 
 const labelTextMap: Record<SupportedApp, string> = {
   loon: 'Loon',
@@ -81,24 +83,46 @@ const manualInstallTemplateMap: Record<
   },
 };
 
-const TabContent: React.FC<{ type: SupportedApp; url: string }> = ({ type, url }) => {
+interface TabContentProps {
+  type: SupportedApp;
+  url: string;
+  title?: string;
+  badge?: string | { text: string; type: 'info' | 'warning' | 'danger' };
+  children?: React.ReactNode;
+}
+
+const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, children }) => {
   const urlTemplate = urlTemplateMap[type];
   const urlToOpen = urlTemplate ? urlTemplate(url) : url;
   const manualInstallTemplate = manualInstallTemplateMap[type];
+  if (!manualInstallTemplate) {
+    return null;
+  }
   return (
     <div className={['rspress-directive', styles.container].join(' ')}>
+      {title || badge ? (
+        <div className={[styles['item-title'], 'mb-2'].join(' ')}>
+          <div>{title}</div>
+          {badge ? (
+            <Badge
+              text={typeof badge === 'string' ? badge : badge.text}
+              type={typeof badge === 'string' ? 'warning' : badge.type}
+            />
+          ) : null}
+        </div>
+      ) : null}
       {urlToOpen && (
         <>
           <div>
-            <div className='rspress-directive-title'>一键安装</div>
+            <div className="rspress-directive-title">一键安装</div>
             <a href={urlToOpen}>点击一键安装</a>
           </div>
-          <hr className='my-4 border-t border-solid border-divider-light' />
+          <hr className="my-4 border-t border-solid border-divider-light" />
         </>
       )}
       <div>
-        <div className='rspress-directive-title'>手动安装</div>
-        <div className='mb-2'>
+        <div className="rspress-directive-title">手动安装</div>
+        <div className="mb-2">
           <strong>安装路径</strong>
           <div>{manualInstallTemplate.path}</div>
         </div>
@@ -106,12 +130,19 @@ const TabContent: React.FC<{ type: SupportedApp; url: string }> = ({ type, url }
         <div>
           <strong>{manualInstallTemplate.urlTitle}</strong>
           <div className={styles['url-wrap']}>
-            <div className='rspress-scrollbar'>
+            <div className="rspress-scrollbar">
               <code>{url}</code>
             </div>
           </div>
         </div>
       </div>
+
+      {children ? (
+        <>
+          <hr className="my-4 border-t border-solid border-divider-light" />
+          {children}
+        </>
+      ) : null}
     </div>
   );
 };
@@ -121,64 +152,104 @@ export interface ModuleInstallProps {
     [key in SupportedApp]?: string;
   };
   urlPrefix?: string;
+  children?: React.ReactNode;
 }
 
-export const ModuleInstall: React.FC<ModuleInstallProps> = ({ urlPrefix = '', urls }) => {
+export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallProps) {
   const values = useMemo(() => {
-    const result = [];
-    if (urls.loon) result.push(<TabLabel type='loon' />);
-    if (urls.surge) result.push(<TabLabel type='surge' />);
-    if (urls.qx) result.push(<TabLabel type='qx' />);
-    if (urls.stash) result.push(<TabLabel type='stash' />);
-    if (urls.egern) result.push(<TabLabel type='egern' />);
-    if (urls.shadowrocket) result.push(<TabLabel type='shadowrocket' />);
+    const result: React.ReactNode[] = [];
+    if (urls) {
+      SUPPORTED_APP.forEach((type) => {
+        if (urls[type]) {
+          result.push(<TabLabel key={type} type={type} />);
+        }
+      });
+    } else if (children) {
+      Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          const type = child.props.type;
+          if (SUPPORTED_APP.includes(type)) {
+            result.push(<TabLabel key={type} type={type} />);
+          }
+        }
+      });
+    }
     return result;
-  }, [urls]);
+  }, [urls, children]);
 
   const renderContent = useMemo(() => {
-    const result = [];
-    if (urls.loon)
+    if (children) {
+      return Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, { __urlPrefix: urlPrefix } as any);
+        }
+        return null;
+      });
+    }
+    const result: React.ReactNode[] = [];
+    SUPPORTED_APP.forEach((type) => {
+      const url = urls?.[type];
+      if (!url) return;
       result.push(
-        <Tab key='loon'>
-          <TabContent type='loon' url={`${urlPrefix}${urls.loon}`} />
-        </Tab>
+        <Tab key={type}>
+          <TabContent key={url} type={type} url={`${urlPrefix}${url}`} />
+        </Tab>,
       );
-    if (urls.surge)
-      result.push(
-        <Tab key='surge'>
-          <TabContent type='surge' url={`${urlPrefix}${urls.surge}`} />
-        </Tab>
-      );
-    if (urls.qx)
-      result.push(
-        <Tab key='qx'>
-          <TabContent type='qx' url={`${urlPrefix}${urls.qx}`} />
-        </Tab>
-      );
-    if (urls.stash)
-      result.push(
-        <Tab key='stash'>
-          <TabContent type='stash' url={`${urlPrefix}${urls.stash}`} />
-        </Tab>
-      );
-    if (urls.egern)
-      result.push(
-        <Tab key='egern'>
-          <TabContent type='egern' url={`${urlPrefix}${urls.egern}`} />
-        </Tab>
-      );
-    if (urls.shadowrocket)
-      result.push(
-        <Tab key='shadowrocket'>
-          <TabContent type='shadowrocket' url={`${urlPrefix}${urls.shadowrocket}`} />
-        </Tab>
-      );
+    });
+
     return result;
-  }, [urlPrefix, urls]);
+  }, [urlPrefix, urls, children]);
 
   return (
-    <Tabs groupId='module.install' values={values}>
+    <Tabs groupId="module.install" values={values}>
       {renderContent}
     </Tabs>
   );
+}
+
+const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; children?: React.ReactNode }> = ({
+  type,
+  __urlPrefix,
+  children,
+}) => {
+  return (
+    <Tab key={type}>
+      <div className="text-sm">
+        {Children.map(children, (child) => {
+          if (isValidElement(child)) {
+            const childType = child.type;
+            if (
+              typeof childType !== 'string' &&
+              'displayName' in childType &&
+              childType.displayName === 'ModuleInstallItem'
+            ) {
+              return cloneElement(child, { __type: type, __urlPrefix } as any);
+            }
+            return createElement(
+              'div',
+              {
+                className: 'px-3',
+              },
+              child,
+            );
+          }
+          return child;
+        })}
+      </div>
+    </Tab>
+  );
 };
+
+const ModuleInstallItem: React.FC<
+  {
+    __type: SupportedApp;
+    __urlPrefix?: string;
+  } & Omit<TabContentProps, 'type'>
+> = ({ __type, __urlPrefix = '', url, ...rest }) => {
+  return <TabContent {...rest} key={url} type={__type} url={`${__urlPrefix}${url}`} />;
+};
+
+ModuleInstallItem.displayName = 'ModuleInstallItem';
+
+ModuleInstall.Tab = ModuleInstallTab;
+ModuleInstall.Item = ModuleInstallItem;

@@ -1,7 +1,7 @@
 [
   {
     "text": "更新日志",
-    "link": "/changelog/weather-kit",
+    "link": "/changelog/🌤-天气服务",
     "activeMatch": "^/changelog/"
   }
 ]

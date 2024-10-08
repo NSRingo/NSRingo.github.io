@@ -55,7 +55,6 @@ export function changelogPlugin({ baseRoutePath = 'changelog', repos = [] }: Cha
       return pages;
     },
     config(config) {
-      console.log(config);
       return {
         ...config,
         themeConfig: {

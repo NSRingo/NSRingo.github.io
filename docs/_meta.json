@@ -1,5 +1,10 @@
 [
   {
+    "text": "文档",
+    "link": "/guide/index",
+    "activeMatch": "^/guide/"
+  },
+  {
     "text": "更新日志",
     "link": "/changelog/🌤-天气服务",
     "activeMatch": "^/changelog/"

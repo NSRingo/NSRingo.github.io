@@ -24,6 +24,13 @@ export default defineConfig({
       },
     ],
   },
+  builderConfig: {
+    source: {
+      alias: {
+        './📍-定位服务': './docs/guide/GeoServices/📍-定位服务.mdx',
+      },
+    },
+  },
   markdown: {
     mdxRs: false,
     remarkPlugins: [[require('remark-github')]],

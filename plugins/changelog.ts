@@ -14,14 +14,14 @@ export function changelogPlugin({ baseRoutePath = 'changelog', repos = [] }: Cha
   return {
     name: 'changelog',
     addPages: async (_, isProd) => {
-      const needFetch = isProd || process.env.NODE_ENV === 'production';
+      const needFetch = isProd || process.env.PULL_CHANGELOG === 'true';
       const pages: AdditionalPage[] = [];
       for (const repo of repos) {
         try {
           let data = [];
           process.stdout.write(`Fetching releases for ${repo.name}...`);
 
-          let content = `---\ntitle: ${repo.name} - 更新日志\n---\n# ${repo.name}`;
+          let content = `---\ntitle: ${repo.name} - 更新日志\n---\n\nimport { Badge } from "@theme";\n\n# ${repo.name}`;
 
           if (needFetch) {
             const res = await fetch(`https://api.github.com/repos/${repo.repo}/releases`);
@@ -29,16 +29,26 @@ export function changelogPlugin({ baseRoutePath = 'changelog', repos = [] }: Cha
             const resp = await res.json();
             if (Array.isArray(resp)) {
               data = resp;
+            } else {
+              console.error(resp);
             }
           } else {
             process.stdout.write(' - skipped\n');
-            content += "\n\n:::tip\n开发环境默认不拉取 Changelog，可指定 `NODE_ENV='production'` 强制开启\n:::";
+            content += "\n\n:::tip\n开发环境默认不拉取 Changelog，可指定 `PULL_CHANGELOG='true'` 强制开启\n:::";
           }
 
           if (data?.length) {
             for (const release of data) {
               content += '\n\n';
-              content += `## [${release.name}](${release.html_url})`;
+              content += `## [${release.name}&nbsp;](${release.html_url})`;
+              // content += '\n\n';
+              if (release.draft) {
+                content += `<Badge text='草稿' type='info' />`;
+              } else if (release.prerelease) {
+                content += `<Badge text='预发布' type='warning' />`;
+              } else {
+                content += `<Badge text='正式版' type='danger' />`;
+              }
               content += '\n\n';
               content += release.body;
             }

@@ -33,28 +33,43 @@ export default defineConfig({
       repos: [
         {
           name: '🌤 天气服务',
-          path: 'weather-kit',
+          path: '🌤-天气服务',
           repo: 'NSRingo/WeatherKit',
         },
         {
           name: '📍 定位服务',
-          path: 'geo-services',
+          path: '📍-定位服务',
+          repo: 'NSRingo/GeoServices',
+        },
+        {
+          name: '🗺 地图',
+          path: '🗺-地图',
           repo: 'NSRingo/GeoServices',
         },
         {
           name: '🟥 Apple智能与Siri',
-          path: 'siri',
+          path: '🟥-Apple智能与Siri',
+          repo: 'NSRingo/Siri',
+        },
+        {
+          name: '⭕ Siri与搜索',
+          path: '⭕-Siri与搜索',
           repo: 'NSRingo/Siri',
         },
         {
           name: '📺 TV',
-          path: 'tv',
+          path: '📺-TV',
           repo: 'NSRingo/TV',
         },
         {
           name: '📰 News',
-          path: 'news',
+          path: '📰-News',
           repo: 'NSRingo/News',
+        },
+        {
+          name: '✈ TestFlight',
+          path: '✈-TestFlight',
+          repo: 'NSRingo/TestFlight',
         },
       ],
     }),

@@ -1,8 +1,12 @@
 [
     "index",
     "🌤-天气服务",
-    "📍-定位服务",
-    "🗺-地图",
+    {
+        "type": "dir",
+        "name": "GeoServices",
+        "label": "🌍 地理服务",
+        "collapsible": false
+    },
     {
         "type": "dir",
         "name": "Siri",

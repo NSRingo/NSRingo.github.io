@@ -83,11 +83,12 @@ const manualInstallTemplateMap: Record<
   },
 };
 
+type BadgeProps = React.ComponentProps<typeof Badge>;
 interface TabContentProps {
   type: SupportedApp;
   url: string;
   title?: string;
-  badge?: string | { text: string; type: 'info' | 'warning' | 'danger' };
+  badge?: React.ReactNode | { text: React.ReactNode; type: BadgeProps['type'] };
   children?: React.ReactNode;
 }
 
@@ -98,31 +99,43 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
   if (!manualInstallTemplate) {
     return null;
   }
+  const badgeProps = useMemo<BadgeProps | null>(() => {
+    if (badge && typeof badge === 'object' && 'text' in badge && 'type' in badge) {
+      return badge as unknown as BadgeProps;
+    }
+    if (badge) {
+      return {
+        type: 'warning',
+        text: badge as string,
+      };
+    }
+    return null;
+  }, [badge]);
+
   return (
     <div className={['rspress-directive', styles.container].join(' ')}>
       {title || badge ? (
         <div className={[styles['item-title'], 'mb-2'].join(' ')}>
-          <div>{title}</div>
-          {badge ? (
-            <Badge
-              text={typeof badge === 'string' ? badge : badge.text}
-              type={typeof badge === 'string' ? 'warning' : badge.type}
-            />
+          {title && <div>{title}</div>}
+          {badgeProps ? (
+            <span className={styles.badge}>
+              <Badge {...badgeProps} />
+            </span>
           ) : null}
         </div>
       ) : null}
       {urlToOpen && (
         <>
           <div>
-            <div className="rspress-directive-title">一键安装</div>
+            <div className='rspress-directive-title'>一键安装</div>
             <a href={urlToOpen}>点击一键安装</a>
           </div>
-          <hr className="my-4 border-t border-solid border-divider-light" />
+          <hr className='my-4 border-t border-solid border-divider-light' />
         </>
       )}
       <div>
-        <div className="rspress-directive-title">手动安装</div>
-        <div className="mb-2">
+        <div className='rspress-directive-title'>手动安装</div>
+        <div className='mb-2'>
           <strong>安装路径</strong>
           <div>{manualInstallTemplate.path}</div>
         </div>
@@ -130,7 +143,7 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
         <div>
           <strong>{manualInstallTemplate.urlTitle}</strong>
           <div className={styles['url-wrap']}>
-            <div className="rspress-scrollbar">
+            <div className='rspress-scrollbar'>
               <code>{url}</code>
             </div>
           </div>
@@ -139,7 +152,7 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
 
       {children ? (
         <>
-          <hr className="my-4 border-t border-solid border-divider-light" />
+          <hr className='my-4 border-t border-solid border-divider-light' />
           {children}
         </>
       ) : null}
@@ -193,7 +206,7 @@ export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallP
       result.push(
         <Tab key={type}>
           <TabContent key={url} type={type} url={`${urlPrefix}${url}`} />
-        </Tab>,
+        </Tab>
       );
     });
 
@@ -201,28 +214,20 @@ export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallP
   }, [urlPrefix, urls, children]);
 
   return (
-    <Tabs groupId="module.install" values={values}>
+    <Tabs groupId='module.install' values={values}>
       {renderContent}
     </Tabs>
   );
 }
 
-const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; children?: React.ReactNode }> = ({
-  type,
-  __urlPrefix,
-  children,
-}) => {
+const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; children?: React.ReactNode }> = ({ type, __urlPrefix, children }) => {
   return (
     <Tab key={type}>
-      <div className="text-sm">
+      <div className='text-sm'>
         {Children.map(children, (child) => {
           if (isValidElement(child)) {
             const childType = child.type;
-            if (
-              typeof childType !== 'string' &&
-              'displayName' in childType &&
-              childType.displayName === 'ModuleInstallItem'
-            ) {
+            if (typeof childType !== 'string' && 'displayName' in childType && childType.displayName === 'ModuleInstallItem') {
               return cloneElement(child, { __type: type, __urlPrefix } as any);
             }
             return createElement(
@@ -230,7 +235,7 @@ const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; chi
               {
                 className: 'px-3',
               },
-              child,
+              child
             );
           }
           return child;

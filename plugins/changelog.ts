@@ -1,5 +1,6 @@
 import type { RspressPlugin } from '@rspress/shared';
 import type { AdditionalPage } from '@rspress/shared';
+import { Badge } from 'rspress/theme';
 
 interface ChangeLogPluginOptions {
   baseRoutePath?: string;
@@ -39,7 +40,20 @@ export function changelogPlugin({ baseRoutePath = 'changelog', repos = [] }: Cha
             for (const release of data) {
               content += '\n\n';
               content += `## [${release.name}](${release.html_url})`;
-              content += '\n\n';
+              content += '\n';
+              // 版本类型
+              switch (true) {
+                case release.draft:
+                  content += Badge({ text: '草稿', type: 'info' });
+                  break;
+                case release.prerelease:
+                  content += Badge({ text: '预发布版本', type: 'warning' });
+                  break;
+                default:
+                  content += Badge({ text: '正式版', type: 'danger' });
+                  break;
+              };
+              content += '\n';
               content += release.body;
             }
           }

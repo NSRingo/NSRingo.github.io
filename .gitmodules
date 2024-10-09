@@ -19,3 +19,6 @@
 [submodule "wiki/geo-services"]
 	path = wiki/geo-services
 	url = https://github.com/NSRingo/GeoServices.wiki.git
+[submodule "wiki/private-relay"]
+	path = wiki/private-relay
+	url = https://github.com/NSRingo/PrivateRelay.wiki.git

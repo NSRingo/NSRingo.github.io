@@ -22,3 +22,6 @@
 [submodule "wiki/private-relay"]
 	path = wiki/private-relay
 	url = https://github.com/NSRingo/PrivateRelay.wiki.git
+[submodule "wiki/box-js"]
+	path = wiki/box-js
+	url = https://github.com/NSRingo/BoxJs.wiki.git

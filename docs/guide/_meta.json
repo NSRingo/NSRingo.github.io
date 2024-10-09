@@ -1,6 +1,11 @@
 [
     "index",
-    "🌤-天气服务",
+    {
+        "type": "dir",
+        "name": "Weather",
+        "label": "🌤 天气",
+        "collapsible": false
+    },
     {
         "type": "dir",
         "name": "GeoServices",

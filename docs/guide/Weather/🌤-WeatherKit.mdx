@@ -1,0 +1,29 @@
+import { ModuleInstall } from '@components'
+import WeatherKit from '../../../wiki/weather-kit/Home.md'
+import _Footer from '../_Footer.md'
+
+# 🌤 WeatherKit
+:::warning 最低支持
+- iOS 18 beta (22A5282m)
+- iPadOS 18 beta (22A5282m)
+- macOS 15 beta (24A5264n)
+- tvOS 18 beta (22J5290l)
+- visionOS 2 beta (22N5252n)
+- watchOS 11 beta (22R5284o)
+:::
+
+:::info
+如果您想在配对的 Watch 上使用，则 ⌚️ 也需安装相同的 MitM 证书
+:::
+
+<ModuleInstall
+  urlPrefix='https://github.com/NSRingo/WeatherKit/releases/latest/download/'
+  urls={{
+    loon: 'WeatherKit.plugin',
+    surge: 'WeatherKit.sgmodule',
+    qx: 'WeatherKit.snippet',
+    stash: 'WeatherKit.stoverride'
+  }}
+/>
+<WeatherKit />
+<_Footer />

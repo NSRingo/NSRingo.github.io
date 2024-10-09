@@ -161,10 +161,10 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
 };
 
 export interface ModuleInstallProps {
-  urls: {
+  urlPrefix?: string;
+  urls?: {
     [key in SupportedApp]?: string;
   };
-  urlPrefix?: string;
   children?: React.ReactNode;
 }
 

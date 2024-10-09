@@ -4,3 +4,6 @@
 [submodule "wiki/siri"]
 	path = wiki/siri
 	url = https://github.com/NSRingo/Siri.wiki.git
+[submodule "wiki/tv"]
+	path = wiki/tv
+	url = https://github.com/NSRingo/TV.wiki.git

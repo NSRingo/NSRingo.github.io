@@ -1,5 +1,9 @@
 [
-    "index",
+    {
+        "type": "file",
+        "name": "index",
+        "label": "预览"
+    },
     {
         "type": "dir",
         "name": "Weather",
@@ -22,5 +26,6 @@
     "📰-News",
     "✈-TestFlight",
     "🌐-专用代理",
-    "🧰-BoxJs"
+    "🧰-BoxJs",
+    "example"
 ]

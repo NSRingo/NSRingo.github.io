@@ -16,3 +16,6 @@
 [submodule "wiki/weather"]
 	path = wiki/weather
 	url = https://github.com/NSRingo/Weather.wiki.git
+[submodule "wiki/geo-services"]
+	path = wiki/geo-services
+	url = https://github.com/NSRingo/GeoServices.wiki.git

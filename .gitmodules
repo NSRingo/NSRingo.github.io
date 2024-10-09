@@ -13,3 +13,6 @@
 [submodule "wiki/test-flight"]
 	path = wiki/test-flight
 	url = https://github.com/NSRingo/TestFlight.wiki.git
+[submodule "wiki/weather"]
+	path = wiki/weather
+	url = https://github.com/NSRingo/Weather.wiki.git

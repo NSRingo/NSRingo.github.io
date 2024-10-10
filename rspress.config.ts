@@ -8,7 +8,7 @@ export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: 'iRingo',
   description: '解锁完整的  Apple 功能和集成服务',
-  // icon: '/rspress-icon.png',
+  icon: 'https://avatars.githubusercontent.com/u/2111377?s=80&v=4',
   // logo: {
   //   light: '/rspress-light-logo.png',
   //   dark: '/rspress-dark-logo.png',

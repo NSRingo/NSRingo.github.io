@@ -13,7 +13,7 @@ hero:
       text: GitHub
       link: https://github.com/NSRingo
   image:
-    src: /rspress-icon.png
+    src: https://avatars.githubusercontent.com/u/2111377?s=400&v=4
     alt: iRingo Logo
 
 features:

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'rspress/config';
 import { changelogPlugin } from './plugins/changelog';
+import { ignorePlugin } from './plugins/ignore';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
@@ -83,6 +84,7 @@ export default defineConfig({
     ],
   },
   plugins: [
+    ignorePlugin(),
     changelogPlugin({
       repos: [
         {

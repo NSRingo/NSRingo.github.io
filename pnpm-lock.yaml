@@ -30,9 +30,6 @@ importers:
       '@types/react':
         specifier: ^18.3.11
         version: 18.3.11
-      ini:
-        specifier: ^5.0.0
-        version: 5.0.0
       remark-github:
         specifier: ^12.0.0
         version: 12.0.0
@@ -870,10 +867,6 @@ packages:
 
   immutable@4.3.7:
     resolution: {integrity: sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==}
-
-  ini@5.0.0:
-    resolution: {integrity: sha512-+N0ngpO3e7cRUWOJAS7qw0IZIVc6XPrW4MlFBdD066F2L4k1L6ker3hLqSq7iXxU5tgS4WGkIUElWn5vogAEnw==}
-    engines: {node: ^18.17.0 || >=20.5.0}
 
   inline-style-parser@0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
@@ -2805,8 +2798,6 @@ snapshots:
   human-signals@2.1.0: {}
 
   immutable@4.3.7: {}
-
-  ini@5.0.0: {}
 
   inline-style-parser@0.1.1: {}
 

@@ -1,0 +1,17 @@
+---
+title: {{title}} - Changelog
+---
+
+import { Badge } from '@theme';
+
+
+# {{title}}
+
+
+{{#each releases}}
+## [{{{this.name}}}]({{{this.html_url}}}) <span className='ml-2'>{{#if this.draft}}<Badge text='草稿' type='warning' outline />{{else if this.prerelease}}<Badge text='预发布' type='info' outline />{{else}}<Badge text='正式版' type='tip' outline />{{/if}}</span>
+
+{{{this.body}}}
+
+
+{{/each}}

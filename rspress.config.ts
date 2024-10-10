@@ -1,8 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { pluginChangelog } from 'rspress-plugin-changelog';
+import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
 import { defineConfig } from 'rspress/config';
-import { changelogPlugin } from './plugins/changelog';
 import { ignorePlugin } from './plugins/ignore';
+
+const generateChangelogParams = (items: Omit<ChangelogPluginOptions['items'][number], 'type'>[]) =>
+  items.map<ChangelogPluginOptions['items'][number]>((item) => ({
+    type: 'github-releases',
+    templatePath: './changelog.handlebars',
+    ...item,
+  }));
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
@@ -85,49 +93,49 @@ export default defineConfig({
   },
   plugins: [
     ignorePlugin(),
-    changelogPlugin({
-      repos: [
+    pluginChangelog({
+      items: generateChangelogParams([
         {
-          name: '🌤 天气服务',
-          path: '🌤-天气服务',
+          title: '🌤 天气服务',
+          routePath: '🌤-天气服务',
           repo: 'NSRingo/WeatherKit',
         },
         {
-          name: '📍 定位服务',
-          path: '📍-定位服务',
+          title: '📍 定位服务',
+          routePath: '📍-定位服务',
           repo: 'NSRingo/GeoServices',
         },
         {
-          name: '🗺 地图',
-          path: '🗺-地图',
+          title: '🗺 地图',
+          routePath: '🗺-地图',
           repo: 'NSRingo/GeoServices',
         },
         {
-          name: '🟥 Apple智能与Siri',
-          path: '🟥-Apple智能与Siri',
+          title: '🟥 Apple智能与Siri',
+          routePath: '🟥-Apple智能与Siri',
           repo: 'NSRingo/Siri',
         },
         {
-          name: '⭕ Siri与搜索',
-          path: '⭕-Siri与搜索',
+          title: '⭕ Siri与搜索',
+          routePath: '⭕-Siri与搜索',
           repo: 'NSRingo/Siri',
         },
         {
-          name: '📺 TV',
-          path: '📺-TV',
+          title: '📺 TV',
+          routePath: '📺-TV',
           repo: 'NSRingo/TV',
         },
         {
-          name: '📰 News',
-          path: '📰-News',
+          title: '📰 News',
+          routePath: '📰-News',
           repo: 'NSRingo/News',
         },
         {
-          name: '✈ TestFlight',
-          path: '✈-TestFlight',
+          title: '✈ TestFlight',
+          routePath: '✈-TestFlight',
           repo: 'NSRingo/TestFlight',
         },
-      ],
+      ]),
     }),
   ],
 });

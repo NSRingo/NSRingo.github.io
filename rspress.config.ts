@@ -40,7 +40,7 @@ export default defineConfig({
     rehypePlugins: [
       [
         require('rehype-urls'),
-        (url: object, node: object) => {
+        (url: { host: string; pathname?: string }, node: any) => {
           switch (url.host) {
             case 't.me':
             case 'github.com':

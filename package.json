@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "react": "^18.3.1",
+    "rehype-urls": "^1.2.0",
     "rspress": "^1.31.0"
   },
   "devDependencies": {

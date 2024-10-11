@@ -78,8 +78,15 @@ export default defineConfig({
                 case '/BoxJs/wiki.html':
                   url.pathname = '/guide/box-js.html';
                   break;
+                case '/raw/main/iRingo.BoxJs.json.html':
+                case '/raw/main/iRingo.17.BoxJs.json.html':
+                  console.log(url);
+                  url.protocol = 'https';
+                  url.host = 'github.com';
+                  url.pathname = '/NSRingo/BoxJs' + url.pathname.replace('.html', '');
+                  break;
                 default:
-                  //console.log(url.pathname);
+                  console.log(url.pathname);
                   break;
               }
               break;

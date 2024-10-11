@@ -21,7 +21,7 @@ export default defineConfig({
   //   light: '/rspress-light-logo.png',
   //   dark: '/rspress-dark-logo.png',
   // },
-  globalStyles: path.resolve('./styles/global.css'),
+  globalStyles: path.resolve('./assets/styles/global.css'),
   themeConfig: {
     socialLinks: [
       { icon: 'github', mode: 'link', content: 'https://github.com/NSRingo' },
@@ -94,6 +94,7 @@ export default defineConfig({
   plugins: [
     ignorePlugin(),
     pluginChangelog({
+      fetchOnDev: false,
       items: generateChangelogParams([
         {
           title: '🌤 天气服务',

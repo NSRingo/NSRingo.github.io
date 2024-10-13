@@ -8,5 +8,10 @@
     "text": "更新日志",
     "link": "/changelog/🌤-天气服务",
     "activeMatch": "^/changelog/"
+  },
+  {
+    "text": "论坛",
+    "link": "https://github.com/orgs/NSRingo/discussions",
+    "activeMatch": "^/discussions/"
   }
 ]

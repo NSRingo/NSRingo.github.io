@@ -2,6 +2,7 @@ import { Children, cloneElement, createElement, isValidElement, useMemo } from '
 import { Badge, Tab, Tabs } from 'rspress/theme';
 
 import styles from './module-install.module.scss';
+import { QRCode } from './qrcode';
 
 const SUPPORTED_APP = ['loon', 'surge', 'qx', 'stash', 'egern', 'shadowrocket'] as const;
 
@@ -127,15 +128,18 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
       {urlToOpen && (
         <>
           <div>
-            <div className='rspress-directive-title'>一键安装</div>
-            <a href={urlToOpen}>点击一键安装</a>
+            <div className="rspress-directive-title">一键安装</div>
+            <div className={styles.install}>
+              <a href={urlToOpen}>点击一键安装</a>
+              <QRCode value={urlToOpen} />
+            </div>
           </div>
-          <hr className='my-4 border-t border-solid border-divider-light' />
+          <hr className="my-4 border-t border-solid border-divider-light" />
         </>
       )}
       <div>
-        <div className='rspress-directive-title'>手动安装</div>
-        <div className='mb-2'>
+        <div className="rspress-directive-title">手动安装</div>
+        <div className="mb-2">
           <strong>安装路径</strong>
           <div>{manualInstallTemplate.path}</div>
         </div>
@@ -143,7 +147,7 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
         <div>
           <strong>{manualInstallTemplate.urlTitle}</strong>
           <div className={styles['url-wrap']}>
-            <div className='rspress-scrollbar'>
+            <div className="rspress-scrollbar">
               <code>{url}</code>
             </div>
           </div>
@@ -152,7 +156,7 @@ const TabContent: React.FC<TabContentProps> = ({ type, url, title, badge, childr
 
       {children ? (
         <>
-          <hr className='my-4 border-t border-solid border-divider-light' />
+          <hr className="my-4 border-t border-solid border-divider-light" />
           {children}
         </>
       ) : null}
@@ -206,7 +210,7 @@ export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallP
       result.push(
         <Tab key={type}>
           <TabContent key={url} type={type} url={`${urlPrefix}${url}`} />
-        </Tab>
+        </Tab>,
       );
     });
 
@@ -214,20 +218,28 @@ export function ModuleInstall({ urlPrefix = '', urls, children }: ModuleInstallP
   }, [urlPrefix, urls, children]);
 
   return (
-    <Tabs groupId='module.install' values={values}>
+    <Tabs groupId="module.install" values={values}>
       {renderContent}
     </Tabs>
   );
 }
 
-const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; children?: React.ReactNode }> = ({ type, __urlPrefix, children }) => {
+const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; children?: React.ReactNode }> = ({
+  type,
+  __urlPrefix,
+  children,
+}) => {
   return (
     <Tab key={type}>
-      <div className='text-sm'>
+      <div className="text-sm">
         {Children.map(children, (child) => {
           if (isValidElement(child)) {
             const childType = child.type;
-            if (typeof childType !== 'string' && 'displayName' in childType && childType.displayName === 'ModuleInstallItem') {
+            if (
+              typeof childType !== 'string' &&
+              'displayName' in childType &&
+              childType.displayName === 'ModuleInstallItem'
+            ) {
               return cloneElement(child, { __type: type, __urlPrefix } as any);
             }
             return createElement(
@@ -235,7 +247,7 @@ const ModuleInstallTab: React.FC<{ type: SupportedApp; __urlPrefix?: string; chi
               {
                 className: 'px-3',
               },
-              child
+              child,
             );
           }
           return child;

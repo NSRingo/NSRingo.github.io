@@ -70,3 +70,29 @@
   gap: 8px;
   color: var(--rp-c-text-2);
 }
+
+.install {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  position: relative;
+}
+
+.qrcode-handler {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.qrcode-popup {
+  position: absolute;
+  background: var(--rp-c-bg);
+  box-shadow: var(--rp-shadow-3);
+  border-radius: var(--rp-radius-small);
+  top: 100%;
+  transform: translateY(8px);
+}
+
+.qrcode {
+  width: 128px;
+  height: 128px;
+}

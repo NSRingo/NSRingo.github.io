@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { UrlWithStringQuery } from 'node:url';
 import { pluginChangelog } from 'rspress-plugin-changelog';
 import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
 import { defineConfig } from 'rspress/config';
@@ -48,7 +49,7 @@ export default defineConfig({
     rehypePlugins: [
       [
         require('rehype-urls'),
-        (url: { host: string; pathname?: string }, node: any) => {
+        (url: UrlWithStringQuery, node: any) => {
           switch (url.host) {
             case 't.me':
             case 'github.com':
@@ -80,13 +81,13 @@ export default defineConfig({
                   break;
                 case '/raw/main/iRingo.BoxJs.json.html':
                 case '/raw/main/iRingo.17.BoxJs.json.html':
-                  console.log(url);
+                  // console.log(url);
                   url.protocol = 'https';
                   url.host = 'github.com';
-                  url.pathname = '/NSRingo/BoxJs' + url.pathname.replace('.html', '');
+                  url.pathname = `/NSRingo/BoxJs${url.pathname.replace('.html', '')}`;
                   break;
                 default:
-                  console.log(url.pathname);
+                  // console.log(url.pathname);
                   break;
               }
               break;

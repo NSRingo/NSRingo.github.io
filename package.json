@@ -9,7 +9,7 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@iringo/doc-ui": "^1.0.0",
+    "@iringo/doc-ui": "^1.1.0",
     "rehype-urls": "^1.2.0",
     "rspress": "^1.33.0",
     "rspress-plugin-changelog": "^1.1.2",

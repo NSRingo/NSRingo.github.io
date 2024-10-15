@@ -11,12 +11,6 @@ importers:
       '@iringo/doc-ui':
         specifier: ^1.0.0
         version: 1.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@rc-component/qrcode':
-        specifier: ^1.0.0
-        version: 1.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
       rehype-urls:
         specifier: ^1.2.0
         version: 1.2.0
@@ -26,9 +20,6 @@ importers:
       rspress-plugin-changelog:
         specifier: ^1.1.2
         version: 1.1.2
-      rspress-plugin-font-open-sans:
-        specifier: ^1.0.0
-        version: 1.0.0
       rspress-plugin-sitemap:
         specifier: ^1.1.1
         version: 1.1.1
@@ -42,9 +33,6 @@ importers:
       '@types/node':
         specifier: ^16.18.113
         version: 16.18.113
-      '@types/react':
-        specifier: ^18.3.11
-        version: 18.3.11
       remark-github:
         specifier: ^12.0.0
         version: 12.0.0
@@ -1486,9 +1474,6 @@ packages:
 
   rspress-plugin-changelog@1.1.2:
     resolution: {integrity: sha512-ENvkc0yNv+nxje50uBw2ariutfax6KaxROgE4JTc9+Q9ZPmNfM4Ubiep+n4CQL4cRwIQxSclNFvuNqpDeZfr/w==}
-
-  rspress-plugin-font-open-sans@1.0.0:
-    resolution: {integrity: sha512-4GP0pd7h3W8EWdqE0VkA62nzUJZNy4ZnYK7be8+lOKHQKsQ5nZ+22A/VurNssi1eZFx3kjwbmIuoAkgb5W8S9Q==}
 
   rspress-plugin-sitemap@1.1.1:
     resolution: {integrity: sha512-usb6zWoi5wFFmBeA9HKR6BhsnnsItudMBarc54GYpuRL55SWkLxyWyMijv14mUI04FI7J7lEmea08uZE0bVKxg==}
@@ -3813,8 +3798,6 @@ snapshots:
     dependencies:
       handlebars: 4.7.8
       rslog: 1.2.3
-
-  rspress-plugin-font-open-sans@1.0.0: {}
 
   rspress-plugin-sitemap@1.1.1: {}
 

@@ -1,9 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { UrlWithStringQuery } from 'node:url';
-import { pluginChangelog } from 'rspress-plugin-changelog';
 import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
-import { pluginFontOpenSans } from 'rspress-plugin-font-open-sans';
+import { pluginChangelog } from 'rspress-plugin-changelog';
 import pluginSitemap from 'rspress-plugin-sitemap';
 import { defineConfig } from 'rspress/config';
 import { ignorePlugin } from './plugins/ignore';
@@ -28,23 +27,6 @@ export default defineConfig({
   // },
   globalStyles: path.resolve('./assets/styles/global.css'),
   themeConfig: {
-    nav: [
-      {
-        text: '文档',
-        link: '/guide/index',
-        activeMatch: '^/guide/',
-      },
-      {
-        text: '更新日志',
-        link: '/changelog/weather-kit',
-        activeMatch: '^/changelog/',
-      },
-      {
-        text: '论坛',
-        link: 'https://github.com/orgs/NSRingo/discussions',
-        activeMatch: '^/discussions/',
-      },
-    ],
     socialLinks: [
       { icon: 'github', mode: 'link', content: 'https://github.com/NSRingo' },
       {
@@ -121,7 +103,6 @@ export default defineConfig({
     ],
   },
   plugins: [
-    //pluginFontOpenSans(),
     pluginSitemap({
       domain: siteUrl,
     }),

@@ -1,24 +1,37 @@
-import { ModuleInstall } from "@components";
-import Maps from '@wiki/geo-services/🗺-地图.md'
-import _Footer from '../_Footer.md'
+import { ModuleInstall } from "@theme";
+import Maps from "@wiki/geo-services/🗺-地图.md";
+import _Footer from "../_Footer.md";
 
 # 🗺 地图
+
 <ModuleInstall urlPrefix="https://github.com/NSRingo/GeoServices/releases/latest/download/">
-  <ModuleInstall.Tab type='loon'>
-    <ModuleInstall.Item url='Maps.plugin' badge={<>需要 <a href='https://t.me/LoonNews/673' target="_blank">2.1.20(406)</a> 及以上版本</>} />
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="Maps.plugin"
+      badge={
+        <>
+          需要{" "}
+          <a href="https://t.me/LoonNews/673" target="_blank">
+            2.1.20(406)
+          </a>{" "}
+          及以上版本
+        </>
+      }
+    />
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='surge'>
-    <ModuleInstall.Item url='Maps.sgmodule'/>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item url="Maps.sgmodule" />
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='qx'>
-    <ModuleInstall.Item url='Maps.snippet'/>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item url="Maps.snippet" />
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='stash'>
-    <ModuleInstall.Item url='Maps.stoverride'/>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item url="Maps.stoverride" />
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='shadowrocket'>
-    <ModuleInstall.Item url='Maps.srmodule'>
-      - ⚠️ Shadowrocket 不支持指定`调度器`、`导航`、`交通状况`、`瓦片地图`等的服务版本
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item url="Maps.srmodule">
+      - ⚠️ Shadowrocket
+      不支持指定`调度器`、`导航`、`交通状况`、`瓦片地图`等的服务版本
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>

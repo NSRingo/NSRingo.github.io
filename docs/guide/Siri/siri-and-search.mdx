@@ -1,13 +1,14 @@
-import { ModuleInstall } from '@components'
-import _Footer from '../_Footer.md'
-import Siri from '@wiki/siri/⭕-Siri与搜索.md'
+import { ModuleInstall } from "@theme";
+import _Footer from "../_Footer.md";
+import Siri from "@wiki/siri/⭕-Siri与搜索.md";
 
-# ⭕ Siri与搜索
+# ⭕ Siri 与搜索
+
 :::warning ⚠️
 
 本文适用于 iOS 17、macOS 14、watchOS 10 及以下版本  
 Siri 区分「询问 Siri」和「Siri 建议」两部分  
-注意鉴别需求与说明  
+注意鉴别需求与说明
 
 :::
 
@@ -15,37 +16,65 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 
  以通过推送安全响应更新  
 禁止 MitM iOS 15 至 iOS 18「Siri 建议」激活所使用的`api.smoot.apple.com`的网络请求  
-此模块已停止更新  
+此模块已停止更新
 
 :::
+
 <ModuleInstall urlPrefix="https://github.com/NSRingo/Siri/releases/latest/download/">
-  <ModuleInstall.Tab type='loon'>
-    <ModuleInstall.Item url='Siri.plugin' title='iOS' badge={<>需要 2.1.18(377) 及以上版本</>} />
-    <ModuleInstall.Item url='Siri.macOS.plugin' title='macOS' badge={<>需要 2.1.18(377) 及以上版本</>} />
-      - `插件`内置代理规则
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="Siri.plugin"
+      title="iOS"
+      badge={<>需要 2.1.18(377) 及以上版本</>}
+    />
+    <ModuleInstall.Item
+      url="Siri.macOS.plugin"
+      title="macOS"
+      badge={<>需要 2.1.18(377) 及以上版本</>}
+    />- `插件`内置代理规则
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='surge'>
-    <ModuleInstall.Item url='Siri.sgmodule' title='iOS' badge={<>需要 5.9.0 及以上版本</>} />
-    <ModuleInstall.Item url='Siri.macOS.sgmodule' title='macOS' badge={<>需要 5.5.0(2589) 及以上版本</>} />
-      - 可通过`模块`的`编辑参数…`功能自定义内置`策略组`名称
-      - 默认`策略组`名为`🌑Proxy`
-      - 内置 macOS 用`域名集`:[LookUp.Wikipedia.list](https://github.com/NSRingo/Siri/releases/latest/download/LookUp.Wikipedia.list "Look Up - Wikipedia")
-        - 此`域名集`只作用于macOS的`词典`的维基百科与`查询`的维基百科搜索集成
-        - 需要开启Surge的`增强模式`
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item
+      url="Siri.sgmodule"
+      title="iOS"
+      badge={<>需要 5.9.0 及以上版本</>}
+    />
+    <ModuleInstall.Item
+      url="Siri.macOS.sgmodule"
+      title="macOS"
+      badge={<>需要 5.5.0(2589) 及以上版本</>}
+    />- 可通过`模块`的`编辑参数…`功能自定义内置`策略组`名称 -
+    默认`策略组`名为`🌑Proxy` - 内置 macOS
+    用`域名集`:[LookUp.Wikipedia.list](https://github.com/NSRingo/Siri/releases/latest/download/LookUp.Wikipedia.list
+    "Look Up - Wikipedia") -
+    此`域名集`只作用于macOS的`词典`的维基百科与`查询`的维基百科搜索集成 -
+    需要开启Surge的`增强模式`
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='qx'>
-    <ModuleInstall.Item url='Siri.snippet' badge={<>需要 1.0.29(656) 及以上版本</>} />
-      - 不含`规则集`，需要自行添加`规则集`至`设置`-`分流`-`引用`并设置`策略偏好`
-      - macOS用`规则集`:[LookUp.Wikipedia.list](https://github.com/NSRingo/Siri/releases/latest/download/LookUp.Wikipedia.list "Look Up - Wikipedia")
-        - 此域名集只作用于macOS的`词典`和维基百科搜索集成，iOS/iPadOS不需要此域名集。
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="Siri.snippet"
+      badge={<>需要 1.0.29(656) 及以上版本</>}
+    />
+    - 不含`规则集`，需要自行添加`规则集`至`设置`-`分流`-`引用`并设置`策略偏好` -
+    macOS用`规则集`:[LookUp.Wikipedia.list](https://github.com/NSRingo/Siri/releases/latest/download/LookUp.Wikipedia.list
+    "Look Up - Wikipedia") - 此域名集只作用于macOS的`词典`和维基百科搜索集成，iOS/iPadOS不需要此域名集。
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='stash'>
-    <ModuleInstall.Item url='Siri.stoverride' title='iOS' badge={<>需要 1.6.2(309) 及以上版本</>} />
-    <ModuleInstall.Item url='Siri.macOS.stoverride' title='macOS' badge={<>需要 2.1.18(377) 及以上版本</>} />
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="Siri.stoverride"
+      title="iOS"
+      badge={<>需要 1.6.2(309) 及以上版本</>}
+    />
+    <ModuleInstall.Item
+      url="Siri.macOS.stoverride"
+      title="macOS"
+      badge={<>需要 2.1.18(377) 及以上版本</>}
+    />
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type='shadowrocket'>
-    <ModuleInstall.Item url='Siri.srmodule'>
-      - ⚠️ Shadowrocket 不支持指定`调度器`、`导航`、`交通状况`、`瓦片地图`等的服务版本
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item url="Siri.srmodule">
+      - ⚠️ Shadowrocket
+      不支持指定`调度器`、`导航`、`交通状况`、`瓦片地图`等的服务版本
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>

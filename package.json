@@ -9,15 +9,15 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@iringo/doc-ui": "^1.1.0",
+    "@iringo/doc-ui": "^1.2.1",
     "rehype-urls": "^1.2.0",
-    "rspress": "^1.33.0",
+    "rspress": "^1.33.1",
     "rspress-plugin-changelog": "^1.1.2",
     "rspress-plugin-sitemap": "^1.1.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
-    "@rspress/shared": "^1.33.0",
+    "@rspress/shared": "^1.33.1",
     "@types/node": "^16.18.113",
     "remark-github": "^12.0.0"
   },

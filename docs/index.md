@@ -51,7 +51,7 @@ features:
     title:  News
     details: 可正常使用「 News」并自定义部分设置与参数。
     span: 3
-    link: /guide/apple-News
+    link: /guide/apple-news
 
   - icon: ✈
     title: TestFlight

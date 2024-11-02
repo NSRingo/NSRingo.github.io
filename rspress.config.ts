@@ -29,7 +29,7 @@ export default defineConfig({
   head: [
     ['link', { ref: "preconnect", href: "//ipolyfill.edge-byted.com"}],
     ['link', { ref: "dns-prefetch", href: "//ipolyfill.edge-byted.com"}],
-    ['script', { src:"//ipolyfill.edge-byted.com/0.0.23/polyfill.min.js", crossorigin: "" }],
+    ['script', { src:"//ipolyfill.edge-byted.com/0.0.24/polyfill.min.js", crossorigin: "" }],
   ],
   themeConfig: {
     socialLinks: [

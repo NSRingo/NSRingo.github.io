@@ -1,18 +1,96 @@
-import { ModuleInstall } from "@theme";
+import { Steps, ModuleInstall } from "@theme";
 import _Footer from "./_Footer.md";
-import News from "@wiki/news/Home.md";
 
 # 📰 News
 
-<ModuleInstall
-  urlPrefix="https://github.com/NSRingo/News/releases/latest/download/"
-  urls={{
-    loon: "News.plugin",
-    surge: "News.sgmodule",
-    qx: "News.snippet",
-    stash: "News.stoverride",
-    shadowrocket: "News.srmodule",
-  }}
-/>
-<News />
+## 简介
+* 保持模块启用，即可正常使用「News」并自定义部分设置与功能。
+
+## 使用说明
+
+    <Steps>
+      ### 第 1 步
+      启用[`📍 定位`](./GeoServices/location) + [`📰 News`](./apple-news)两个模块
+      > * `iOS` 与 `iPadOS` 设备，还需额外在`设置`-`通用`-`语言与地区`中，将`地区`设置改为 `News` 可用地区  
+      > * `macOS` 设备，可以通过为 `News` app 创建`替身`的方式，来绕过 `News` app 隐藏的问题  
+      > * 目前，仅有`美国`、`英国`、`加拿大`、`澳大利亚`四国支持 `News` 服务  
+
+      ### 第 2 步
+      根据您所使用的代理APP不同，指定相关分流策略为`🇺🇸美国`(或其他 `News` 可用地区)代理策略或节点
+      > * 部分代理软件所使用的`模块`或`插件`中已内置了`规则集`或`代理规则`，无需额外添加相关`规则`或`分流`，其他代理软件需要手动添加相关`规则`或`分流`并指定相关策略，具体差异请参看 [安装链接](#安装链接) 段落中的使用说明。  
+      > * 无分流配置的情况下，也可使用`全局代理`模式。  
+
+      ### 第 3 步
+      打开`✈️飞行模式`
+      > * 未装有 SIM 卡的 iOS/iPadOS/macOS 设备，可省略`✈️飞行模式`相关步骤。  
+      > * 装有 SIM 卡的 iOS/iPadOS 设备，也可通过`卡贴`或`海外 SIM 卡`的方式，绕过基于 SIM 卡的 `MCC/MNC` ([移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码))检测。  
+      > * 基于以上原因，推荐 Mac 或无 SIM 卡的 iPad 使用 [`📰 News`](./apple-news)
+
+      ### 第 4 步
+      重新打开一次`地图` app (指清除`地图` app 后台进程)
+      > * 在 `Loon` 的`仪表`-`最近请求`或 `Surge` 的`工具`-`最近请求`或 `Quantumult X` 的`网络活动`中应观察到:  
+      > 1. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
+      > 2. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果不是`CN`  
+
+      ### 第 5 步
+      打开`News`，此时应是[解锁状态说明](#解锁状态说明)中的`解锁成功`状态
+      > * 首次加载 `News` 需保证 `gateway.icloud.com` 为海外线路  
+      > * 使用 `News` 过程中 `gateway.icloud.com` 无策略或线路要求  
+
+      ### 第 6 步
+      关闭`✈️飞行模式`，正常使用 News
+      > * 关闭`✈️飞行模式`后，如再次触发基于 SIM 卡的 `MCC/MNC` ([移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码))检测，则 News 会回到[解锁状态说明](#解锁状态说明)中的`解锁失效`状态，此时需从[第 3 步](#第-3-步)再次操作。  
+    </Steps>
+
+## 解锁状态说明
+|  锁定状态  | 解锁成功 | 解锁失效 | 
+| :---: | :---: | :---: |
+| 未通过地区检测  | 已成功通过地区检测 | 通过检测后，再次触发检测时未通过检测  |
+| 请在`✈️飞行模式`下通过`Wi-Fi`或`有线网络`再次执行解锁步骤  | `gateway.icloud.com`需走代理才能完整加载内容 | 请在`✈️飞行模式`下通过`Wi-Fi`或`有线网络`再次执行解锁步骤  |
+|<p> Apple News isn't supported in your current region. </p>|<p> **Feed Unavailable**  <br/> There may be a problem with the sever or network. Plase try again later. </p>|<p> **Feed Unavailable** <br/> Apple News isn't supported in your current region. </p>|
+|![🔒锁定状态截图](https://github.com/NSRingo/News/raw/main/images/screenshot/Apple%20News%20-%20Locked%20-%20iOS.jpeg "Apple News - Locked - iOS")|![🔓解锁成功截图](https://github.com/NSRingo/News/raw/main/images/screenshot/Apple%20News%20-%20Unlock%20Success%20-%20iOS.jpeg "Apple News - Unlock Success - iOS")|![🔒解锁失效截图](https://github.com/NSRingo/News/raw/main/images/screenshot/Apple%20News%20-%20Unlock%20Invalid%20-%20iOS.jpeg "Apple News - Unlock Invalid - iOS")|
+
+## 关于新闻小组件
+* 新闻小组件`parsecd/1.0 ({Device}; {Version} {Build}) News/1`没有地区限制，可以任意区域环境下使用
+* 新闻小组件内容由`Siri建议`服务`api*.smoot.apple.com`提供，而不是`新闻`服务`news-*.apple.com`，已在`🆕新版Siri_Suggestions.*`中修复
+
+## 关于体育比分与赛事关注
+* 关注的球队与赛事内容由`体育`服务`WatchListKit.framework`提供，而不是`新闻`服务`news-*.apple.com`，已在`🆕V3版`中修复
+
+## 安装链接
+
+<ModuleInstall urlPrefix="https://github.com/NSRingo/News/releases/latest/download/">
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item url="News.plugin">
+      - `插件`内置代理规则，使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+    </ModuleInstall.Item>
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item url="News.sgmodule" badge={<>需要 iOS 5.9.0 / macOS 5.5.0(2589) 及以上版本</>}>
+      - `模块`内置`规则集`，可通过`模块`的`编辑参数…`功能自定义内置`策略组`名称
+      - 默认`策略组`名为`🇺🇸美国`，使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+    </ModuleInstall.Item>
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item url="News.snippet">
+      - 不含`规则集`，需要自行添加`规则集`至`设置`-`分流`-`引用`并设置`策略偏好`
+      - `域名集`:[News.list](https://github.com/NSRingo/News/releases/latest/download/News.list "News")
+      - 使用前请先修改`策略偏好`为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+    </ModuleInstall.Item>
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item url="News.stoverride">
+      - `覆写`内置代理规则
+      - 使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+    </ModuleInstall.Item>
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item url="News.srmodule">
+      - `模块`不含`规则集`，需要自行添加`规则集`
+      - 使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+      - `域名集`:[News.list](https://github.com/NSRingo/News/releases/latest/download/News.list "News")
+    </ModuleInstall.Item>
+  </ModuleInstall.Tab>
+</ModuleInstall>
+
 <_Footer />

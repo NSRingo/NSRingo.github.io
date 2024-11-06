@@ -7,9 +7,6 @@
 [submodule "wiki/tv"]
 	path = wiki/tv
 	url = https://github.com/NSRingo/TV.wiki.git
-[submodule "wiki/news"]
-	path = wiki/news
-	url = https://github.com/NSRingo/News.wiki.git
 [submodule "wiki/test-flight"]
 	path = wiki/test-flight
 	url = https://github.com/NSRingo/TestFlight.wiki.git

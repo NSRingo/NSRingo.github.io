@@ -1,24 +1,9 @@
-[submodule "wiki/weather-kit"]
-	path = wiki/weather-kit
-	url = https://github.com/NSRingo/WeatherKit.wiki.git
 [submodule "wiki/siri"]
 	path = wiki/siri
 	url = https://github.com/NSRingo/Siri.wiki.git
 [submodule "wiki/tv"]
 	path = wiki/tv
 	url = https://github.com/NSRingo/TV.wiki.git
-[submodule "wiki/test-flight"]
-	path = wiki/test-flight
-	url = https://github.com/NSRingo/TestFlight.wiki.git
-[submodule "wiki/weather"]
-	path = wiki/weather
-	url = https://github.com/NSRingo/Weather.wiki.git
 [submodule "wiki/geo-services"]
 	path = wiki/geo-services
 	url = https://github.com/NSRingo/GeoServices.wiki.git
-[submodule "wiki/private-relay"]
-	path = wiki/private-relay
-	url = https://github.com/NSRingo/PrivateRelay.wiki.git
-[submodule "wiki/box-js"]
-	path = wiki/box-js
-	url = https://github.com/NSRingo/BoxJs.wiki.git

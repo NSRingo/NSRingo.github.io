@@ -1,6 +1,5 @@
 import { ModuleInstall } from "@theme";
 import _Footer from "./_Footer.md";
-import TestFlight from "@wiki/test-flight/Home.md";
 
 # ✈ TestFlight
 
@@ -12,6 +11,33 @@ import TestFlight from "@wiki/test-flight/Home.md";
 
 :::
 
+## 简介
+* 自定义「TestFlight」的所在区域代码，多账号保存与切换，强制启用通用应用支持
+
+## 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如`国家或地区代码`选择、`启用通用应用支持`开关等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+     1. 浏览器访问[BoxJs.com](http://boxjs.com)
+     2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+     3. 在[`✈ TestFlight`](http://boxjs.com/#/app/iRingo.TestFlight)根据需要填写您的设置信息
+  </details>
+
+## 功能列表
+* 自定义TestFlight登录商店地区
+* ~~多账户保存及切换~~ (默认关闭，需要在[🧰 BoxJs](./box-js)中保存和切换账号信息)
+* 强制启用通用应用支持 (测试中，默认开启)
+  * 解除开发者对 TestFlight 中的 iOS/iPadOS/macOS(AppleSilicon) 平台限制
+
+## 安装链接
 <ModuleInstall
   urlPrefix="https://github.com/NSRingo/TestFlight/releases/latest/download/"
   urls={{
@@ -22,5 +48,56 @@ import TestFlight from "@wiki/test-flight/Home.md";
     shadowrocket: "TestFlight.srmodule",
   }}
 />
-<TestFlight />
+
+## 默认设置
+* CountryCode: 国家或区域代码
+  * 默认值: `US` (🇺🇸美国)
+* MultiAccount: 多账户保存及切换
+  * 默认值: `false` (关闭)
+* Universal: 启用通用应用支持
+  * 默认值: `true` (开启)
+
+## 更新日志
+* v3.0.0
+  * 优化与修复
+    1. 重构代码
+    2. 修复Bug
+* v1.4.6-request
+* v1.2.3-response
+  * 优化与修复
+    1. 增加兑换邀请链接(ru)支持
+    2. 增加消息推送链接(messages)支持
+    3. 分离headers与data缓存路径
+    4. 兼容HTTP/2与HTTP/1.1
+* v1.3.12-request
+* v1.1.4-response
+  * 优化与修复
+    1. 增加邮件邀请链接(invite)支持
+* v1.3.11-request
+* v1.1.3-response
+  * 功能更新
+    1. 强制启用通用应用支持（测试中，默认开启，解除开发者对TF中app的iOS/iPadOS/macOS(AppleSilicon)平台限制）
+* First Released
+* v1.3.10-request
+* v1.0.8-response
+  * 功能更新
+    1. 自定义TestFlight登录商店地区
+    2. 多账户保存及切换（默认关闭）
+* v1.3.0-request
+* v1.0.0-response
+  * 功能更新
+    1. 暂时移除保存并替换iTunes Store Cookie
+    2. 增加保存和替换账户UUID和重放验证信息
+* v1.2.1-request
+  * 功能更新
+    1. 支持自定义TestFlight安装app时商店地区
+  * 优化与修复
+    1. 增加日志输出
+* v1.1.0-request
+  * 功能更新
+    1. 支持保存并替换iTunes Store Cookie
+* v1.0.0-request
+  * 功能更新
+    1. 支持自定义TestFlight登录商店地区
+
 <_Footer />

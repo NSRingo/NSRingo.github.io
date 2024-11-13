@@ -1,5 +1,4 @@
 import { ModuleInstall } from "@theme";
-import WeatherKit from "@wiki/weather-kit/Home.md";
 import _Footer from "../_Footer.md";
 
 # 🌤 WeatherKit
@@ -15,12 +14,66 @@ import _Footer from "../_Footer.md";
 
 :::
 
-:::info ❕
+:::info ℹ️ 用前须知
 
 如果您想在配对的 Watch 上使用  
 则 ⌚️ 也需安装相同的 MitM 证书
 
 :::
+
+## 简介
+  * 安装后无需任何额外配置，即可启用下列功能：
+    * 解锁全部天气数据类型（默认全解锁）
+    * 替换「空气质量」数据
+    * 添加「未来一小时降水强度」信息
+
+
+:::tip ✅ 小提示
+
+1. `未来一小时降水强度`面板仅在此城市未来一小时内有降水的情况下显示。  
+2. `降水通知`仅在城市位于您天气 app 的关注列表中，并于关注列表右上角的`通知`中，开启此城市的`未来一小时降水强度通知`，且此城市的降水您还并未主动获知（主动查看或显示在小组件上均为已获知）的情况下，才会进行降水通知。
+
+:::
+
+## 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+     1. 浏览器访问[BoxJs.com](http://boxjs.com)
+     2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+     3. 在[`🌤 WeatherKit`](http://boxjs.com/#/app/iRingo.WeatherKit)根据需要填写您的设置信息
+  </details>
+
+:::tip ✅ 小提示
+
+1. `彩云天气`的`分钟级降水接口`权限不对普通开发者开放，需要额外采购，请勿在此脚本中填写使用普通开发者token  
+2. `和风天气`的`昨日空气质量对比`接口权限仅对付费订阅用户开放，请勿在此脚本中填写使用普通开发者token  
+
+:::
+
+## 功能列表
+  * 解锁全部天气数据类型
+  * 未来一小时降水强度与降水通知
+    * 彩云天气 （默认，可选 Token）
+    * 和风天气 （需要 Token）
+    * 默认为增补模式，不会替换已有降水数据，仅补充无数据城市
+  * 空气质量数据
+    * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
+    * 和风天气 （支持昨日对比，需要 Token）
+    * WAQI （可选 Token）
+    * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
+  * 空气质量标准换算
+    * 默认开启，将中国空气质量标准换算为最新美国空气质量标准
+
+## 安装链接
 
 <ModuleInstall
   urlPrefix="https://github.com/NSRingo/WeatherKit/releases/latest/download/"
@@ -31,5 +84,26 @@ import _Footer from "../_Footer.md";
     stash: "WeatherKit.stoverride",
   }}
 />
-<WeatherKit />
+
+## 默认设置
+* [未来一小时降水强度] 数据源
+  * [ ] WeatherKit: WeatherKit (不进行替换)
+  * [x] ColorfulClouds: 彩云天气
+  * [ ] QWeather: 和风天气
+* [空气质量] 数据源
+  * [ ] WeatherKit: WeatherKit (不进行替换)
+  * [x] ColorfulClouds: 彩云天气
+  * [ ] QWeather: 和风天气
+  * [ ] WAQI: The World Air Quality Project
+* [空气质量] 需要替换的供应商
+  * [x] QWeather: 和风天气
+  * [ ] BreezoMeter: BreezoMeter
+  * [ ] TWC: The Weather Channel
+* [空气质量] 本地替换算法
+  * [ ] NONE: None (不进行替换)
+  * [x] WAQI_InstantCast: WAQI InstantCast
+* [空气质量] 需要修改的标准
+  * [x] HJ6332012: "中国 (HJ 633—2012)
+* [空气质量] 转换污染物计量单位: false (关闭)
+
 <_Footer />

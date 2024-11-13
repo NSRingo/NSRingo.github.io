@@ -6,7 +6,7 @@ import _Footer from "./_Footer.md";
 ## 简介
 * 保持模块启用，即可正常使用「News」并自定义部分设置与功能。
 
-## 使用说明
+## 解锁步骤
 
     <Steps>
       ### 第 1 步
@@ -21,16 +21,20 @@ import _Footer from "./_Footer.md";
       > * 无分流配置的情况下，也可使用`全局代理`模式。  
 
       ### 第 3 步
-      打开`✈️飞行模式`
+      打开`✈️飞行模式`，同时保持`Wi-Fi`或`有线网络`连接
       > * 未装有 SIM 卡的 iOS/iPadOS/macOS 设备，可省略`✈️飞行模式`相关步骤。  
+      > * 当存在`移动蜂窝网络`时，不触发此检测方式，将直接采用基于SIM卡的[移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码)「MCC / MNC」进行检测
       > * 装有 SIM 卡的 iOS/iPadOS 设备，也可通过`卡贴`或`海外 SIM 卡`的方式，绕过基于 SIM 卡的 `MCC/MNC` ([移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码))检测。  
       > * 基于以上原因，推荐 Mac 或无 SIM 卡的 iPad 使用 [`📰 News`](./apple-news)
 
       ### 第 4 步
-      重新打开一次`地图` app (指清除`地图` app 后台进程)
-      > * 在 `Loon` 的`仪表`-`最近请求`或 `Surge` 的`工具`-`最近请求`或 `Quantumult X` 的`网络活动`中应观察到:  
-      > 1. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
-      > 2. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果不是`CN`  
+      重新冷启动一次`地图` app
+      * 指后台无`地图`应用时，重开`地图`app
+      > * 在 `Loon` 的`仪表`-`最近请求`中应观察到:  
+      > * 在 `Surge` 的`工具`-`最近请求`中应观察到:  
+      > * 在 `Quantumult X` 的`网络活动`中应观察到:  
+      >   1. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果不是`CN`  
+      >   2. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
 
       ### 第 5 步
       打开`News`，此时应是[解锁状态说明](#解锁状态说明)中的`解锁成功`状态
@@ -41,6 +45,23 @@ import _Footer from "./_Footer.md";
       关闭`✈️飞行模式`，正常使用 News
       > * 关闭`✈️飞行模式`后，如再次触发基于 SIM 卡的 `MCC/MNC` ([移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码))检测，则 News 会回到[解锁状态说明](#解锁状态说明)中的`解锁失效`状态，此时需从[第 3 步](#第-3-步)再次操作。  
     </Steps>
+
+## 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如内置规则的`分流策略`选择、`国家或地区代码`选择等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+    1. 浏览器访问[BoxJs.com](http://boxjs.com)
+    2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+    3. 在[`📰 News`](http://boxjs.com/#/app/iRingo.News)根据需要填写您的设置信息
+  </details>
 
 ## 解锁状态说明
 |  锁定状态  | 解锁成功 | 解锁失效 | 
@@ -92,5 +113,15 @@ import _Footer from "./_Footer.md";
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>
+
+## 默认设置
+* Proxy: 策略组
+  * 仅`Surge`与`Egern`有此设置
+  * 默认`策略组`名为`🇺🇸美国`
+  * 使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+* CountryCode: 国家或地区代码
+  * 默认`国家或地区代码`为`US`
+* NewsPlusUser: [搜索] 显示 News+ 内容
+  * 默认 `true` (开启)
 
 <_Footer />

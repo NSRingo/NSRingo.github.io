@@ -1,9 +1,0 @@
-[submodule "wiki/siri"]
-	path = wiki/siri
-	url = https://github.com/NSRingo/Siri.wiki.git
-[submodule "wiki/tv"]
-	path = wiki/tv
-	url = https://github.com/NSRingo/TV.wiki.git
-[submodule "wiki/geo-services"]
-	path = wiki/geo-services
-	url = https://github.com/NSRingo/GeoServices.wiki.git

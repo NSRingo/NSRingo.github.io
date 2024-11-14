@@ -1,9 +1,137 @@
-import { ModuleInstall } from "@theme";
-import Maps from "@wiki/geo-services/🗺-地图.md";
+import { Steps, ModuleInstall } from "@theme";
 import _Footer from "../_Footer.md";
 
 # 🗺 地图
 
+:::info ℹ️ 用前须知
+
+iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`控制
+
+:::
+
+:::info ℹ️ 用前须知
+
+如果您想在配对的 Watch 上使用  
+则 ⌚️ 也需安装相同的 MitM 证书
+
+:::
+
+## 简介
+* 全面自定义`Maps`app 功能与服务版本
+
+## 解锁步骤
+
+    <Steps>
+      ### 第 1 步
+      启用[`📍 定位`](./GeoServices/location)两个模块
+      > [`📍 定位`](./GeoServices/location)的地区不应该设置为`🇨🇳CN`  
+      > 浏览器访问 https://gspe1-ssl.ls.apple.com/pep/gcc ，页面显示的两个字母即为当前修改的地区代码
+
+      ### 第 2 步
+      打开`✈️飞行模式`，同时保持`Wi-Fi`或`有线网络`连接
+      > * 未装有 SIM 卡的 iOS/iPadOS/macOS 设备，可省略`✈️飞行模式`相关步骤。  
+      > * 当存在`移动蜂窝网络`时，不触发此检测方式，将直接采用基于SIM卡的[移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码)「MCC / MNC」进行检测
+      > * 基于 SIM 卡的[移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码)「MCC / MNC」检测不在此模块解决范围  
+
+      ### 第 3 步
+      重新冷启动一次`地图` app
+      * 指后台无`地图`应用时，重开`地图`app
+      > * 在 `Loon` 的`仪表`-`最近请求`中应观察到:  
+      > * 在 `Surge` 的`工具`-`最近请求`中应观察到:  
+      > * 在 `Quantumult X` 的`网络活动`中应观察到:  
+      >   1. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果为当前修改的地区代码  
+      >   2. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
+
+      ### 第 4 步
+      关闭`✈️飞行模式`，正常使用 Maps
+    </Steps>
+
+## 使用说明
+* 启用`坐标`功能与指南针`经纬度`: 
+    * `[定位漂移]`改为`Apple（🈶️坐标，使用🇺🇳WGS-84坐标）`
+* 查看不同地区与版本的`卫星图像`
+  * 仅查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`
+    * `[卫星图像]`改为`🇨🇳中国四维`
+  * 查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
+    * `[卫星图像]`改为`混合`(默认)
+  * 查看🇨🇳中国过期`2D 卫星图像`与🇺🇳国际非主要城市的`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
+    * `[卫星图像]`改为`🇺🇳DigitalGlobe`
+* 启用`俯瞰(Flyover)`功能
+  * `[调度器]`改为`Apple（维基百科/Yelp/Booking）`（非必需，如非此选项，则无`俯瞰(Flyover)`按钮，但可在3D卫星地图下手动俯瞰）
+  * `[卫星图像]`改为`混合`或`🇺🇳DigitalGlobe（🇨🇳:2D | 🇺🇳:3D）`
+  * `[飞行俯瞰]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
+* 启用`四处看看(Look Around)`功能
+  * `[四处看看]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
+* 注：[`⌚️ WATCH`](./apple-watch)部分功能有单独的设置面板，不随[`📍 定位`](./GeoServices/location)模块内的配置而变更
+
+## 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+     1. 浏览器访问[BoxJs.com](http://boxjs.com)
+     2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+     3. 在[`🗺 地图`](http://boxjs.com/#/app/iRingo.Maps)根据需要填写您的设置信息
+  </details>
+
+## 功能列表
+* 修改默认(Defaults)配置
+  * 终结点(Endpoint): https://configuration.ls.apple.com/config/defaults
+  * 已知启用的功能
+      * `地图`-`路线`-`步行`-`现实世界中的路线`
+      * `地图`-`路线`-`步行`-`导航准确性`
+      * `地图`-`为“地图”提供助力`-`评分与照片`
+      * `地图`-`为“地图”提供助力`-`显示评分和照片建议`
+* 指定通告(Announcements)配置版本
+  * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/config/announcements
+  * 已知影响的功能
+    - [ ] 无已知影响
+* 指定动态(Dynamic)配置版本
+  * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/geo_manifest/dynamic/config
+* 指定`调度器(Dispatcher)`API版本
+  * 终结点(Endpoint): 
+    * 国际版: https://gsp-ssl.ls.apple.com/dispatcher.arpc
+    * 高德版: https://dispatcher.is.autonavi.com/dispatcher
+  * 已知影响的功能
+    - [x] `地图`内公共`指南`(来自第三方机构的城市与景点旅游指南)
+    - [x] `地图`内查询与搜索功能
+    - [x] `地图`内地标与地点的基础信息
+    - [x] `地图`内兴趣点(POI)的高级信息(来自`大众点评`或`Yelp`等第三方的商户信息)
+* ~~指定`导航与ETA(Directions & ETA)`API版本~~
+  * 终结点(Endpoint): 
+    * 国际版: https://gsp-ssl.ls.apple.com/directions.arpc
+    * 高德版: https://direction2.is.autonavi.com/direction
+  * 已知影响的功能
+    - [x] `地图`的导航功能
+* ~~指定`评分和照片(Rating and Photo, RAP)`API版本~~
+* 指定`定位漂移(Location Shift)`API版本
+  * 终结点(Endpoint):
+    * 高德版: https://shift.is.autonavi.com/localshift
+* ~~指定`瓦片地图(Tiles Map)`数据源~~
+  * 终结点(Endpoint):
+    * 国际版: https://gspe19-ssl.ls.apple.com/tile.vf
+    * 高德版: https://gspe19-cn-ssl.ls.apple.com/tiles
+  * 已知影响的功能
+    - [x] `地图`的图层数据
+* 指定`卫星图像(Satellite Map)`数据源
+* ~~指定`交通状况(Traffic)`数据源~~
+  * 终结点(Endpoint):
+    * 国际版: https://gspe12-ssl.ls.apple.com/traffic
+    * 高德版: https://gspe12-cn-ssl.ls.apple.com/traffic
+  * 已知影响的功能
+    - [x] `地图`的交通浏览与路况信息
+* ~~指定`兴趣点(Point of Interest, POI)`数据源~~
+* 指定`飞行俯瞰(Flyover)`数据源
+* 指定`四处看看(Look Around)`数据源
+
+## 安装链接
 <ModuleInstall urlPrefix="https://github.com/NSRingo/GeoServices/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
@@ -35,5 +163,5 @@ import _Footer from "../_Footer.md";
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>
-<Maps />
+
 <_Footer />

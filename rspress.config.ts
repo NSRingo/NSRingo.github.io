@@ -5,7 +5,6 @@ import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
 import { pluginChangelog } from 'rspress-plugin-changelog';
 import pluginSitemap from 'rspress-plugin-sitemap';
 import { defineConfig } from 'rspress/config';
-import { ignorePlugin } from './plugins/ignore';
 
 const siteUrl = 'https://NSRingo.github.io';
 
@@ -27,9 +26,9 @@ export default defineConfig({
   // },
   globalStyles: path.resolve('./assets/styles/global.css'),
   head: [
-    ['link', { ref: "preconnect", href: "//ipolyfill.edge-byted.com"}],
-    ['link', { ref: "dns-prefetch", href: "//ipolyfill.edge-byted.com"}],
-    ['script', { src:"//ipolyfill.edge-byted.com/0.0.24/polyfill.min.js", crossorigin: "" }],
+    ['link', { ref: 'preconnect', href: '//ipolyfill.edge-byted.com' }],
+    ['link', { ref: 'dns-prefetch', href: '//ipolyfill.edge-byted.com' }],
+    ['script', { src: '//ipolyfill.edge-byted.com/0.0.24/polyfill.min.js', crossorigin: '' }],
   ],
   themeConfig: {
     socialLinks: [
@@ -108,7 +107,6 @@ export default defineConfig({
     pluginSitemap({
       domain: siteUrl,
     }),
-    ignorePlugin(),
     pluginChangelog({
       fetchOnDev: false,
       items: generateChangelogParams([

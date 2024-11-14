@@ -1,6 +1,5 @@
-import { ModuleInstall } from "@theme";
+import { Steps, ModuleInstall } from "@theme";
 import _Footer from "../_Footer.md";
-import Siri from "@wiki/siri/⭕-Siri与搜索.md";
 
 # ⭕ Siri 与搜索
 
@@ -12,6 +11,11 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 
 :::
 
+## 询问 Siri (Ask Siri)
+> ⚠️「询问 Siri」所使用的`guzzoni.apple.com`，不可以通过 MitM 改写请求。
+
+## Siri 建议 (Siri Suggestions)
+
 :::danger ‼️ 已失效
 
  以通过推送安全响应更新  
@@ -20,6 +24,112 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 
 :::
 
+### 简介
+  * 激活「Siri建议/来自APPLE的内容/来自APPLE的建议」并开启全部已知可用功能。
+
+### 解锁步骤
+
+    <Steps>
+      #### 第 1 步
+      启用[`📍 定位`](./GeoServices/location) + [`⭕ Siri 与搜索`](./Siri/siri-and-search)两个模块
+      > [`📍 定位`](./GeoServices/location)的地区不可以设置为`🇨🇳CN`  
+      > [`⭕ Siri 与搜索`](./Siri/siri-and-search)的地区不可以设置为`🇨🇳CN`  
+      > 可辅以`全局代理`确保稳定  
+
+      #### 第 2 步
+      打开`✈️飞行模式`，同时保持`Wi-Fi`或`有线网络`连接
+      > * 未装有 SIM 卡的 iOS/iPadOS/macOS 设备，可省略`✈️飞行模式`相关步骤。  
+      > * 装有 SIM 卡的 iOS/iPadOS 设备，也可通过`卡贴`或`海外 SIM 卡`的方式，绕过基于 SIM 卡的 `MCC/MNC` ([移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码))检测。  
+
+      #### 第 3 步
+      重新冷启动一次`地图` app
+      * 指后台无`地图`应用时，重开`地图`app
+      > * 在 `Loon` 的`仪表`-`最近请求`中应观察到:  
+      > * 在 `Surge` 的`工具`-`最近请求`中应观察到:  
+      > * 在 `Quantumult X` 的`网络活动`中应观察到:  
+      >   1. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
+      >   2. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果不是`CN`  
+      >   3. 获取`Siri建议`配置下发的`https://api.smoot.apple.com/bag`或`https://api.smoot.apple.cn/bag`链接
+
+      #### 第 4 步
+      执行一次Spotlight搜索，测试「来自APPLE的内容\来自APPLE的建议\Siri建议」是否正常工作
+      > * 如未生效，可尝试以下方法进行激活操作:
+      >   * 重启设备 (必定触发一次Siri配置文件下发检测)
+      >     * 注意开启VPN的`开机自启`等相关功能，以便第一时间截取到下发的配置文件链接
+      >   * macOS上关闭再开启`系统偏好设置`-`聚焦`-`Siri建议`
+      >   * iOS上关闭再开启`设置`-`Siri与搜索`-`来自APPLE的内容`和`来自APPLE的建议`
+      >   * 更改`设置`-`通用`-`语言与地区`-`地区`
+      >   * 等待半小时，「Siri建议」会根据`基于网络的地区检测`结果向服务器`*.smoot.apple.com/bag`请求刷新区域设置与功能可用状态
+
+      #### 第 5 步
+      关闭`✈️飞行模式`，正常使用「来自APPLE的内容\来自APPLE的建议\Siri建议」
+      关闭[`📍 定位`](./GeoServices/location)模块
+      * 关闭[`📍 定位`](./GeoServices/location)模块为非必需步骤
+      * 取决于是否还需要激活 [📰 News](./apple-news) 等功能
+    </Steps>
+
+### 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+     1. 浏览器访问[BoxJs.com](http://boxjs.com)
+     2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+     3. 在[`⭕ Siri`](http://boxjs.com/#/app/iRingo.Siri)根据需要填写您的设置信息
+  </details>
+
+### 功能列表
+* 在以下位置及功能中可用:
+  - [x] 聚焦搜索(Spotlight)
+  - [x] 查询(Look Up)
+  - [x] Safari浏览器(Safari)
+    - [x] 视觉搜索(Visual Look Up)
+    - [x] 智能历史记录
+  - [x] 地图(Apple Maps)
+  - [x] 新闻(Apple News)
+  - [ ] 询问Siri(Ask Siri)
+    - [x] 无SIM卡设备可被[`📍定位`](../../GeoServices/wiki/📍-定位)模块修改切换至海外版(维基百科)
+    - [ ] SIM卡设备会因「MCC / MNC」检测回退至国内版(百度百科)
+  - [x] 照片
+    - [x] 视觉搜索(Visual Look Up)
+  - [x] 电话
+  - [x] 家庭
+  - [x] 日历
+  - [x] 提醒事项
+  - [x] 通讯录
+  - [x] 信息
+  - [x] 邮件
+* 启用的功能:
+  - [x] 来自APPLE的内容(CONTENT FROM APPLE)
+  - [x] 来自APPLE的建议(SUGGESTIONS FROM APPLE)
+  - [x] Siri建议(Siri Suggestions)
+* 已知可用的信息卡片:
+  - [x] 天气 (搜索关键词`城市名 天气`或`天气 城市名`，例如`天气 上海`，不是所有城市都有天气搜索结果)
+  - [x] Siri资料(Siri Knowledge)  截图:[macOS](../blob/main/images/screenshot/Siri%20Knowledge%20-%20Spotlight%20-%20macOS.png?raw=true "Siri Knowledge - Spotlight - macOS")
+  - [x] Siri建议的网站(Siri Suggested Websites)
+  - [x] 维基百科 (macOS端需要Surge启用“增强模式”)
+  - [ ] 地图 (当地图为中国区时不显示内容，有知道解决方法或成因的请联系我)
+  - [x] 体育  截图:[macOS](../blob/main/images/screenshot/Sports%20-%20Spotlight%20-%20macOS.png?raw=true "Sports - Spotlight - macOS") / [iOS](./ScreenShots/Sports%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Sports - Spotlight - iOS")
+  - [x] 股票  截图:[macOS](../blob/main/images/screenshot/Stock%20-%20Spotlight%20-%20macOS.png?raw=true "Stock - Spotlight - macOS")
+  - [x] 航班  截图:[macOS](../blob/main/images/screenshot/Flights%20-%20Spotlight%20-%20macOS.png?raw=true "Flights - Spotlight - macOS")
+  - [x] App Store\Mac App Store  截图:[macOS](../blob/main/images/screenshot/Mac%20App%20Store%20-%20Spotlight%20-%20macOS.png?raw=true "Mac App Store - Spotlight - macOS") / [iOS](../blob/main/images/screenshot/App%20Store%20-%20Spotlight%20-%20iOS.jpeg?raw=true "App Store - Spotlight - iOS")
+  - [x] 电影 & 电视节目
+    - [x] tv  截图:[macOS](../blob/main/images/screenshot/tv%20-%20Spotlight%20-%20macOS.png?raw=true "tv - Spotlight - macOS")
+    - [x] iTunes
+  - [x] 音乐
+    - [x] Apple Music  截图:[macOS](../blob/main/images/screenshot/Apple%20Music%20-%20Spotlight%20-%20macOS.png?raw=true "Apple Music - Spotlight - macOS") / [iOS](../blob/main/images/screenshot/Apple%20Music%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Apple Music - Spotlight - iOS")
+    - [x] iTunes
+  - [x] 新闻
+  - [ ] Twitter集成 (官方功能列表中有此功能，有知道解决方法或成因的请联系我)
+
+### 安装链接
 <ModuleInstall urlPrefix="https://github.com/NSRingo/Siri/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
@@ -78,5 +188,39 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>
-<Siri />
+
+### 更新日志
+* v3.1.0
+  * 优化与修复
+    1. 移除 NanoCat-Me 的 URL polyfill, 改为 Web API 的 URL 
+* v3.0.0
+  * 优化与修复
+    1. 重构代码
+    2. 修复bug
+* v2.1.5
+  * 优化与修复
+    1. 更新环境设置(setENV)功能，增加配置文件和缓存读取方法
+    2. 修复argument配置方法
+    3. 更新数据库(DataBase)格式
+    4. 更新脚本结束($done)方式
+* v2.1.2
+  * 优化与修复
+    1. 修复「国家或地区代码」的“自动”选项在某些地区设置下不生效的问题
+* v2.1.1
+  * 优化与修复
+    1. 增加兼容方案，Quantumult X商店版现在可以使用
+* v2.1.0
+  * 优化与修复
+    1. 更新环境设置(setENV)功能
+    2. 修复Surge的argument配置方法
+* v2.0.0
+  * 更新功能
+    1. 新增BoxJs面板支持，可以精确控制Siri功能
+    2. 增加开启Safari智能历史记录功能
+    3. 增加开启 [视觉搜索](https://support.apple.com/zh-cn/guide/iphone/iph37fdd714b/ios)(看图查询) 功能([效果预览1](https://t.me/GetSomeFriesChannel/65), [效果预览2](https://t.me/GetSomeFriesChannel/96))
+    4. 其他新增设置项，详见BoxJs设置面板
+    5. 兼容系统设置中的自定义地区设置(自定义货币，计量单位等）
+  * 优化与修复
+    1. 同步来自🍿️ [DualSubs](https://t.me/GetSomeFriesChannel/61) 的代码结构和逻辑
+
 <_Footer />

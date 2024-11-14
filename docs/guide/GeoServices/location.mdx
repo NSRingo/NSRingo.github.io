@@ -1,15 +1,81 @@
-import { ModuleInstall } from "@theme";
+import { Steps, ModuleInstall } from "@theme";
 import _Footer from "../_Footer.md";
-import Location from "@wiki/geo-services/📍-定位.md";
 
 # 📍 定位
 
-:::info ❕
+:::info ℹ️ 用前须知
 
 仅  的 app 及 framework 使用此方式获取用户位置信息  
 第三方 app 不使用此方式获取用户位置信息  
 
 :::
+## 简介
+自定义「定位服务」通过`基于网络的地区检测`结果始终为用户设置的地区  
+无需关闭定位、走代理线路、更改国家地区语言等操作  
+
+## 解锁步骤
+
+    <Steps>
+      ### 第 1 步
+      启用[`📍 定位`](./GeoServices/location)两个模块
+      > [`📍 定位`](./GeoServices/location)的地区不应该设置为`🇨🇳CN`  
+      > 浏览器访问 https://gspe1-ssl.ls.apple.com/pep/gcc ，页面显示的两个字母即为当前修改的地区代码
+
+      ### 第 2 步
+      打开`✈️飞行模式`，同时保持`Wi-Fi`或`有线网络`连接
+      > * 未装有 SIM 卡的 iOS/iPadOS/macOS 设备，可省略`✈️飞行模式`相关步骤。  
+      > * 当存在`移动蜂窝网络`时，不触发此检测方式，将直接采用基于SIM卡的[移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码)「MCC / MNC」进行检测
+      > * 基于 SIM 卡的[移动设备网络代码](https://zh.wikipedia.org/wiki/移动设备网络代码)「MCC / MNC」检测不在此模块解决范围  
+
+      ### 第 3 步
+      重新冷启动一次`地图` app
+      * 指后台无`地图`应用时，重开`地图`app
+      > * 在 `Loon` 的`仪表`-`最近请求`中应观察到:  
+      > * 在 `Surge` 的`工具`-`最近请求`中应观察到:  
+      > * 在 `Quantumult X` 的`网络活动`中应观察到:  
+      >   1. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果为当前修改的地区代码  
+
+      ### 第 4 步
+      关闭`✈️飞行模式`
+    </Steps>
+
+### 配置方法
+* 基础: 直接使用
+  * 采用[默认配置](#默认设置)
+* 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
+  * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
+* 高级: 配合`BoxJs`及订阅使用
+  <details>
+  <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
+
+  1. 安装`BoxJs`插件并更新引用资源或脚本:
+     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+  2. 在`BoxJs`的配置面板中进行个性化设置:
+     1. 浏览器访问[BoxJs.com](http://boxjs.com)
+     2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
+     3. 在[`📍 定位`](http://boxjs.com/#/app/iRingo.Location)根据需要填写您的设置信息
+  </details>
+
+## 功能列表
+* 修改`PEP 地区代码(GCC, Geo Country Code)`检测结果
+  * 终结点(Endpoint): https://gspe1-ssl.ls.apple.com/pep/gcc
+  * 已知影响的功能
+    - [x] 强制更改`基于网络的地区检测`结果至模块指定地区  
+    - [x] 协助激活`Apple News` 
+    - [x] 协助激活「来自APPLE的内容\来自APPLE的建议\Siri建议」(激活后不需要保持`定位服务`模块一直启用) 
+    - [x] `指南针`的海拔经纬度功能
+    - [x] `询问Siri`切换为国际版(维基百科)
+      - [ ] SIM卡设备会因「MCC / MNC」检测回退至国内版(百度百科)
+  * 已知附带影响
+    - [x] `天气`的数据源
+    - [x] `Siri建议`的服务器分配
+    - [x] `iTunes Store`的CDN分配
+    - [x] `Apple Music`的版权问题
+    - [x] `Apple Maps`的地区版本
+    - [x] `Apple News`的可用性判断(可通过其他模块单独修改) 
+    - [x] 待发现
+
+## 安装链接
 
 <ModuleInstall
   urlPrefix="https://github.com/NSRingo/GeoServices/releases/latest/download/"
@@ -21,5 +87,5 @@ import Location from "@wiki/geo-services/📍-定位.md";
     shadowrocket: "Location.srmodule",
   }}
 />
-<Location />
+
 <_Footer />

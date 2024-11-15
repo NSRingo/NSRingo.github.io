@@ -14,5 +14,11 @@
         "text": "论坛",
         "link": "https://github.com/orgs/NSRingo/discussions",
         "activeMatch": "^/discussions/"
+    },
+    {
+        "type": "custom-link",
+        "text": "赞助",
+        "link": "https://afdian.com/a/HashBrown",
+        "activeMatch": "^/a/HashBrown"
     }
 ]

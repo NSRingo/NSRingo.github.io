@@ -19,7 +19,7 @@ import _Footer from "./_Footer.md";
 ## 使用说明
 * [BoxJs官方说明文档](https://chavyleung.gitbook.io/boxjs/)
 
-## BoxJs安装链接
+## BoxJs 安装链接
 <ModuleInstall
   urlPrefix="https://github.com/chavyleung/scripts/raw/master/box/rewrite/"
   urls={{
@@ -44,5 +44,23 @@ import _Footer from "./_Footer.md";
 * 方法二: 复制粘贴导入(传统，安装BoxJs后导入)
   * 浏览器访问[BoxJs.com](http://boxjs.com)，在[`订阅`](http://boxjs.com/#/sub)页面点击`+`复制粘贴添加本项目订阅链接
   * [iRingo.17.boxjs.json](https://github.com/NSRingo/BoxJs/raw/main/iRingo.17.BoxJs.json " iRingo (iOS 17)")
+
+## 清除 BoxJs 中 iRingo 的储存数据
+### 清除全部储存数据
+1. 浏览器访问[BoxJs的`我的`页面](http://boxjs.com/#/my)
+2. **点击**`数据查看器`
+3. 在`数据键（Key）`处**输入**`iRingo`后，**点击**`VIEW`按钮
+4. **全选**`数据编辑器`内全部内容，删除后，**点击**`保存`按钮
+5. **刷新**页面，确认数据已清除
+### 清除某个平台或类型的设置或缓存
+1. 浏览器访问[BoxJs的`应用`页面](http://boxjs.com/#/app)
+2. **点击**`iRingo`分类展开全部应用
+3. **点击**进入某个你想清除设置的应用
+#### 清除设置
+4. 在应用页面最下方`当前会话`一栏，有名为`@iRingo.应用名称.Settings`的数据
+5. **点击**`@iRingo.应用名称.Settings`右侧的❌按钮删除设置
+#### 清除缓存
+4. 在应用页面最下方`当前会话`一栏，有名为`@iRingo.应用名称.Cache`的数据
+5. **点击**`@iRingo.应用名称.Cache`右侧的❌按钮删除设置
 
 <_Footer />

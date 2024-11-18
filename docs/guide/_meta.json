@@ -7,13 +7,13 @@
     {
         "type": "dir",
         "name": "Weather",
-        "label": "🌤 天气",
+        "label": "🌤 天气服务",
         "collapsible": false
     },
     {
         "type": "dir",
         "name": "GeoServices",
-        "label": "🌍 地理服务",
+        "label": "🛰️ 地理服务",
         "collapsible": false
     },
     {

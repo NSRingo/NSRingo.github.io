@@ -2,66 +2,58 @@
 pageType: home
 
 hero:
-  name:  iRingo
-  text: <span class="features-details" align="center">解锁更多  功能<br>解除  服务地区限制</span>
-  # tagline: iRingo tagline
-  actions:
-    - theme: brand
-      text: Quick Start
-      link: /guide/
-    - theme: alt
-      text: GitHub
-      link: https://github.com/NSRingo
-  image:
-    src: https://avatars.githubusercontent.com/u/2111377?s=400&v=4
-    alt: iRingo Logo
+    name:  iRingo
+    text: <span class="features-details" align="center">解锁更多  功能<br>解除  服务地区限制</span>
+    # tagline: iRingo tagline
+    actions:
+        - theme: brand
+          text: Quick Start
+          link: /guide/
+        - theme: alt
+          text: GitHub
+          link: https://github.com/NSRingo
+    image:
+        src: https://avatars.githubusercontent.com/u/2111377?s=400&v=4
+        alt: iRingo Logo
 
 features:
-  - icon: 🌤
-    title: Weatherkit
-    details: <span class="features-details" align="center">解锁全部天气数据类型<br>替换「空气质量」数据<br>添加「未来一小时降水强度」</span>
-    span: 3
-    link: /guide/Weather/weather-kit
+    - icon: 🌤
+      title: Weatherkit
+      details: <span class="features-details" align="center">解锁全部天气数据类型<br>替换「空气质量」数据<br>添加「未来一小时降水强度」</span>
+      link: /guide/Weather/weather-kit
 
-  - icon: 📍
-    title: 定位
-    details: <span class="features-details" align="center">自定义「定位服务」<br>通过「基于网络的地区检测」结果始终为用户设置的地区</span>
-    span: 3
-    link: /guide/GeoServices/location
+    - icon: 📍
+      title: 定位
+      details: <span class="features-details" align="center">自定义「定位服务」<br>通过「基于网络的地区检测」结果始终为用户设置的地区</span>
+      link: /guide/GeoServices/location
 
-  - icon: 🗺️
-    title: 地图
-    details: <span class="features-details" align="center">自定义 Maps app<br>添加国际版功能<br>自定义服务版本</span>
-    span: 3
-    link: /guide/GeoServices/maps
+    - icon: 🗺️
+      title: 地图
+      details: <span class="features-details" align="center">自定义 Maps app<br>添加国际版功能<br>自定义服务版本</span>
+      link: /guide/GeoServices/maps
 
-  - icon: 🟥
-    title: Apple 智能与 Siri
-    details: <span class="features-details" align="center">自定义「Siri 请求」功能与服务版本</span>
-    span: 3
-    link: /guide/Siri/apple-intelligence-and-siri
+    - icon: 🟥
+      title: Apple 智能与 Siri
+      details: <span class="features-details" align="center">自定义「Siri 请求」功能与服务版本</span>
+      link: /guide/Siri/apple-intelligence-and-siri
 
-  - icon: 📺
-    title:  TV
-    details: <span class="features-details" align="center">自定义 TV app<br>自选启用的板块、栏目及语言</span>
-    span: 3
-    link: /guide/apple-tv
+    - icon: 📺
+      title:  TV
+      details: <span class="features-details" align="center">自定义 TV app<br>自选启用的板块、栏目及语言</span>
+      link: /guide/apple-tv
 
-  - icon: 📰
-    title:  News
-    details: <span class="features-details" align="center">解锁 News app 使用<br>自定义部分设置与功能</span>
-    span: 3
-    link: /guide/apple-news
+    - icon: 📰
+      title:  News
+      details: <span class="features-details" align="center">解锁 News app 使用<br>自定义部分设置与功能</span>
+      link: /guide/apple-news
 
-  - icon: ✈
-    title: TestFlight
-    details: <span class="features-details" align="center">自定义 TestFlight app<br>修改国家或区域代码<br>多账号保存与切换<br>强制启用通用应用支持</span>
-    span: 3
-    link: /guide/test-flight
+    - icon: ✈
+      title: TestFlight
+      details: <span class="features-details" align="center">自定义 TestFlight app<br>修改国家或区域代码<br>多账号保存与切换<br>强制启用通用应用支持</span>
+      link: /guide/test-flight
 
-  - icon: ⌚️
-    title:  Watch
-    details: <span class="features-details" align="center">为 Watch 进行单独设置</span>
-    span: 3
-    link: /guide/apple-watch
+    - icon: ⌚️
+      title:  Watch
+      details: <span class="features-details" align="center">为 Watch 进行单独设置</span>
+      link: /guide/apple-watch
 ---

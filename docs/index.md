@@ -56,4 +56,9 @@ features:
       title:  Watch
       details: <span class="features-details" align="center">为 Watch 进行单独设置</span>
       link: /guide/apple-watch
+
+    - icon: 🧰
+      title: BoxJs
+      details: <span class="features-details" align="center">可视化配置面板</span>
+      link: /guide/box-js
 ---

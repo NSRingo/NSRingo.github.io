@@ -1,0 +1,45 @@
+import { Steps, ModuleInstall } from "@theme";
+import _Footer from "./_Footer.md";
+
+# ⌚️ Watch
+
+
+:::info ℹ️ 用前须知
+
+如果您想在配对的 Watch 上使用  
+则 ⌚️ 也需安装相同的 MitM 证书
+
+:::
+
+## 简介
+* 为 Watch 提供单独的自定义设置
+
+## 解锁步骤
+### 为`🧭 指南针`解锁`经纬度`与`海拔`功能
+    <Steps>
+      ### 第 1 步
+      启用[`🗺 地图`](./GeoServices/maps)模块
+
+      ### 第 2 步
+      按照[`🗺 地图`#配置方法](./GeoServices/maps.html#配置方法)中的 **高级: 配合`BoxJs`及订阅使用** 进行安装
+        1. 浏览器访问[BoxJs.com](http://boxjs.com)
+        2. 点击底栏的[`应用`](http://boxjs.com/#/app)
+        3. 点开` iRingo`分类
+        3. 点开[`⌚️ Watch`](http://boxjs.com/#/app/iRingo.Watch)栏目
+        4. `[URL信息集] 定位漂移`改为`Apple（🈶️坐标，使用🇺🇳WGS-84坐标）`
+        5. 保存设置
+
+      ### 第 3 步
+      重新冷启动一次`地图` app
+      * 指后台无`地图`应用时，重开`地图`app
+      > * 在 `Loon` 的`仪表`-`最近请求`中应观察到:  
+      > * 在 `Surge` 的`工具`-`最近请求`中应观察到:  
+      > * 在 `Quantumult X` 的`网络活动`中应观察到:  
+      >   1. `基于网络的地区检测`的 `https://gspe1-ssl.ls.apple.com/pep/gcc` 链接，且流量抓取结果为当前修改的地区代码  
+      >   2. `检测设备信息`的 `https://configuration.ls.apple.com/config/defaults` 链接  
+
+      ### 第 4 步
+      重新冷启动一次`🧭 指南针` app
+    </Steps>
+
+<_Footer />

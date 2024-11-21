@@ -38,16 +38,99 @@ import _Footer from "./_Footer.md";
   * 解除开发者对 TestFlight 中的 iOS/iPadOS/macOS(AppleSilicon) 平台限制
 
 ## 安装链接
-<ModuleInstall
-  urlPrefix="https://github.com/NSRingo/TestFlight/releases/latest/download/"
-  urls={{
-    loon: "TestFlight.plugin",
-    surge: "TestFlight.sgmodule",
-    qx: "TestFlight.snippet",
-    stash: "TestFlight.stoverride",
-    shadowrocket: "TestFlight.srmodule",
-  }}
-/>
+
+<ModuleInstall urlPrefix="https://github.com/NSRingo/TestFlight/releases/latest/download/">
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="TestFlight.plugin"
+      badge={[
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="TestFlight.sgmodule"
+      badge={[
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "warning",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="TestFlight.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "覆写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="TestFlight.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="TestFlight.snippet"
+      badge={[
+        {
+          type: "danger",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item
+      url="TestFlight.srmodule"
+      badge={[
+        {
+          type: "tip",
+          text: "HTTPS 解密",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
 
 ## 默认设置
 * CountryCode: 国家或区域代码

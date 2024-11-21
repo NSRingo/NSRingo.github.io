@@ -74,15 +74,86 @@ import _Footer from "../_Footer.md";
 
 ## 安装链接
 
-<ModuleInstall
-  urlPrefix="https://github.com/NSRingo/WeatherKit/releases/latest/download/"
-  urls={{
-    loon: "WeatherKit.plugin",
-    surge: "WeatherKit.sgmodule",
-    qx: "WeatherKit.snippet",
-    stash: "WeatherKit.stoverride",
-  }}
-/>
+<ModuleInstall urlPrefix="https://github.com/NSRingo/WeatherKit/releases/latest/download/">
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="WeatherKit.plugin"
+      badge={[
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="WeatherKit.sgmodule"
+      badge={[
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "warning",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="WeatherKit.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "覆写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="WeatherKit.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="WeatherKit.snippet"
+      badge={[
+        {
+          type: "danger",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
 
 ## 默认设置
 * [未来一小时降水强度] 数据源

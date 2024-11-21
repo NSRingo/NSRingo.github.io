@@ -82,34 +82,101 @@ import _Footer from "./_Footer.md";
 
 <ModuleInstall urlPrefix="https://github.com/NSRingo/News/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
-    <ModuleInstall.Item url="News.plugin">
+    <ModuleInstall.Item
+      url="News.plugin"
+      badge={[
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    >
       - `插件`内置代理规则，使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="surge">
-    <ModuleInstall.Item url="News.sgmodule" badge={<>需要 iOS 5.9.0 / macOS 5.5.0(2589) 及以上版本</>}>
+    <ModuleInstall.Item
+      url="News.sgmodule"
+      badge={[
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "warning",
+          text: "脚本",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "需要 iOS 5.9.0 及以上版本",
+        },
+        {
+          type: "info",
+          text: "需要 macOS 5.5.0(2589) 及以上版本",
+        }
+      ]}
+    >
       - `模块`内置`规则集`，可通过`模块`的`编辑参数…`功能自定义内置`策略组`名称
       - 默认`策略组`名为`🇺🇸美国`，使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type="qx">
-    <ModuleInstall.Item url="News.snippet">
-      - 不含`规则集`，需要自行添加`规则集`至`设置`-`分流`-`引用`并设置`策略偏好`
-      - `域名集`:[News.list](https://github.com/NSRingo/News/releases/latest/download/News.list "News")
-      - 使用前请先修改`策略偏好`为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
-    </ModuleInstall.Item>
-  </ModuleInstall.Tab>
   <ModuleInstall.Tab type="stash">
-    <ModuleInstall.Item url="News.stoverride">
+    <ModuleInstall.Item
+      url="News.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "覆写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    >
       - `覆写`内置代理规则
       - 使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
-  <ModuleInstall.Tab type="shadowrocket">
-    <ModuleInstall.Item url="News.srmodule">
-      - `模块`不含`规则集`，需要自行添加`规则集`
-      - 使用前请先修改为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="News.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="News.snippet"
+      badge={[
+        {
+          type: "danger",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    >
+      - 不含`规则集`，需要自行添加`规则集`至`设置`-`分流`-`引用`并设置`策略偏好`
       - `域名集`:[News.list](https://github.com/NSRingo/News/releases/latest/download/News.list "News")
+      - 使用前请先修改`策略偏好`为自己指定的`美国/英国/加拿大/澳大利亚`策略组或节点
     </ModuleInstall.Item>
   </ModuleInstall.Tab>
 </ModuleInstall>

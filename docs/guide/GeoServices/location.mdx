@@ -76,16 +76,85 @@ import _Footer from "../_Footer.md";
 
 ## 安装链接
 
-<ModuleInstall
-  urlPrefix="https://github.com/NSRingo/GeoServices/releases/latest/download/"
-  urls={{
-    loon: "Location.plugin",
-    surge: "Location.sgmodule",
-    stash: "Location.stoverride",
-    egern: "Location.yaml",
-    qx: "Location.snippet",
-    //shadowrocket: "Location.srmodule",
-  }}
-/>
+<ModuleInstall urlPrefix="https://github.com/NSRingo/GeoServices/releases/latest/download/">
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="Location.plugin"
+      badge={[
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="Location.sgmodule"
+      badge={[
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "warning",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="Location.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "覆写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="Location.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="Location.snippet"
+      badge={[
+        {
+          type: "danger",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
 
 <_Footer />

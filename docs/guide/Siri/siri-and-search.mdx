@@ -12,7 +12,13 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 :::
 
 ## 询问 Siri (Ask Siri)
-> ⚠️「询问 Siri」所使用的`guzzoni.apple.com`，不可以通过 MitM 改写请求。
+
+:::danger ‼️ 不可用
+
+ 禁止 MitM iOS 14 至 iOS 17「询问 Siri」所使用的`guzzoni.apple.com`的网络请求  
+「询问 Siri」不可以通过 MitM 改写请求  
+
+:::
 
 ## Siri 建议 (Siri Suggestions)
 
@@ -31,9 +37,9 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 
     <Steps>
       #### 第 1 步
-      启用[`📍 定位`](./GeoServices/location) + [`⭕ Siri 与搜索`](./Siri/siri-and-search)两个模块
-      > [`📍 定位`](./GeoServices/location)的地区不可以设置为`🇨🇳CN`  
-      > [`⭕ Siri 与搜索`](./Siri/siri-and-search)的地区不可以设置为`🇨🇳CN`  
+      启用[`📍 定位`](../GeoServices/location) + [`⭕ Siri 与搜索`](./siri-and-search)两个模块
+      > [`📍 定位`](../GeoServices/location)的地区不可以设置为`🇨🇳CN`  
+      > [`⭕ Siri 与搜索`](./siri-and-search)的地区不可以设置为`🇨🇳CN`  
       > 可辅以`全局代理`确保稳定  
 
       #### 第 2 步
@@ -62,10 +68,10 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
       >   * 等待半小时，「Siri建议」会根据`基于网络的地区检测`结果向服务器`*.smoot.apple.com/bag`请求刷新区域设置与功能可用状态
 
       #### 第 5 步
-      关闭`✈️飞行模式`，正常使用「来自APPLE的内容\来自APPLE的建议\Siri建议」
-      关闭[`📍 定位`](./GeoServices/location)模块
-      * 关闭[`📍 定位`](./GeoServices/location)模块为非必需步骤
-      * 取决于是否还需要激活 [📰 News](./apple-news) 等功能
+      关闭`✈️飞行模式`，关闭[`📍 定位`](../GeoServices/location)模块  
+      正常使用「来自APPLE的内容\来自APPLE的建议\Siri建议」  
+      * 关闭[`📍 定位`](../GeoServices/location)模块为非必需步骤
+      * 取决于是否还需要激活 [📰 News](../apple-news) 等功能
     </Steps>
 
 ### 配置方法
@@ -78,7 +84,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
   <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
 
   1. 安装`BoxJs`插件并更新引用资源或脚本:
-     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+     * 安装方法及下载链接详见: [🧰 BoxJs](../box-js)
   2. 在`BoxJs`的配置面板中进行个性化设置:
      1. 浏览器访问[BoxJs.com](http://boxjs.com)
      2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
@@ -95,7 +101,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
   - [x] 地图(Apple Maps)
   - [x] 新闻(Apple News)
   - [ ] 询问Siri(Ask Siri)
-    - [x] 无SIM卡设备可被[`📍定位`](../../GeoServices/wiki/📍-定位)模块修改切换至海外版(维基百科)
+    - [x] 无SIM卡设备可被[`📍定位`](../GeoServices/location)模块修改切换至海外版(维基百科)
     - [ ] SIM卡设备会因「MCC / MNC」检测回退至国内版(百度百科)
   - [x] 照片
     - [x] 视觉搜索(Visual Look Up)

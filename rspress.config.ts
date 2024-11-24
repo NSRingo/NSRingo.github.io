@@ -19,11 +19,11 @@ export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: 'iRingo',
   description: '解锁完整的  Apple 功能和集成服务',
-  icon: 'https://avatars.githubusercontent.com/u/2111377?s=80&v=4',
-  // logo: {
-  //   light: '/rspress-light-logo.png',
-  //   dark: '/rspress-dark-logo.png',
-  // },
+  icon: '/NSRingo/NSRingo@64x.png',
+  logo: {
+    light: '/NSRingoMasked/NSRingoMasked@256x.png',
+    dark: '/NSRingoMasked/NSRingoMasked@256x.png',
+  },
   globalStyles: path.resolve('./assets/styles/global.css'),
   head: [
     ['link', { ref: 'preconnect', href: '//ipolyfill.edge-byted.com' }],

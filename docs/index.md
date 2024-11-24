@@ -13,7 +13,7 @@ hero:
           text: GitHub
           link: https://github.com/NSRingo
     image:
-        src: https://avatars.githubusercontent.com/u/2111377?s=400&v=4
+        src: { light: "/NSRingoKit/NSRingoKit@1024x.png", dark: "/NSRingoKit/NSRingoKit@1024x.png" }
         alt: iRingo Logo
 
 features:

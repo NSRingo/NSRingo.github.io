@@ -11,7 +11,7 @@
   "dependencies": {
     "@iringo/doc-ui": "^2.0.0",
     "rehype-urls": "^1.2.0",
-    "rspress": "^1.37.4",
+    "rspress": "^1.37.2",
     "rspress-plugin-changelog": "^1.1.2",
     "rspress-plugin-sitemap": "^1.1.1"
   },

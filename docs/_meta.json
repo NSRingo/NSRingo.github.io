@@ -12,13 +12,11 @@
     {
         "type": "custom-link",
         "text": "论坛",
-        "link": "https://github.com/orgs/NSRingo/discussions",
-        "activeMatch": "^/discussions/"
+        "link": "https://github.com/orgs/NSRingo/discussions"
     },
     {
         "type": "custom-link",
         "text": "赞助",
-        "link": "https://afdian.com/a/HashBrown",
-        "activeMatch": "^/a/HashBrown"
+        "link": "https://afdian.com/a/HashBrown"
     }
 ]

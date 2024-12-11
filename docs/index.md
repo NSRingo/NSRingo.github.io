@@ -3,18 +3,18 @@ pageType: home
 
 hero:
     name:  iRingo
-    text: <span class="features-details" align="center">解锁更多  功能<br>解除  服务地区限制</span>
-    # tagline: iRingo tagline
+    text: 解锁更多 Apple 功能，突破服务地域限制
+    tagline: 解锁更多 Apple 功能，突破服务地域限制
     actions:
         - theme: brand
-          text: Quick Start
+          text: 快速开始
           link: /guide/
         - theme: alt
           text: GitHub
           link: https://github.com/NSRingo
-    image:
-        src: { light: "/NSRingoKit/NSRingoKit@1024x.png", dark: "/NSRingoKit/NSRingoKit@1024x.png" }
-        alt: iRingo Logo
+    # image:
+    #     src: { light: "/NSRingoKit/NSRingoKit@1024x.png", dark: "/NSRingoKit/NSRingoKit@1024x.png" }
+    #     alt: iRingo Logo
 
 features:
     - icon: 🌤

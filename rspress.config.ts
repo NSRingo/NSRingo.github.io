@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { UrlWithStringQuery } from 'node:url';
 import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
 import { pluginChangelog } from 'rspress-plugin-changelog';
 import pluginSitemap from 'rspress-plugin-sitemap';
@@ -24,7 +23,6 @@ export default defineConfig({
     light: '/NSRingoMasked/NSRingoMasked@256x.png',
     dark: '/NSRingoMasked/NSRingoMasked@256x.png',
   },
-  globalStyles: path.resolve('./assets/styles/global.css'),
   head: [
     ['link', { ref: 'preconnect', href: '//ipolyfill.edge-byted.com' }],
     ['link', { ref: 'dns-prefetch', href: '//ipolyfill.edge-byted.com' }],

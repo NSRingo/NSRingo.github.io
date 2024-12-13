@@ -2,8 +2,27 @@ body {
   &.top-arrived {
     :global(.rspress-nav) {
       background-color: #0000 !important;
+      backdrop-filter: none;
     }
   }
+
+  :global(.rspress-nav) {
+    background-color: rgba(250, 250, 252, .8);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  position: relative;
+}
+
+.hero-logo {
+  width: 192px;
+  display: block;
+  margin: 0 auto;
 }
 
 .hero-bg {
@@ -12,7 +31,7 @@ body {
   width: 100%;
   height: 640px;
   z-index: -1;
-  // opacity: 0.1;
+  opacity: 0.1;
 
   &-item {
     position: absolute;
@@ -26,10 +45,14 @@ body {
 }
 
 .hero {
+  display: flex;
+  gap: 16px;
+}
 
-  // color: #fff;
-  img {
-    display: block;
-    margin: 0 auto;
+.hero-title {
+  @supports (background-clip: text) {
+    background-image: linear-gradient(97deg, #0096FF, #BB64FF 42%, #F2416B 74%, #EB7500);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

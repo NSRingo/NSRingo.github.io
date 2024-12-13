@@ -1,0 +1,101 @@
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 100;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYULTRALIGHTITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYULTRALIGHTITALIC.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 200;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYTHINITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYTHINITALIC.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 300;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYLIGHTITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYLIGHTITALIC.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: normal;
+  font-weight: 400;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYREGULAR.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYREGULAR.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: normal;
+  font-weight: 500;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYMEDIUM.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYMEDIUM.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 600;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYSEMIBOLDITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYSEMIBOLDITALIC.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: normal;
+  font-weight: 700;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYBOLD.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYBOLD.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 800;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYHEAVYITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYHEAVYITALIC.woff) format("woff");
+}
+
+@font-face {
+  font-family: sf pro display;
+  font-style: italic;
+  font-weight: 900;
+  src: local("SF Pro Display"), url(../../assets/fonts/SFPRODISPLAYBLACKITALIC.woff2) format("woff2"),
+    url(../../assets/fonts/SFPRODISPLAYBLACKITALIC.woff) format("woff");
+}
+
+:root {
+  --rp-font-family-base:
+    "SF Pro Display", "Inter var experimental", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --rp-c-brand-light: #0fb7fa;
+  --rp-c-brand: #007aff;
+  --rp-c-brand-dark: #0072fb;
+
+  --iringo-semi-transparent-component-color: rgba(242, 242, 247, 0.72);
+}
+
+.rspress-home-feature-card {
+  --rp-home-feature-bg: var(--iringo-semi-transparent-component-color);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.rspress-nav-search-button {
+  background-color: var(--iringo-semi-transparent-component-color);
+}
+
+#search-container {
+  [class^="mask"] {
+    background-color: var(--iringo-semi-transparent-component-color);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  [class^="modal"] {
+    background-color: #fafafccc;
+  }
+}

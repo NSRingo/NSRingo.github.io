@@ -3,7 +3,7 @@ pageType: home
 
 hero:
     name:  iRingo
-    text: 解锁更多 Apple 功能，突破服务地域限制
+    text: 打破界限，畅享自由
     tagline: 解锁更多 Apple 功能，突破服务地域限制
     actions:
         - theme: brand
@@ -12,53 +12,50 @@ hero:
         - theme: alt
           text: GitHub
           link: https://github.com/NSRingo
-    # image:
-    #     src: { light: "/NSRingoKit/NSRingoKit@1024x.png", dark: "/NSRingoKit/NSRingoKit@1024x.png" }
-    #     alt: iRingo Logo
 
 features:
     - icon: 🌤
       title: Weatherkit
-      details: <span class="features-details" align="center">解锁全部天气数据类型<br>替换「空气质量」数据<br>添加「未来一小时降水强度」</span>
+      details: 解锁全部天气数据类型，替换空气质量数据，添加未来一小时降水强度预测。
       link: /guide/Weather/weather-kit
 
     - icon: 📍
       title: 定位
-      details: <span class="features-details" align="center">自定义「定位服务」<br>通过「基于网络的地区检测」结果始终为用户设置的地区</span>
+      details: 自定义定位服务，始终将网络地区检测结果调整为用户设定的地区。
       link: /guide/GeoServices/location
 
     - icon: 🗺️
       title: 地图
-      details: <span class="features-details" align="center">自定义 Maps app<br>添加国际版功能<br>自定义服务版本</span>
+      details: 定制化苹果地图应用，添加国际版功能，支持服务版本个性化设置。
       link: /guide/GeoServices/maps
 
     - icon: 🟥
       title: Apple 智能与 Siri
-      details: <span class="features-details" align="center">自定义「Siri 请求」功能与服务版本</span>
+      details: 自定义 Siri 请求的功能及服务版本，满足个性化需求。
       link: /guide/Siri/apple-intelligence-and-siri
 
     - icon: 📺
       title:  TV
-      details: <span class="features-details" align="center">自定义 TV app<br>自选启用的板块、栏目及语言</span>
+      details: 自定义 Apple TV 应用，选择启用的板块、栏目与语言设置。
       link: /guide/apple-tv
 
     - icon: 📰
       title:  News
-      details: <span class="features-details" align="center">解锁 News app 使用<br>自定义部分设置与功能</span>
+      details: 解锁 Apple News 应用功能，支持个性化设置与更灵活的使用体验。
       link: /guide/apple-news
 
     - icon: ✈
       title: TestFlight
-      details: <span class="features-details" align="center">自定义 TestFlight app<br>修改国家或区域代码<br>多账号保存与切换<br>强制启用通用应用支持</span>
+      details: 定制化 TestFlight 应用，支持国家区域切换、多账号管理及通用应用强制启用。
       link: /guide/test-flight
 
     - icon: ⌚️
       title:  Watch
-      details: <span class="features-details" align="center">为 Watch 进行单独设置</span>
+      details: 为 Apple Watch 提供单独设置，适配个性化使用需求。
       link: /guide/apple-watch
 
     - icon: 🧰
       title: BoxJs
-      details: <span class="features-details" align="center">可视化配置面板</span>
+      details: 提供可视化配置面板，简化脚本管理与操作流程。
       link: /guide/box-js
 ---

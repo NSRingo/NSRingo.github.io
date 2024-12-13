@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { UrlWithStringQuery } from 'node:url';
 import type { ChangelogPluginOptions } from 'rspress-plugin-changelog';
 import { pluginChangelog } from 'rspress-plugin-changelog';
 import pluginSitemap from 'rspress-plugin-sitemap';
@@ -18,17 +17,17 @@ const generateChangelogParams = (items: Omit<ChangelogPluginOptions['items'][num
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: 'iRingo',
+  logoText: 'iRingo',
   description: '解锁完整的  Apple 功能和集成服务',
-  icon: '/NSRingo/NSRingo@64x.png',
+  icon: '/NSRingoMasked/NSRingoMasked64x.png',
   logo: {
     light: '/NSRingoMasked/NSRingoMasked@256x.png',
     dark: '/NSRingoMasked/NSRingoMasked@256x.png',
   },
-  globalStyles: path.resolve('./assets/styles/global.css'),
   head: [
     ['link', { ref: 'preconnect', href: '//ipolyfill.edge-byted.com' }],
     ['link', { ref: 'dns-prefetch', href: '//ipolyfill.edge-byted.com' }],
-    ['script', { src: '//ipolyfill.edge-byted.com/0.0.24/polyfill.min.js', crossorigin: '' }],
+    ['script', { src: '//ipolyfill.edge-byted.com/0.0.25/polyfill.min.js', crossorigin: '' }],
   ],
   themeConfig: {
     socialLinks: [
@@ -50,58 +49,6 @@ export default defineConfig({
   markdown: {
     mdxRs: false,
     remarkPlugins: [[require('remark-github')]],
-    rehypePlugins: [
-      [
-        require('rehype-urls'),
-        (url: UrlWithStringQuery, node: any) => {
-          switch (url.host) {
-            case 't.me':
-            case 'github.com':
-              node.properties.target = '_blank';
-              break;
-            case null:
-              switch (url.pathname) {
-                case '/GeoServices/wiki/%F0%9F%93%8D-%E5%AE%9A%E4%BD%8D.html':
-                case '/guide/GeoServices/%F0%9F%93%8D-%E5%AE%9A%E4%BD%8D.html':
-                  url.pathname = '/guide/GeoServices/location.html';
-                  break;
-                case '/GeoServices/%F0%9F%97%BA-%E5%9C%B0%E5%9B%BE.html':
-                case '/guide/GeoServices/%F0%9F%97%BA-%E5%9C%B0%E5%9B%BE.html':
-                  url.pathname = '/guide/GeoServices/map.html';
-                  break;
-                case '/Siri/%F0%9F%9F%A5-Apple%E6%99%BA%E8%83%BD%E4%B8%8ESiri':
-                case '/guide/Siri/%F0%9F%9F%A5-Apple%E6%99%BA%E8%83%BD%E4%B8%8ESiri':
-                  url.pathname = '/guide/Siri/apple-intelligence-and-siri.html';
-                  break;
-                case '/Siri/%E2%AD%95-Siri%E4%B8%8E%E6%90%9C%E7%B4%A2.html':
-                case '/guide/Siri/%E2%AD%95-Siri%E4%B8%8E%E6%90%9C%E7%B4%A2.html':
-                  url.pathname = '/guide/Siri/siri-and-search.html';
-                  break;
-                case '/guide/%E2%8C%9A%EF%B8%8F-%EF%A3%BFWATCH.html':
-                  url.pathname = '/guide/watch.html';
-                  break;
-                case '/BoxJs/wiki.html':
-                  url.pathname = '/guide/box-js.html';
-                  break;
-                case '/raw/main/iRingo.BoxJs.json.html':
-                case '/raw/main/iRingo.17.BoxJs.json.html':
-                  // console.log(url);
-                  url.protocol = 'https';
-                  url.host = 'github.com';
-                  url.pathname = `/NSRingo/BoxJs${url.pathname.replace('.html', '')}`;
-                  break;
-                default:
-                  // console.log(url.pathname);
-                  break;
-              }
-              break;
-            default:
-              //console.log(url);
-              break;
-          }
-        },
-      ],
-    ],
   },
   plugins: [
     pluginSitemap({

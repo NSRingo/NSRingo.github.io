@@ -1,12 +1,10 @@
-import { NavIcon } from '@iringo/doc-ui';
 import Theme from 'rspress/theme';
-
-const Layout = () => {
-  return <Theme.Layout beforeNavTitle={<NavIcon />} />;
-};
+import { HomeLayout } from './components/home-layout';
+import { Layout } from './components/layout';
 
 export default {
   ...Theme,
+  HomeLayout,
   Layout,
 };
 

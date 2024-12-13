@@ -17,8 +17,9 @@ const generateChangelogParams = (items: Omit<ChangelogPluginOptions['items'][num
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
   title: 'iRingo',
+  logoText: 'iRingo',
   description: '解锁完整的  Apple 功能和集成服务',
-  icon: '/NSRingo/NSRingo@64x.png',
+  icon: '/NSRingoMasked/NSRingoMasked64x.png',
   logo: {
     light: '/NSRingoMasked/NSRingoMasked@256x.png',
     dark: '/NSRingoMasked/NSRingoMasked@256x.png',

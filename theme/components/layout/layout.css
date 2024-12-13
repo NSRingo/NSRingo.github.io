@@ -81,9 +81,38 @@
   --iringo-semi-transparent-component-color: rgba(242, 242, 247, 0.72);
 }
 
+.dark {
+  --rp-c-brand: #0a84ff;
+  --iringo-semi-transparent-component-color: rgba(22, 22, 23, 0.8);
+}
+
 .rspress-home-feature-card {
   --rp-home-feature-bg: var(--iringo-semi-transparent-component-color);
   backdrop-filter: saturate(180%) blur(20px);
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  &::after {
+    --bg-size: calc(100% + 14px);
+    content: "";
+    transition: border-color 0.3s ease-in-out;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    background: linear-gradient(to bottom right, #0894ff 0%, #c959dd 34%, #ff2e54 68%, #ff9004) 50% / var(--bg-size)
+      var(--bg-size);
+    mask: linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0)),
+      linear-gradient(hsl(0, 0%, 100%), hsl(0, 0%, 100%));
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+  }
+  &:hover {
+    border: 0;
+    &::after {
+      border: 2px solid #0000;
+    }
+  }
 }
 
 .rspress-nav-search-button {
@@ -97,5 +126,24 @@
   }
   [class^="modal"] {
     background-color: #fafafccc;
+    .dark & {
+      background-color: #161617ee;
+    }
   }
+}
+
+.rc-tooltip-inner {
+  background-color: var(--iringo-semi-transparent-component-color) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.rspress-sidebar {
+  nav {
+    padding-top: 1rem;
+  }
+}
+
+.rspress-sidebar-back-drop {
+  background-color: var(--iringo-semi-transparent-component-color) !important;
+  backdrop-filter: saturate(180%) blur(20px);
 }

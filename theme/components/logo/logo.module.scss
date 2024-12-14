@@ -1,17 +1,41 @@
+@use "sass:math";
+
+$default-logo-size: 192px;
+$large-logo-size: 256px;
+
+
+.wrapper {
+  width: $default-logo-size;
+  height: $default-logo-size;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    width: $large-logo-size;
+    height: $large-logo-size;
+  }
+}
+
 .logo {
   --3d-transform: translate(0px, -27px) rotateX(45deg) rotateY(15deg) rotateZ(-52.25deg) scale3d(.8, .62, .7);
 
   position: relative;
   display: block;
 
-  width: 192px;
-  height: 192px;
-  margin: 0 auto;
+  width: $default-logo-size;
+  height: $default-logo-size;
+
+  @media (min-width: 1024px) {
+    transform: scale(math.div($large-logo-size, $default-logo-size));
+    transform-origin: center;
+  }
 
   img {
     display: block;
-    width: 192px;
-    height: 192px;
+    width: $default-logo-size;
+    height: $default-logo-size;
   }
 }
 

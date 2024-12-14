@@ -5,11 +5,13 @@
   display: block;
 
   width: 192px;
+  height: 192px;
   margin: 0 auto;
 
   img {
     display: block;
-    width: 100%;
+    width: 192px;
+    height: 192px;
     mask: url("./mask.svg");
     mask-repeat: no-repeat;
     mask-size: contain;

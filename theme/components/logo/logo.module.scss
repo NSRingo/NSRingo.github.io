@@ -12,13 +12,21 @@
     display: block;
     width: 192px;
     height: 192px;
-    mask: url("./mask.svg");
-    mask-repeat: no-repeat;
-    mask-size: contain;
+  }
+}
 
-    @at-root .animation-end#{&} {
-      mask: none;
-    }
+.entity {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  width: 100%;
+
+  transform: var(--3d-transform);
+  opacity: 0;
+  transition: opacity .3s ease-out;
+
+  .animation-end & {
+    opacity: 1;
   }
 }
 
@@ -36,6 +44,8 @@
   width: 100%;
 
   transform: var(--3d-transform);
+  opacity: 1;
+  transition: opacity .3s ease-in;
 
   .animation-end & {
     opacity: 0;
@@ -49,23 +59,8 @@
     stroke-dashoffset: var(--len);
     animation: stroke 2s ease-in-out forwards;
   }
-}
 
-
-.bg {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-  background-image: linear-gradient(180deg, #1ab8f1, #1762e1);
-  border-radius: 50px;
-  opacity: 1;
-  transition: opacity .3s ease-in-out;
-  transform: var(--3d-transform);
-
-  .animation-end & {
-    opacity: 0;
+  path {
+    animation-delay: calc(0.05s * var(--index));
   }
 }

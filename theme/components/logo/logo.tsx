@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { debounce } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
+
 import styles from './logo.module.scss';
 
 export const Logo = () => {
@@ -10,14 +11,18 @@ export const Logo = () => {
 
   const handleAnimationEnd = debounce(() => {
     setAnimationEnd(true)
+  }, 100, {
+    leading: false,
+    trailing: true,
   })
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: 无需依赖
   useEffect(() => {
-    ref.current?.querySelectorAll('rect, path').forEach(item => {
+    ref.current?.querySelectorAll('rect, path').forEach((item, index, array) => {
       const el = item as SVGGeometryElement
       const len = Math.ceil(el.getTotalLength());
       el.style.setProperty('--len', len.toString())
+      el.style.setProperty('--index', index.toString())
     })
     ref.current?.addEventListener('animationend', handleAnimationEnd)
     return () => {
@@ -29,7 +34,7 @@ export const Logo = () => {
     <div className={classNames(styles.logo, {
       [styles.animationEnd]: animationEnd,
     })}>
-      <img src="/NSRingoKit/NSRingoKit@256x.png" srcSet="/NSRingoKit/NSRingoKit@512x.png 2x" alt="" draggable={false} />
+      <img src={require('./kit-module.svg')} alt="" draggable={false} />
       <svg ref={ref} className={styles.line} viewBox="0 0 1024 1024">
         <title>lines</title>
         <rect width="900" height="900" x="62" y="62" fill="none" fillRule="evenodd" strokeWidth="12.427" rx="180.8" />
@@ -55,7 +60,10 @@ export const Logo = () => {
             d="M433 709.256c29.522 0 53.455-23.924 53.455-53.436S462.522 602.384 433 602.384s-53.455 23.924-53.455 53.436 23.933 53.436 53.455 53.436ZM583 709.256c27.413 0 49.636-22.215 49.636-49.619S610.413 610.018 583 610.018c-27.413 0-49.636 22.215-49.636 49.62 0 27.403 22.223 49.618 49.636 49.618Z" />
         </g>
       </svg>
-      <div className={styles.bg} />
+      <picture>
+        <source srcSet={require('./entity.webp')} type="image/webp" />
+        <img className={styles.entity} src={require('./entity.png')} alt="" draggable={false} />
+      </picture>
     </div>
   );
 };

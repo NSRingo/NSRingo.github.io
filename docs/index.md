@@ -54,7 +54,7 @@ features:
       details: 为 Apple Watch 提供单独设置，适配个性化使用需求。
       link: /guide/apple-watch
 
-    - icon: 🧰
+    - icon: BoxJs
       title: BoxJs
       details: 提供可视化配置面板，简化脚本管理与操作流程。
       link: /guide/box-js

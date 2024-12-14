@@ -31,4 +31,8 @@ export const ICON_MAP = {
     png: require('../../assets/icons/AppleWatch.png'),
     webp: require('../../assets/icons/AppleWatch.webp'),
   },
+  BoxJs: {
+    png: require('../../assets/icons/BoxJs.png'),
+    webp: require('../../assets/icons/BoxJs.webp'),
+  },
 };

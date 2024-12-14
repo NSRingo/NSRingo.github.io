@@ -141,6 +141,11 @@
   nav {
     padding-top: 1rem;
   }
+  [class^="navTitleMask"] {
+    @media (min-width: 960px) {
+      visibility: hidden;
+    }
+  }
 }
 
 .rspress-sidebar-back-drop {

@@ -61,6 +61,6 @@
   }
 
   path {
-    animation-delay: calc(0.05s * var(--index));
+    animation-delay: var(--delay);
   }
 }

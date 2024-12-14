@@ -55,8 +55,8 @@
   path {
     fill: none;
     stroke: #fff;
-    stroke-dasharray: var(--len);
-    stroke-dashoffset: var(--len);
+    stroke-dasharray: var(--len, 9999);
+    stroke-dashoffset: var(--len, 9999);
     animation: stroke 2s ease-in-out forwards;
   }
 

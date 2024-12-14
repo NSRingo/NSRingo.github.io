@@ -138,11 +138,11 @@
 }
 
 .rspress-sidebar {
-  nav {
-    padding-top: 1rem;
-  }
-  [class^="navTitleMask"] {
-    @media (min-width: 960px) {
+  @media (min-width: 1025px) {
+    nav {
+      padding-top: 1rem;
+    }
+    [class^="navTitleMask"] {
       visibility: hidden;
     }
   }

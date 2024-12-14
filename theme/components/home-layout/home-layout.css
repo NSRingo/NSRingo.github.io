@@ -1,0 +1,29 @@
+.rspress-home-feature-card {
+  --rp-home-feature-bg: var(--iringo-semi-transparent-component-color);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 0;
+  &::after {
+    --bg-size: calc(100% + 14px);
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(to bottom right, #0894ff 0%, #c959dd 34%, #ff2e54 68%, #ff9004) 50% / var(--bg-size)
+      var(--bg-size);
+    border-radius: 2rem;
+    mask: linear-gradient(hsla(0deg, 0%, 100%, 0), hsla(0deg, 0%, 100%, 0)),
+      linear-gradient(hsl(0deg, 0%, 100%), hsl(0deg, 0%, 100%));
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+    transition: border-color .3s ease-in-out;
+  }
+  &:hover {
+    border: 0;
+    &::after {
+      border: 2px solid #0000;
+    }
+  }
+}

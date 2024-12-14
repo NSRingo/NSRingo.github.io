@@ -1,0 +1,16 @@
+body {
+  &.top-arrived {
+    :global(.rspress-nav) {
+      background-color: #0000 !important;
+      backdrop-filter: none;
+    }
+  }
+
+  :global(.rspress-nav) {
+    background-color: var(--iringo-semi-transparent-component-color);
+    backdrop-filter: saturate(180%) blur(20px);
+    transition-property: background-color, backdrop-filter;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+  }
+}

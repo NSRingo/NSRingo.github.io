@@ -2,15 +2,32 @@ import { normalizeHrefInRuntime, usePageData } from 'rspress/runtime';
 import { Button, HomeFeature, HomeFooter, renderHtmlOrText } from 'rspress/theme';
 
 import { isExternalUrl, withBase } from '@rspress/shared';
+import { useMemo } from 'react';
 import { Logo } from '../logo';
+
 import styles from './home-layout.module.scss';
+import { ICON_MAP } from './icons';
+
+const icons = Object.keys(ICON_MAP);
 
 import './home-layout.css';
 
 export const HomeLayout = () => {
   const {
-    page: { frontmatter, routePath },
+    page: { frontmatter: pageFrontmatter, routePath },
   } = usePageData();
+
+  const frontmatter = useMemo(() => {
+    const result = { ...pageFrontmatter };
+    (result.features as Record<string, string>[]).forEach((feature) => {
+      if (icons.includes(feature.icon)) {
+        const icon = ICON_MAP[feature.icon as keyof typeof ICON_MAP];
+        feature.icon = `<picture><source type="image/webp" srcset="${icon.webp}" /><img src="${icon.png}" /></picture>`;
+      }
+    })
+    return result
+  }, [pageFrontmatter])
+
 
   const hero: Record<string, any> = frontmatter?.hero || {};
 

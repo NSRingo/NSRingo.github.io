@@ -32,9 +32,8 @@ export const Logo = () => {
       <img src="/NSRingoKit/NSRingoKit@256x.png" srcSet="/NSRingoKit/NSRingoKit@512x.png 2x" alt="" draggable={false} />
       <svg ref={ref} className={styles.line} viewBox="0 0 1024 1024">
         <title>lines</title>
-        <rect width="900" height="900" x="62" y="62" fill="none" fillRule="evenodd" strokeWidth="12.427" rx="180.799" />
-        <g strokeDasharray="8.72824512534819,13.09236768802229" strokeLinecap="round" strokeLinejoin="round"
-          strokeWidth="4.364">
+        <rect width="900" height="900" x="62" y="62" fill="none" fillRule="evenodd" strokeWidth="12.427" rx="180.8" />
+        <g strokeLinecap="round" strokeLinejoin="round" strokeWidth="4.364">
           <path
             d="M423.182 583.845c63.262 0 114.545-51.265 114.545-114.505 0-63.24-51.283-114.506-114.545-114.506S308.636 406.1 308.636 469.34s51.284 114.505 114.546 114.505Z" />
           <path

@@ -20,8 +20,8 @@ export const HomeLayout = () => {
   const frontmatter = useMemo(() => {
     const result = { ...pageFrontmatter };
     (result.features as Record<string, string>[]).forEach((feature) => {
-      if (icons.includes(feature.icon)) {
-        const icon = ICON_MAP[feature.icon as keyof typeof ICON_MAP];
+      if (feature.iconKey && icons.includes(feature.iconKey)) {
+        const icon = ICON_MAP[feature.iconKey as keyof typeof ICON_MAP];
         feature.icon = `<picture><source type="image/webp" srcset="${icon.webp}" /><img src="${icon.png}" /></picture>`;
       }
     })

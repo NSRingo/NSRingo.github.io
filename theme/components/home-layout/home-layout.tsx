@@ -78,9 +78,9 @@ export const HomeLayout = () => {
         <HomeFeature frontmatter={frontmatter} routePath={routePath} />
         <HomeFooter />
       </main>
-      <footer className="m-auto max-w-6xl text-sm text-text-2 py-8">
+      <footer className="m-auto max-w-6xl text-sm text-text-2 py-8 text-center">
         © 2024 iRingo core team. All Rights Reserved.
-        <div className="flex items-center">
+        <div className="flex items-center justify-center mt-2">
           Documented by
           <Contributors repo="NSRingo/NSRingo.github.io" />
         </div>

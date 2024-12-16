@@ -4,6 +4,11 @@ declare module 'csstype' {
   }
 }
 
+declare module '@theme-assets/*' {
+  const SvgIcon: React.FC<React.SVGProps<SVGSVGElement>> | string;
+  export default SvgIcon;
+}
+
 declare module '*.module.scss' {
   const content: { [className: string]: string };
   export default content;

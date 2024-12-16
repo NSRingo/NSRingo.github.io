@@ -14,3 +14,20 @@ body {
     transition-timing-function: ease-in-out;
   }
 }
+
+
+.repo {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  gap: .5rem;
+}
+
+.sourceCode {
+  fill: currentColor;
+  color: var(--rp-c-text-2);
+
+  &:hover {
+    color: var(--rp-c-text-1);
+  }
+}

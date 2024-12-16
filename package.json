@@ -9,7 +9,7 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@iringo/doc-ui": "^2.0.2",
+    "@iringo/doc-ui": "^2.2.0",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "remark-github": "^12.0.0",

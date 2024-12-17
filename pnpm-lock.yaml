@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@iringo/doc-ui':
-        specifier: ^2.3.0
-        version: 2.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.4.0
+        version: 2.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -111,8 +111,8 @@ packages:
   '@bufbuild/protobuf@2.2.2':
     resolution: {integrity: sha512-UNtPCbrwrenpmrXuRwn9jYpPoweNXj8X5sMvYgsqYyaH8jQ6LfUJSk3dJLnBK+6sfYPrF4iAIo5sd5HQ+tg75A==}
 
-  '@iringo/doc-ui@2.3.0':
-    resolution: {integrity: sha512-ff2oKrXK5FoP8dbWqEnhx3acZ+77+upb+OdCQX5N/MCLv0sG77L6+LqML/aM8WYWyrW2RTjuxMcMRTWfLL+2sQ==}
+  '@iringo/doc-ui@2.4.0':
+    resolution: {integrity: sha512-WPzxshSAA+qGOqOUgx7PU5GTS2qII9sQL8J8Uru+wNOQgvf0P4I47GN19zr9wAcasyZLxoPHl2TFc3erwdf1Zw==}
 
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
@@ -1859,7 +1859,7 @@ snapshots:
 
   '@bufbuild/protobuf@2.2.2': {}
 
-  '@iringo/doc-ui@2.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@iringo/doc-ui@2.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@rc-component/qrcode': 1.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       rc-tooltip: 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

@@ -5,26 +5,7 @@ repo: NSRingo/Siri
 import { Steps, ModuleInstall } from "@theme";
 import _Footer from "../_Footer.md";
 
-# ⭕ Siri 与搜索
-
-:::warning ⚠️
-
-本文适用于 iOS 17、macOS 14、watchOS 10 及以下版本  
-Siri 区分「询问 Siri」和「Siri 建议」两部分  
-注意鉴别需求与说明
-
-:::
-
-## 询问 Siri (Ask Siri)
-
-:::danger ‼️ 不可用
-
- 禁止 MitM iOS 14 至 iOS 17「询问 Siri」所使用的`guzzoni.apple.com`的网络请求  
-「询问 Siri」不可以通过 MitM 改写请求  
-
-:::
-
-## Siri 建议 (Siri Suggestions)
+# 🔍 Siri 建议 (Siri Suggestions)
 
 :::danger ‼️ 已失效
 
@@ -34,10 +15,10 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
 
 :::
 
-### 简介
-  * 激活「Siri建议/来自APPLE的内容/来自APPLE的建议」并开启全部已知可用功能。
+## 简介
+* 激活「Siri建议/来自APPLE的内容/来自APPLE的建议」并开启全部已知可用功能。
 
-### 解锁步骤
+## 解锁步骤
 
     <Steps>
       #### 第 1 步
@@ -78,7 +59,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
       * 取决于是否还需要激活 [📰 News](../apple-news) 等功能
     </Steps>
 
-### 配置方法
+## 配置方法
 * 基础: 直接使用
   * 采用[默认配置](#默认设置)
 * 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
@@ -95,7 +76,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
      3. 在[`⭕ Siri`](http://boxjs.com/#/app/iRingo.Siri)根据需要填写您的设置信息
   </details>
 
-### 功能列表
+## 功能列表
 * 在以下位置及功能中可用:
   - [x] 聚焦搜索(Spotlight)
   - [x] 查询(Look Up)
@@ -139,7 +120,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
   - [x] 新闻
   - [ ] Twitter集成 (官方功能列表中有此功能，有知道解决方法或成因的请联系我)
 
-### 安装链接
+## 安装链接
 <ModuleInstall urlPrefix="https://github.com/NSRingo/Siri/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
@@ -317,7 +298,7 @@ Siri 区分「询问 Siri」和「Siri 建议」两部分
   </ModuleInstall.Tab>
 </ModuleInstall>
 
-### 更新日志
+## 更新日志
 * v3.1.0
   * 优化与修复
     1. 移除 NanoCat-Me 的 URL polyfill, 改为 Web API 的 URL 

@@ -30,9 +30,9 @@ features:
       link: /guide/GeoServices/maps
 
     - iconKey: Siri
-      title: Apple 智能与 Siri
+      title: Siri 请求
       details: 自定义 Siri 请求的功能及服务版本，满足个性化需求。
-      link: /guide/Siri/apple-intelligence-and-siri
+      link: /guide/Siri/siri-requests
 
     - iconKey: AppleTV
       title:  TV

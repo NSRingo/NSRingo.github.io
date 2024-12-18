@@ -16,46 +16,46 @@ hero:
 features:
     - iconKey: Weather
       title: Weatherkit
-      details: 解锁全部天气数据类型，替换空气质量数据，添加未来一小时降水强度预测。
+      details: <span align="center">解锁全部天气数据类型<br>替换「空气质量」数据<br>添加「未来一小时降水强度」预测</span>
       link: /guide/Weather/weather-kit
 
     - iconKey: Location
       title: 定位
-      details: 自定义定位服务，始终将网络地区检测结果调整为用户设定的地区。
+      details: <span align="center">自定义「定位服务」<br>始终将「网络地区检测」结果改为用户设定地区</span>
       link: /guide/GeoServices/location
 
     - iconKey: Maps
       title: 地图
-      details: 定制化苹果地图应用，添加国际版功能，支持服务版本个性化设置。
+      details: <span align="center">定制化 Maps app<br>添加国际版功能<br>支持服务版本个性化设置</span>
       link: /guide/GeoServices/maps
 
     - iconKey: Siri
       title: Siri
-      details: 自定义 Siri 请求的功能及服务版本，满足个性化需求。
+      details: <span align="center">自定义「Siri 请求」功能<br>满足个性化需求</span>
       link: /guide/Siri/siri
 
     - iconKey: AppleTV
       title:  TV
-      details: 自定义 Apple TV 应用，选择启用的板块、栏目与语言设置。
+      details: <span align="center">自定义 TV app<br>自选启用的板块和语言<br>获取跨地区栏目及内容</span>
       link: /guide/apple-tv
 
     - iconKey: News
       title:  News
-      details: 解锁 Apple News 应用功能，支持个性化设置与更灵活的使用体验。
+      details: <span align="center">解锁 News app 地区限制<br>自定义部分设置与功能</span>
       link: /guide/apple-news
 
     - iconKey: TestFlight
       title: TestFlight
-      details: 定制化 TestFlight 应用，支持国家区域切换、多账号管理及通用应用强制启用。
+      details: <span align="center">国家与区域切换<br>支持多账号<br>启用通用应用支持</span>
       link: /guide/test-flight
 
     - iconKey: AppleWatch
       title:  Watch
-      details: 为 Apple Watch 提供单独设置，适配个性化使用需求。
+      details: <span align="center">为 Apple Watch 提供单独设置<br>适配个性化使用需求</span>
       link: /guide/apple-watch
 
     - iconKey: BoxJs
       title: BoxJs
-      details: 提供可视化配置面板，简化脚本管理与操作流程。
+      details: <span align="center">提供可视化配置面板<br>提升个性化设置体验</span>
       link: /guide/box-js
 ---

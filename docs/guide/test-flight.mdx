@@ -15,8 +15,18 @@ import _Footer from "./_Footer.md";
 
 :::
 
-## 简介
-* 自定义`TestFlight`app，修改国家或区域代码，多账号保存与切换，强制启用通用应用支持
+## 功能简介
+* 修改国家或区域代码
+  * 自定义 TestFlight 登录商店地区
+* ~~多账户保存及切换~~
+  * 需要使用 [🧰 BoxJs](./box-js) 面板保存和切换账号信息
+* 强制启用通用应用支持
+  * 解除 TestFlight app 的 iOS/iPadOS/macOS(AppleSilicon) 平台限制
+* 总是显示安装选项
+  * 当 Testflight 无法加入时，也总是显示app详情页面的安装选项
+* 合并通知开关
+  * 同步开关全平台的电子邮件通知
+  * 如关闭 iOS 的 Testflight 更新电子邮件通知，也会同时关闭 tvOS 的 Testflight 更新电子邮件通知
 
 ## 配置方法
 * 基础: 直接使用
@@ -34,12 +44,6 @@ import _Footer from "./_Footer.md";
      2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
      3. 在[`✈ TestFlight`](http://boxjs.com/#/app/iRingo.TestFlight)根据需要填写您的设置信息
   </details>
-
-## 功能列表
-* 自定义TestFlight登录商店地区
-* ~~多账户保存及切换~~ (默认关闭，需要在[🧰 BoxJs](./box-js)中保存和切换账号信息)
-* 强制启用通用应用支持 (测试中，默认开启)
-  * 解除开发者对 TestFlight 中的 iOS/iPadOS/macOS(AppleSilicon) 平台限制
 
 ## 安装链接
 
@@ -143,6 +147,10 @@ import _Footer from "./_Footer.md";
   * 默认值: `false` (关闭)
 * Universal: 启用通用应用支持
   * 默认值: `true` (开启)
+* AlwaysShowInstall: 总是显示安装选项
+  * 默认值: `false` (关闭)
+* MergeNotifications: 合并通知开关
+  * 默认值: `false` (关闭)
 
 ## [更新日志](/changelog/test-flight)
 * v3.0.0

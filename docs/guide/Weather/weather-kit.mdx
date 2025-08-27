@@ -29,6 +29,8 @@ import Footer from "../_Footer.md";
 * 解锁全部天气数据类型
 * 替换「空气质量」数据
 * 添加「未来一小时降水强度」信息
+* 替换「天气」数据
+  * 包括「当前天气」、「每小时天气预报」、「10日天气预报」
 
 
 :::tip ✅ 小提示
@@ -73,8 +75,15 @@ import Footer from "../_Footer.md";
     * 和风天气 （支持昨日对比，需要 Token）
     * WAQI （可选 Token）
     * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
+  * 空气质量昨日对比
+    * 自动 （默认，与空气质量数据源相同）
+    * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
+    * 和风天气 （支持昨日对比，需要 Token）
+    * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
   * 空气质量标准换算
     * 默认开启，将中国空气质量标准换算为最新美国空气质量标准
+  * 空气质量污染物单位转换
+    * 默认关闭，转换可能会导致进度损失
 
 ## 安装链接
 
@@ -162,6 +171,10 @@ import Footer from "../_Footer.md";
 ## [更新日志](/changelog/WeatherKit)
 
 ## 默认设置
+* [天气] 数据源
+  * [x] WeatherKit: WeatherKit (不进行替换)
+  * [ ] ColorfulClouds: 彩云天气
+  * [ ] QWeather: 和风天气
 * [未来一小时降水强度] 数据源
   * [ ] WeatherKit: WeatherKit (不进行替换)
   * [x] ColorfulClouds: 彩云天气
@@ -175,11 +188,17 @@ import Footer from "../_Footer.md";
   * [x] QWeather: 和风天气
   * [ ] BreezoMeter: BreezoMeter
   * [ ] TWC: The Weather Channel
+* [空气质量] 对比昨日数据源
+  * [x] Auto: 自动选择 (与[空气质量] 数据源一致)
+  * [ ] WeatherKit: WeatherKit (不进行替换)
+  * [ ] ColorfulClouds: 彩云天气
+  * [ ] QWeather: 和风天气
 * [空气质量] 本地替换算法
   * [ ] NONE: None (不进行替换)
   * [x] WAQI_InstantCast: WAQI InstantCast
 * [空气质量] 需要修改的标准
-  * [x] HJ6332012: "中国 (HJ 633—2012)
+  * [x] HJ6332012: "中国 (HJ 633—2012)"
+  * [ ] EPA_NowCast: "美国 (EPA NowCast)"
 * [空气质量] 转换污染物计量单位: false (关闭)
 
 <Footer />

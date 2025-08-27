@@ -13,17 +13,17 @@
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "remark-github": "^12.0.0",
-    "rspress": "^1.37.2",
+    "rspress": "^1.45.1",
     "rspress-plugin-changelog": "^1.1.2",
-    "rspress-plugin-sitemap": "^1.1.1"
+    "rspress-plugin-sitemap": "^1.2.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@rspress/shared": "^1.37.4",
-    "@types/lodash": "^4.17.13",
-    "@types/node": "^16.18.121",
-    "@types/react": "^18.3.11",
-    "typescript": "^5.7.2"
+    "@rspress/shared": "^1.45.1",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^16.18.126",
+    "@types/react": "^18.3.24",
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",

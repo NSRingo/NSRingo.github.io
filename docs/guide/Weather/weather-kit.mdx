@@ -68,17 +68,17 @@ import Footer from "../_Footer.md";
   * 解锁全部天气数据类型
   * 未来一小时降水强度与降水通知
     * 彩云天气 （默认，可选 Token）
-    * 和风天气 （需要 Token）
+    * 和风天气 （需要 Host 和 Token）
     * 默认为增补模式，不会替换已有降水数据，仅补充无数据城市
   * 空气质量数据
     * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
-    * 和风天气 （支持昨日对比，需要 Token）
+    * 和风天气 （支持昨日对比，需要 Host 和 Token）
     * WAQI （可选 Token）
     * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
   * 空气质量昨日对比
     * 自动 （默认，与空气质量数据源相同）
     * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
-    * 和风天气 （支持昨日对比，需要 Token）
+    * 和风天气 （支持昨日对比，需要 Host 和 Token）
     * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
   * 空气质量标准换算
     * 默认开启，将中国空气质量标准换算为最新美国空气质量标准
@@ -195,10 +195,11 @@ import Footer from "../_Footer.md";
   * [ ] QWeather: 和风天气
 * [空气质量] 本地替换算法
   * [ ] NONE: None (不进行替换)
-  * [x] WAQI_InstantCast: WAQI InstantCast
+  * [x] EPA_NowCast: 美国 (EPA NowCast)
+  * [ ] WAQI_InstantCast: WAQI InstantCast
 * [空气质量] 需要修改的标准
-  * [x] HJ6332012: "中国 (HJ 633—2012)"
-  * [ ] EPA_NowCast: "美国 (EPA NowCast)"
+  * [x] HJ6332012: 中国 (HJ 633—2012)
+  * [ ] EPA_NowCast: 美国 (EPA NowCast)
 * [空气质量] 转换污染物计量单位: false (关闭)
 
 <Footer />

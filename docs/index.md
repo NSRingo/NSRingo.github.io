@@ -20,9 +20,9 @@ features:
       link: /guide/Weather/weather-kit
 
     - iconKey: Location
-      title: 定位
+      title: 定位服务
       details: <div class="text-center">自定义「定位服务」<br>始终将「网络地区检测」结果改为用户设定地区</div>
-      link: /guide/GeoServices/location
+      link: /guide/GeoServices/location-service
 
     - iconKey: Maps
       title: 地图

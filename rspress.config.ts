@@ -63,9 +63,14 @@ export default defineConfig({
           repo: 'NSRingo/WeatherKit',
         },
         {
-          title: '🛰️ 地理服务',
-          routePath: 'GeoServices',
-          repo: 'NSRingo/GeoServices',
+          title: '📍 定位服务',
+          routePath: 'GeoServices/location-service',
+          repo: 'NSRingo/LocationService',
+        },
+        {
+          title: '🗺️ 地图',
+          routePath: 'GeoServices/maps',
+          repo: 'NSRingo/Maps',
         },
         {
           title: '⭕ Siri',

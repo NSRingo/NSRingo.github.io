@@ -21,12 +21,12 @@ features:
 
     - iconKey: Location
       title: 定位服务
-      details: <div class="text-center">自定义「定位服务」<br>始终将「网络地区检测」结果改为用户设定地区</div>
+      details: <div class="text-center">自定义「定位服务」<br>融合国际版功能<br>自定义 GPS 与 互联网 地区检测结果</div>
       link: /guide/GeoServices/location-service
 
     - iconKey: Maps
       title: 地图
-      details: <div class="text-center">定制化 Maps app<br>添加国际版功能<br>支持服务版本个性化设置</div>
+      details: <div class="text-center">定制化 Maps app<br>融合国际版功能<br>支持服务版本个性化设置</div>
       link: /guide/GeoServices/maps
 
     - iconKey: Siri

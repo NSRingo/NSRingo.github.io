@@ -9,19 +9,29 @@ import _Footer from "../_Footer.md";
 
 :::info ℹ️ 用前须知
 
+iOS 26.0起，地区检测方法已被  强化  
+地区检测结果为多因素综合结果  
+GPS 定位 > [移动设备国家代码](https://zh.wikipedia.org/wiki/行動裝置國家代碼) > Wi-Fi 国家/地区代码 > 互联网 > 其他  
+仅靠此模块无法完全修改所有地区检测结果  
+
+:::
+
+:::info ℹ️ 用前须知
+
 仅  的 app 及 framework 使用此方式获取用户位置信息  
 第三方 app 不使用此方式获取用户位置信息  
 
 :::
 ## 简介
-自定义「定位服务」通过`基于网络的地区检测`结果始终为用户设置的地区  
+自定义「定位服务」通过`基于互联网的地区检测`结果始终为用户设置的地区  
+融合高德与苹果调度器(Dispatcher)结果  
 
 ## 解锁步骤
 
     <Steps>
       ### 第 1 步
-      启用[`📍 定位`](./location)模块
-      > [`📍 定位`](./location)的地区不应该设置为`🇨🇳CN`  
+      启用[`📍 定位服务`](./location-service)模块
+      > [`📍 定位服务`](./location-service)的地区不应该设置为`🇨🇳CN`  
       > 浏览器访问 https://gspe1-ssl.ls.apple.com/pep/gcc ，页面显示的两个字母即为当前修改的地区代码
 
       ### 第 2 步
@@ -56,7 +66,7 @@ import _Footer from "../_Footer.md";
   2. 在`BoxJs`的配置面板中进行个性化设置:
      1. 浏览器访问[BoxJs.com](http://boxjs.com)
      2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
-     3. 在[`📍 定位`](http://boxjs.com/#/app/iRingo.Location)根据需要填写您的设置信息
+     3. 在[`📍 定位`](http://boxjs.com/#/app/iRingo.LocationService)根据需要填写您的设置信息
   </details>
 
 ## 功能列表
@@ -77,13 +87,23 @@ import _Footer from "../_Footer.md";
     - [x] `Apple Maps`的地区版本
     - [x] `Apple News`的可用性判断(可通过其他模块单独修改) 
     - [x] 待发现
+* 修改高德调度器(Dispatcher)内容
+  * 终结点(Endpoint): https://dispatcher.is.autonavi.com/dispatcher
+  * 已知影响的功能
+    * 融合地图内 POI 信息页面
+      - [x] 四处看看(Look Around)预览小窗。
+      - [x] 评分与照片(RAP) 功能，可对 POI 进行照片上传与评分。
+      - [x] 信息(Message)按钮，可直接跳转 iMessage 并使用 Messages for Business 与商户联系。
+      - [x] 打开 App(Open in App) 按钮，可直接跳转或下载至商户 App 进行操作。
+    * 融合位置搜索结果
+      - [x] 在天气、地图等 Apple App 中搜索地点时，总是展示国内外全部结果。
 
 ## 安装链接
 
 <ModuleInstall urlPrefix="https://github.com/NSRingo/LocationService/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
-      url="iRingo.Location.plugin"
+      url="iRingo.LocationService.plugin"
       badge={[
         {
           type: "tip",
@@ -100,7 +120,7 @@ import _Footer from "../_Footer.md";
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="surge">
     <ModuleInstall.Item 
-      url="iRingo.Location.sgmodule"
+      url="iRingo.LocationService.sgmodule"
       badge={[
         {
           type: "danger",
@@ -117,7 +137,7 @@ import _Footer from "../_Footer.md";
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="stash">
     <ModuleInstall.Item
-      url="iRingo.Location.stoverride"
+      url="iRingo.LocationService.stoverride"
       badge={[
         {
           type: "info",
@@ -139,12 +159,12 @@ import _Footer from "../_Footer.md";
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="egern">
     <ModuleInstall.Item
-      url="iRingo.Location.yaml"
+      url="iRingo.LocationService.yaml"
     />
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="qx">
     <ModuleInstall.Item
-      url="iRingo.Location.snippet"
+      url="iRingo.LocationService.snippet"
       badge={[
         {
           type: "danger",

@@ -1,5 +1,5 @@
-import { normalizeHrefInRuntime, usePageData } from 'rspress/runtime';
-import { Button, HomeFeature, HomeFooter, renderHtmlOrText } from 'rspress/theme';
+import { normalizeHrefInRuntime, usePageData } from '@rspress/core/runtime';
+import { Button, HomeFeature, HomeFooter, renderHtmlOrText } from '@rspress/core/theme';
 
 import { isExternalUrl, withBase } from '@rspress/shared';
 import { useMemo } from 'react';
@@ -20,7 +20,7 @@ export const HomeLayout = () => {
 
   const frontmatter = useMemo(() => {
     const result = { ...pageFrontmatter };
-    (result.features as Record<string, string>[]).forEach((feature) => {
+    (result.features as unknown as Record<string, string>[]).forEach((feature) => {
       if (feature.iconKey && icons.includes(feature.iconKey)) {
         const icon = ICON_MAP[feature.iconKey as keyof typeof ICON_MAP];
         feature.icon = `<picture><source type="image/webp" srcset="${icon.webp}" /><img src="${icon.png}" /></picture>`;
@@ -46,14 +46,13 @@ export const HomeLayout = () => {
             <Logo />
             <h1
               className={`font-bold text-3xl pb-2 sm:text-6xl md:text-7xl m-auto sm:m-4 md:m-0 md:pb-3 lg:pb-2 leading-tight z-10 ${styles.heroTitle}`}
+              {...renderHtmlOrText(hero.name)}
             >
-              {renderHtmlOrText(hero.name)}
             </h1>
-            <p className="rspress-home-hero-text mx-auto md:m-0 text-3xl sm:text-5xl md:text-6xl font-bold z-10 sm:max-w-4xl">
-              {renderHtmlOrText(hero.text)}
+            <p className="rspress-home-hero-text mx-auto md:m-0 text-3xl sm:text-5xl md:text-6xl font-bold z-10 sm:max-w-4xl" {...renderHtmlOrText(hero.text)}>
+              
             </p>
-            <p className="rspress-home-hero-tagline whitespace-pre-wrap m-auto md:m-0 text-sm sm:tex-xl md:text-[1.5rem] text-text-2 font-medium z-10 sm:max-w-4xl">
-              {renderHtmlOrText(hero.tagline)}
+            <p className="rspress-home-hero-tagline whitespace-pre-wrap m-auto md:m-0 text-sm sm:tex-xl md:text-[1.5rem] text-text-2 font-medium z-10 sm:max-w-4xl" {...renderHtmlOrText(hero.tagline)}>
             </p>
             <div className="grid md:flex md:flex-wrap md:justify-center gap-3 m--1.5 pt-4 sm:pt-6 z-10">
               {hero.actions?.map((action: any) => {
@@ -65,9 +64,9 @@ export const HomeLayout = () => {
                     <Button
                       type="a"
                       href={link}
-                      text={renderHtmlOrText(action.text)}
                       theme={action.theme}
                       className="w-full"
+                      {...renderHtmlOrText(action.text)}
                     />
                   </div>
                 );

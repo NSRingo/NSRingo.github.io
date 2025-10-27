@@ -1,0 +1,48 @@
+[
+    {
+        "text": "文档",
+        "link": "/guide/index",
+        "activeMatch": "^/guide/"
+    },
+    {
+        "text": "更新日志",
+        "items": [
+            {
+                "text": "WeatherKit",
+                "link": "https://github.com/NSRingo/WeatherKit/releases"
+            },
+            {
+                "text": "定位服务",
+                "link": "https://github.com/NSRingo/LocationService/releases"
+            },
+            {
+                "text": "地图",
+                "link": "https://github.com/NSRingo/Maps/releases"
+            },
+            {
+                "text": "Siri",
+                "link": "https://github.com/NSRingo/Siri/releases"
+            },
+            {
+                "text": "TV",
+                "link": "https://github.com/NSRingo/TV/releases"
+            },
+            {
+                "text": "News",
+                "link": "https://github.com/NSRingo/News/releases"
+            },
+            {
+                "text": "TestFlight",
+                "link": "https://github.com/NSRingo/TestFlight/releases"
+            }
+        ]
+    },
+    {
+        "text": "论坛",
+        "link": "https://github.com/orgs/NSRingo/discussions"
+    },
+    {
+        "text": "赞助",
+        "link": "https://afdian.com/a/HashBrown"
+    }
+]

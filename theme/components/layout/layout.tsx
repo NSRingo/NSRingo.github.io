@@ -1,15 +1,15 @@
 import { Contributors, NavIcon } from '@iringo/doc-ui';
+import { usePageData } from '@rspress/core/runtime';
+import {Layout as BaseLayout} from '@rspress/core/theme';
 import Github from '@theme-assets/github';
 import { useEffect, useMemo } from 'react';
-import { usePageData } from 'rspress/runtime';
-import Theme from 'rspress/theme';
 import { useTopArrived } from './hooks/use-top-arrived';
 
 import styles from './layout.module.scss';
 
 import './layout.css';
 
-export const Layout = () => {
+export const Layout = (props: React.ComponentProps<typeof BaseLayout>) => {
   const { topArrived } = useTopArrived();
 
   useEffect(() => {
@@ -52,5 +52,5 @@ export const Layout = () => {
     );
   }, [page.frontmatter?.repo]);
 
-  return <Theme.Layout beforeNavTitle={<NavIcon />} afterDocContent={afterDocContent} />;
+  return <BaseLayout {...props} beforeNavTitle={<NavIcon />} afterDocContent={afterDocContent} />;
 };

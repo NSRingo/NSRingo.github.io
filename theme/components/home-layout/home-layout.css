@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 .rspress-home-feature-card {
   --rp-home-feature-bg: var(--iringo-semi-transparent-component-color);
   position: relative;

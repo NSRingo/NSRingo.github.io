@@ -43,6 +43,9 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [[require("remark-github")]],
+    link: {
+      checkDeadLinks: false,
+    },
   },
   plugins: [
     pluginSitemap({

@@ -168,6 +168,79 @@ import Footer from "../_Footer.md";
   </ModuleInstall.Tab>
 </ModuleInstall>
 
+## 安装链接(Rewrite 版)
+
+<ModuleInstall urlPrefix="https://github.com/NSRingo/WeatherKit/raw/main/modules/">
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item
+      url="iRingo.WeatherKit.Workers.srmodule"
+      badge={[
+        {
+          type: "tip",
+          text: "HTTPS 解密",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="iRingo.WeatherKit.Workers.plugin"
+      badge={[
+        {
+          type: "warning",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="iRingo.WeatherKit.Workers.sgmodule"
+      badge={[
+        {
+          type: "warning",
+          text: "HTTP 重写",
+          outline: true,
+        },
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="iRingo.WeatherKit.Workers.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="iRingo.WeatherKit.Workers.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "改写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
+
 ## [更新日志](/changelog/WeatherKit)
 
 ## 默认设置

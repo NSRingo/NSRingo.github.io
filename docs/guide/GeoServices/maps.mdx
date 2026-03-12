@@ -233,6 +233,79 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
   </ModuleInstall.Tab>
 </ModuleInstall>
 
+## 安装链接(Rewrite 版)
+
+<ModuleInstall urlPrefix="https://github.com/NSRingo/Maps/raw/main/modules/">
+  <ModuleInstall.Tab type="shadowrocket">
+    <ModuleInstall.Item
+      url="iRingo.Maps.Workers.srmodule"
+      badge={[
+        {
+          type: "tip",
+          text: "HTTPS 解密",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="iRingo.Maps.Workers.plugin"
+      badge={[
+        {
+          type: "warning",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="iRingo.Maps.Workers.sgmodule"
+      badge={[
+        {
+          type: "warning",
+          text: "HTTP 重写",
+          outline: true,
+        },
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item
+      url="iRingo.Maps.Workers.yaml"
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="iRingo.Maps.Workers.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "改写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
+
 ## [更新日志](/changelog/GeoServices/maps)
 
 <_Footer />

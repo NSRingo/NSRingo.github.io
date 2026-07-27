@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@nsnanocat/doc-ui':
-        specifier: ^2.4.4
-        version: 2.4.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^2.4.5
+        version: 2.4.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rspress/core':
         specifier: ^2.0.0-beta.34
         version: 2.0.0-beta.34(@types/react@18.3.26)
@@ -176,8 +176,8 @@ packages:
   '@napi-rs/wasm-runtime@1.0.7':
     resolution: {integrity: sha512-SeDnOO0Tk7Okiq6DbXmmBODgOAb9dp9gjlphokTUxmt8U3liIP1ZsozBahH69j/RJv+Rfs6IwUKHTgQYJ/HBAw==}
 
-  '@nsnanocat/doc-ui@2.4.4':
-    resolution: {integrity: sha512-QAcWUTnroMp39Zq93IcZ1EiIwSiXRVn8SF75aGItNVvk3+AZz+xr5Ajq/mIIkxlQD7UktSDnsIYtdtbH+2MR6Q==, tarball: https://npm.pkg.github.com/download/@nsnanocat/doc-ui/2.4.4/908725be6df385d6ceb5c599b8c90e38c2f9d298}
+  '@nsnanocat/doc-ui@2.4.5':
+    resolution: {integrity: sha512-NMJVrcdZRMER0yW6xP/dseEEkYRdJhK6vRSzgcCpWiWA96Le35l5vFt5URTwEvPXZXHRZIWSWjvXUmS39YaN3w==, tarball: https://npm.pkg.github.com/download/@nsnanocat/doc-ui/2.4.5/098f712cbe61277bf50ae6f2adb56e40ee6c249b}
     engines: {node: '>=20'}
     peerDependencies:
       react: '>=18.3.1 <20'
@@ -1804,7 +1804,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@nsnanocat/doc-ui@2.4.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@nsnanocat/doc-ui@2.4.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@rc-component/qrcode': 1.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       rc-tooltip: 6.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

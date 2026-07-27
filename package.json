@@ -9,7 +9,7 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@nsnanocat/doc-ui": "^2.4.5",
+    "@nsnanocat/doc-ui": "^2.4.6",
     "@rspress/core": "^2.0.0-beta.34",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",

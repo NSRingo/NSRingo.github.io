@@ -1,7 +1,6 @@
 import { Contributors, NavIcon } from '@nsnanocat/doc-ui';
 import { usePageData } from '@rspress/core/runtime';
-import {Layout as BaseLayout} from '@rspress/core/theme';
-import Github from '@theme-assets/github';
+import { IconGithub, Layout as BaseLayout } from '@rspress/core/theme-original';
 import { useEffect, useMemo } from 'react';
 import { useTopArrived } from './hooks/use-top-arrived';
 
@@ -42,7 +41,7 @@ export const Layout = (props: React.ComponentProps<typeof BaseLayout>) => {
             rel="noreferrer"
           >
             <span className="mr-2 inline-flex w-4 h-4">
-              <Github />
+              <IconGithub />
             </span>
             <span>{repo}</span>
           </a>

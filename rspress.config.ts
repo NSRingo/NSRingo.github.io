@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pluginSass } from "@rsbuild/plugin-sass";
 import { defineConfig } from "@rspress/core";
+import remarkGithub from "remark-github";
 import pluginSitemap from "rspress-plugin-sitemap";
 
 const siteUrl = "https://NSRingo.github.io";
@@ -42,7 +43,7 @@ export default defineConfig({
     plugins: [pluginSass()],
   },
   markdown: {
-    remarkPlugins: [[require("remark-github")]],
+    remarkPlugins: [[remarkGithub]],
     link: {
       checkDeadLinks: false,
     },

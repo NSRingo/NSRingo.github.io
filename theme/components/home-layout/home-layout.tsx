@@ -1,7 +1,5 @@
-import { normalizeHrefInRuntime, usePageData } from '@rspress/core/runtime';
-import { Button, HomeFeature, HomeFooter, renderHtmlOrText } from '@rspress/core/theme';
-
-import { isExternalUrl, withBase } from '@rspress/shared';
+import { isExternalUrl, normalizeHrefInRuntime, usePageData, withBase } from '@rspress/core/runtime';
+import { Button, HomeFeature, HomeFooter, renderHtmlOrText } from '@rspress/core/theme-original';
 import { useMemo } from 'react';
 import { Logo } from '../logo';
 
@@ -15,7 +13,7 @@ import { Contributors } from '@nsnanocat/doc-ui';
 
 export const HomeLayout = () => {
   const {
-    page: { frontmatter: pageFrontmatter, routePath },
+    page: { frontmatter: pageFrontmatter },
   } = usePageData();
 
   const frontmatter = useMemo(() => {
@@ -58,7 +56,7 @@ export const HomeLayout = () => {
               {hero.actions?.map((action: any) => {
                 const link = isExternalUrl(action.link)
                   ? action.link
-                  : normalizeHrefInRuntime(withBase(action.link, routePath));
+                  : normalizeHrefInRuntime(withBase(action.link));
                 return (
                   <div className="flex flex-shrink-0 p-1" key={link}>
                     <Button
@@ -74,7 +72,7 @@ export const HomeLayout = () => {
             </div>
           </div>
         </div>
-        <HomeFeature frontmatter={frontmatter} routePath={routePath} />
+        <HomeFeature features={frontmatter.features} />
         <HomeFooter />
       </main>
       <footer className="m-auto max-w-6xl text-sm text-text-2 py-8 text-center">

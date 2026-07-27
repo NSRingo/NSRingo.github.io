@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
   pages: write
   id-token: write
 
@@ -38,6 +39,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_READ_TOKEN }}
       - name: Build with Rspress
         run: |
           pnpm run build

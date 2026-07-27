@@ -9,7 +9,7 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@iringo/doc-ui": "^2.4.1",
+    "@nsnanocat/doc-ui": "^2.4.4",
     "@rspress/core": "^2.0.0-beta.34",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",

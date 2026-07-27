@@ -11,7 +11,7 @@ import { ICON_MAP } from './icons';
 const icons = Object.keys(ICON_MAP);
 
 import './home-layout.css';
-import { Contributors } from '@iringo/doc-ui';
+import { Contributors } from '@nsnanocat/doc-ui';
 
 export const HomeLayout = () => {
   const {

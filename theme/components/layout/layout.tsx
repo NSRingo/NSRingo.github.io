@@ -1,4 +1,4 @@
-import { Contributors, NavIcon } from '@iringo/doc-ui';
+import { Contributors, NavIcon } from '@nsnanocat/doc-ui';
 import { usePageData } from '@rspress/core/runtime';
 import {Layout as BaseLayout} from '@rspress/core/theme';
 import Github from '@theme-assets/github';

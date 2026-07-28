@@ -1,0 +1,37 @@
+[
+  {
+    "type": "custom-link",
+    "label": "🌤 WeatherKit",
+    "link": "/changelog/weather-kit"
+  },
+  {
+    "type": "custom-link",
+    "label": "📍 定位服务",
+    "link": "/changelog/GeoServices/location-service"
+  },
+  {
+    "type": "custom-link",
+    "label": "🗺️ 地图",
+    "link": "/changelog/GeoServices/maps"
+  },
+  {
+    "type": "custom-link",
+    "label": "⭕ Siri",
+    "link": "/changelog/Siri"
+  },
+  {
+    "type": "custom-link",
+    "label": "📺 TV",
+    "link": "/changelog/apple-tv"
+  },
+  {
+    "type": "custom-link",
+    "label": "📰 News",
+    "link": "/changelog/apple-news"
+  },
+  {
+    "type": "custom-link",
+    "label": "✈ TestFlight",
+    "link": "/changelog/test-flight"
+  }
+]

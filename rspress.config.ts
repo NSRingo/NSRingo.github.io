@@ -63,6 +63,7 @@ export default defineConfig({
     }),
     pluginChangelog({
       fetchOnDev: false,
+      addSidebar: false,
       items: generateChangelogParams([
         {
           title: "🌤 WeatherKit",

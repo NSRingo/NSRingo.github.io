@@ -11,8 +11,8 @@
   },
   {
     "type": "custom-link",
-    "label": "🗺️ 地图",
-    "link": "/changelog/GeoServices/maps"
+    "label": "🗺️ MapKit",
+    "link": "/changelog/GeoServices/map-kit"
   },
   {
     "type": "custom-link",

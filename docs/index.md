@@ -25,9 +25,9 @@ features:
       link: /guide/GeoServices/location-service
 
     - iconKey: Maps
-      title: 地图
+      title: MapKit
       details: <div class="text-center">定制化 Maps app<br>融合国际版功能<br>支持服务版本个性化设置</div>
-      link: /guide/GeoServices/maps
+      link: /guide/GeoServices/map-kit
 
     - iconKey: Siri
       title: Siri

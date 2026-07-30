@@ -76,9 +76,9 @@ export default defineConfig({
           repo: "NSRingo/LocationService",
         },
         {
-          title: "🗺️ 地图",
-          routePath: "GeoServices/maps",
-          repo: "NSRingo/Maps",
+          title: "🗺️ MapKit",
+          routePath: "GeoServices/map-kit",
+          repo: "NSRingo/MapKit",
         },
         {
           title: "⭕ Siri",

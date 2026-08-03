@@ -9,12 +9,12 @@ import Footer from "../_Footer.md";
 
 :::warning ⚠️ 最低支持
 
-- iOS 18 beta (22A5282m)
-- iPadOS 18 beta (22A5282m)
-- macOS 15 beta (24A5264n)
-- tvOS 18 beta (22J5290l)
-- visionOS 2 beta (22N5252n)
-- watchOS 11 beta (22R5284o)
+- iOS 18
+- iPadOS 18
+- macOS 15
+- tvOS 18
+- visionOS 2
+- watchOS 11
 
 :::
 
@@ -31,6 +31,7 @@ import Footer from "../_Footer.md";
 * 添加「未来一小时降水强度」信息
 * 替换「天气」数据
   * 包括「当前天气」、「每小时天气预报」、「10日天气预报」
+* 修改「天气预警」数据
 
 
 :::tip ✅ 小提示
@@ -42,7 +43,7 @@ import Footer from "../_Footer.md";
 
 ## 配置方法
 * 基础: 直接使用
-  * 采用[默认配置](#默认设置)
+  * 采用[默认配置](#正式版模块默认设置)
 * 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
   * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
 * 高级: 配合`BoxJs`及订阅使用
@@ -50,12 +51,18 @@ import Footer from "../_Footer.md";
   <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
 
   1. 安装`BoxJs`插件并更新引用资源或脚本:
-     * 安装方法及下载链接详见: [🧰 BoxJs](./box-js)
+     * 安装方法及下载链接详见: [🧰 BoxJs](../box-js)
   2. 在`BoxJs`的配置面板中进行个性化设置:
      1. 浏览器访问[BoxJs.com](http://boxjs.com)
      2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
      3. 在[`🌤 WeatherKit`](http://boxjs.com/#/app/iRingo.WeatherKit)根据需要填写您的设置信息
   </details>
+
+:::info ℹ️ 配置优先级
+
+正式版模块的`Storage`默认为`Argument`：优先使用模块参数，模块未提供的设置才从 BoxJs 读取。需要只使用 BoxJs 配置时，请将模块参数中的`Storage`改为`PersistentStore`。
+
+:::
 
 :::tip ✅ 小提示
 
@@ -64,33 +71,118 @@ import Footer from "../_Footer.md";
 
 :::
 
+## BoxJs 设置说明
+
+BoxJs 使用完整配置，提供 10 个数据集和 21 个可见设置；正式版模块参数只暴露其中 6 个已支持的数据集与常用设置。
+
+### 数据集与天气
+
+* `[数据集]`
+  * 决定哪些 WeatherKit FlatBuffer 数据槽需要解析和处理；未选择的数据槽保持 Apple 原始内容透传。
+  * BoxJs 默认全选`airQuality`、`currentWeather`、`forecastDaily`、`forecastHourly`、`forecastNextHour`、`news`、`weatherAlerts`、`weatherChange`、`trendComparison`与`locationInfo`。
+  * 正式版模块参数只提供空气质量、当前天气、每日预报、每小时预报、未来一小时降水强度与天气预警 6 项。
+* `[天气] 替换范围`（默认 `CN`）
+  * 填写正则表达式，只替换国家或地区代码匹配的天气数据；默认只替换中国大陆。
+* `[天气] 数据源`（默认 `ColorfulClouds`）
+  * `WeatherKit`: 保留 Apple 原始天气数据。
+  * `ColorfulClouds`: 使用彩云天气替换当前天气、每小时预报与每日预报。
+  * `QWeather`: 使用和风天气替换上述天气数据，需要正确的 Host 与 Token。
+* `[天气预警] 数据源`（默认 `QWeatherWeb`）
+  * `WeatherKit`: 不修改 Apple 原始天气预警。
+  * `QWeatherWeb`: 从和风天气网页取得预警，无需 API Token。
+  * `QWeather`: 使用和风天气 API，需要 Host 与 Token。
+  * `ColorfulClouds`: 使用彩云天气 API，需要 Token。
+* `[未来一小时降水强度] 数据源`（默认 `ColorfulClouds`）
+  * `WeatherKit`: 不添加数据。
+  * `ColorfulClouds`: 使用彩云天气分钟级降水；普通开发者 Token 不包含此接口权限。
+  * `QWeather`: 使用和风天气，需要 Host 与 Token。
+
+### 今日空气质量
+
+* `[今日污染物] 数据源`（默认 `ColorfulClouds`）
+  * 使用彩云天气或和风天气填补污染物浓度数据。
+* `[今日污染物 - 单位转换] 替换目标`（默认不选择）
+  * 可选择美国`EPA_NowCast`、欧盟`EU.EAQI`、中国`HJ6332012`或德国`UBA`。
+  * 只为选中的空气质量标准转换污染物单位；转换会产生小数和轻微精度损失，小数部分也可能被省略。
+* `[今日污染物 - 单位转换] 模式`（默认 `Scale`）
+  * `Scale`: 使用各空气质量标准要求的单位。
+  * `ugm3`、`EU_ppb`、`US_ppb`: 除非标准另有要求，否则分别转换为`µg/m³`、欧盟 ppb 或美标 ppb。
+  * `Force_ugm3`、`Force_EU_ppb`、`Force_US_ppb`: 强制所有污染物使用指定单位。
+* `[今日空气指数] 替换目标`（默认 `HJ6332012`）
+  * 选择需要替换指数的空气质量标准；支持中国、爱尔兰、奥地利、比利时、德国、法国、韩国、加拿大、捷克、荷兰、美国、墨西哥、欧盟、瑞士、西班牙、新加坡、印度与英国标准。
+* `[今日空气指数] 数据源`（默认 `Calculate`）
+  * `Calculate`: 使用 iRingo 内置算法和污染物数据计算。
+  * `ColorfulCloudsUS`: 使用彩云天气美标指数（2018 年 9 月版）。
+  * `ColorfulCloudsCN`: 使用彩云天气国标指数（2012 年 2 月版）。
+  * `QWeather`: 使用和风天气国标指数（2012 年 2 月版）。
+* `[今日空气指数] 强制主要污染物`（默认开启）
+  * 忽略国标`HJ 633—2012`仅在 AQI 大于 50 时提供主要污染物的限制，始终使用 IAQI 最大的污染物作为主要污染物。
+
+### 昨日对比
+
+* `[空气质量 - 对比昨日] 变化时替换`（默认关闭）
+  * 开启后，即使 Apple 已提供昨日对比，只要今日空气质量指数被修改，也会重新生成昨日对比结果。
+* `[昨日污染物] 数据源`（默认 `QWeather`）
+  * 使用和风天气的昨日污染物数据，供 iRingo 内置算法计算昨日空气质量指数；该历史接口需要相应订阅权限。
+* `[昨日空气指数] 数据源`（默认 `ColorfulCloudsUS`）
+  * 可选择内置算法、彩云天气美标、彩云天气国标或和风天气国标，结果用于与今日空气质量指数比较。
+
+### 内置空气质量算法
+
+* `[iRingo 内置算法] 算法`（默认 `EU_EAQI`）
+  * `None`: 不转换。
+  * `UBA`: 德国 LQI（FB001846）。
+  * `EU_EAQI`: 欧盟 EAQI（ETC HE Report 2024/17）。
+  * `WAQI_InstantCast_US`: 美标 InstantCast（EPA-454/B-24-002）。
+  * `WAQI_InstantCast_CN`: 国标 InstantCast（HJ 633—2012）。
+  * `WAQI_InstantCast_CN_25_DRAFT`: 国标 InstantCast（HJ 633 2025 年草案）。
+  * 另支持加拿大 AQHI、香港 AQHI、AQHI-Multi（中国/中国+香港）与致死风险 AQHI（中国/中国+香港）。
+* `[iRingo 内置算法] 允许指数超标`（默认开启）
+  * 允许美标和国标指数超过 500；超过 500 后，天气 app 中表示等级颜色的小圆点会消失。
+
+### API 与调试
+
+* `[API] 彩云天气令牌`（默认留空）
+  * 用于需要彩云天气授权的接口；留空时使用脚本内置的可用能力。
+* `[API] 和风天气主机`（默认 `devapi.qweather.com`）
+  * 填写和风天气为您的订阅分配或要求使用的 API 主机名。
+* `[API] 和风天气令牌`（默认留空）
+  * 使用和风天气 API 数据源时填写。
+* `[API] WAQI 令牌`（默认留空）
+  * 填写后自动使用 WAQI 高级 API。
+* `[日志等级]`（默认 `WARN`）
+  * 可选`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`或`ALL`；排查问题时再提高日志详细程度。
+
 ## 功能列表
-  * 解锁全部天气数据类型
-  * 未来一小时降水强度与降水通知
-    * 彩云天气 （默认，可选 Token）
-    * 和风天气 （需要 Host 和 Token）
-    * 默认为增补模式，不会替换已有降水数据，仅补充无数据城市
-  * 空气质量数据
-    * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
-    * 和风天气 （支持昨日对比，需要 Host 和 Token）
-    * WAQI （可选 Token）
-    * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
-  * 空气质量昨日对比
-    * 自动 （默认，与空气质量数据源相同）
-    * 彩云天气 （默认，支持昨日同时段对比，可选 Token）
-    * 和风天气 （支持昨日对比，需要 Host 和 Token）
-    * 默认为增补模式，不会替换已有空气质量数据，仅补充无数据城市
-  * 空气质量标准换算
-    * 默认开启，将中国空气质量标准换算为最新美国空气质量标准
-  * 空气质量污染物单位转换
-    * 默认关闭，转换可能会导致进度损失
+* 按数据集选择处理范围
+  * 正式版支持「空气质量」、「当前天气」、「每日预报」、「每小时预报」、「未来一小时降水强度」与「天气预警」
+  * 未选择的数据集保持 Apple 原始内容透传
+* 替换天气数据
+  * 彩云天气（默认，可选 Token）
+  * 和风天气（需要 Host 和 Token）
+  * WeatherKit（不替换）
+* 修改天气预警
+  * 和风天气网页（默认，无需 Token）
+  * 和风天气 API（需要 Host 和 Token）
+  * 彩云天气 API（需要 Token）
+  * WeatherKit（不修改）
+* 添加未来一小时降水强度
+  * 彩云天气（默认，可选 Token）
+  * 和风天气（需要 Host 和 Token）
+  * WeatherKit（不添加）
+* 填补空气质量污染物数据
+  * 彩云天气（默认，可选 Token）
+  * 和风天气（需要 Host 和 Token）
+* 使用内置算法计算空气质量指数
+  * 默认使用欧盟 EAQI（ETC HE Report 2024/17）
+  * 支持德国 LQI、美国与中国 InstantCast、加拿大及香港 AQHI 等算法
 
 ## 安装链接
 
 <ModuleInstall urlPrefix="https://github.com/NSRingo/WeatherKit/releases/latest/download/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
-      url="iRingo.WeatherKit.plugin"
+      url="iRingo.WeatherKit.lpx"
       badge={[
         {
           type: "tip",
@@ -243,36 +335,34 @@ import Footer from "../_Footer.md";
 
 ## [更新日志](/changelog/WeatherKit)
 
-## 默认设置
+## 正式版模块默认设置
+* [数据集]
+  * [x] airQuality: 空气质量
+  * [x] currentWeather: 当前天气
+  * [x] forecastDaily: 每日预报
+  * [x] forecastHourly: 每小时预报
+  * [x] forecastNextHour: 未来一小时降水强度
+  * [x] weatherAlerts: 天气预警
 * [天气] 数据源
-  * [x] WeatherKit: WeatherKit (不进行替换)
-  * [ ] ColorfulClouds: 彩云天气
+  * [ ] WeatherKit: WeatherKit（不替换）
+  * [x] ColorfulClouds: 彩云天气
   * [ ] QWeather: 和风天气
+* [天气预警] 数据源
+  * [ ] WeatherKit: WeatherKit（不修改）
+  * [x] QWeatherWeb: 和风天气网页
+  * [ ] QWeather: 和风天气 API
+  * [ ] ColorfulClouds: 彩云天气 API
 * [未来一小时降水强度] 数据源
-  * [ ] WeatherKit: WeatherKit (不进行替换)
+  * [ ] WeatherKit: WeatherKit（不添加）
   * [x] ColorfulClouds: 彩云天气
   * [ ] QWeather: 和风天气
-* [空气质量] 数据源
-  * [ ] WeatherKit: WeatherKit (不进行替换)
+* [今日污染物] 数据源
   * [x] ColorfulClouds: 彩云天气
   * [ ] QWeather: 和风天气
-  * [ ] WAQI: The World Air Quality Project
-* [空气质量] 需要替换的供应商
-  * [x] QWeather: 和风天气
-  * [ ] BreezoMeter: BreezoMeter
-  * [ ] TWC: The Weather Channel
-* [空气质量] 对比昨日数据源
-  * [x] Auto: 自动选择 (与[空气质量] 数据源一致)
-  * [ ] WeatherKit: WeatherKit (不进行替换)
-  * [ ] ColorfulClouds: 彩云天气
-  * [ ] QWeather: 和风天气
-* [空气质量] 本地替换算法
-  * [ ] NONE: None (不进行替换)
-  * [x] EPA_NowCast: 美国 (EPA NowCast)
-  * [ ] WAQI_InstantCast: WAQI InstantCast
-* [空气质量] 需要修改的标准
-  * [x] HJ6332012: 中国 (HJ 633—2012)
-  * [ ] EPA_NowCast: 美国 (EPA NowCast)
-* [空气质量] 转换污染物计量单位: false (关闭)
+* [iRingo 内置算法] 算法
+  * [x] EU_EAQI: 欧盟 EAQI（ETC HE Report 2024/17）
+* [API] 和风天气主机: devapi.qweather.com
+* [储存] 配置类型: Argument
+* [调试] 日志等级: WARN
 
 <Footer />

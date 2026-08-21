@@ -22,15 +22,15 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
 :::
 
 ## 简介
-* 全面自定义`Maps`app，添加国际版功能，自定义服务版本
-* 默认为高德版地图增加国际版功能:
-  * 添加`3D 卫星图像`与地球卫星图像（含夜景）
-  * 启用`四处看看(Look Around)`功能
+* 自定义 `Maps` app 使用的地图功能与服务版本
+* 分别选择调度器、导航与 ETA、评分和照片、定位漂移服务
+* 按地图、2D/3D 卫星图像、交通、兴趣点、俯瞰、四处看看、道路、地球与公共交通等类别，分别选择中国大陆版或国际版瓦片数据
+* Rewrite 版可在 Pages 正式版、Pages 开发版与 Worker 服务端点之间切换
 
 :::tip ✅ 小提示
 
-1. 修改生效后将会抹去左下角`高德地图`logo，但并不代表当前是或不是高德地图。  
-2. 具体地图版本取决于`[动态配置]`的设置
+1. 修改生效后将会抹去左下角`高德地图`logo，但这不能用于判断当前地图数据来源。
+2. 地图整体配置由`[动态配置]`的国家或地区代码决定，各类瓦片数据源则可单独设置。
 
 :::
 
@@ -65,27 +65,23 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
 
 ## 使用说明
 * 启用`坐标`功能与指南针`经纬度`: 
-    * `[定位漂移]`改为`Apple（🈶️坐标，使用🇺🇳WGS-84坐标）`
-* 查看不同地区与版本的`卫星图像`
-  * 仅查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`
-    * `[卫星图像]`改为`🇨🇳中国四维`
-  * 查看🇨🇳中国（不含🇹🇼中国台湾地区）最新`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
-    * `[卫星图像]`改为`混合`(默认)
-  * 查看🇨🇳中国过期`2D 卫星图像`与🇺🇳国际非主要城市的`2D 卫星图像`与🇺🇳国际主要城市的`3D 卫星图像`
-    * `[卫星图像]`改为`🇺🇳DigitalGlobe`
-* 启用`俯瞰(Flyover)`功能
-  * `[调度器]`改为`Apple（维基百科/Yelp/Booking）`（非必需，如非此选项，则无`俯瞰(Flyover)`按钮，但可在3D卫星地图下手动俯瞰）
-  * `[卫星图像]`改为`混合`或`🇺🇳DigitalGlobe（🇨🇳:2D | 🇺🇳:3D）`
-  * `[飞行俯瞰]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
+  * `[定位漂移]`改为`Apple（WGS-84）`
+  * 默认的`自动`模式会让 watchOS 使用 Apple，其他系统使用高德
+* 查看不同地区与版本的`卫星图像`:
+  * `[2D 卫星图像]`选择`中国版`或`国际版`
+  * `[3D 卫星图像]`选择`中国版`或`国际版`，默认为`国际版`
+* 启用`俯瞰(Flyover)`功能（仅限仍提供此功能的系统版本）:
+  * `[调度器]`改为`Apple（维基百科/Yelp/Booking）`
+  * `[3D 卫星图像]`与`[俯瞰]`均改为`国际版`
 * 启用`四处看看(Look Around)`功能
-  * `[四处看看]`改为`🇺🇳Apple（🇨🇳:🈚️ | 🇺🇳:🈶️）`
-* 注：[`⌚️ WATCH`](./apple-watch)部分功能有单独的设置面板，不随[`📍 定位服务`](./location-service)模块内的配置而变更
+  * `[四处看看]`改为`国际版`
+* 注：[`⌚️ WATCH`](../apple-watch)部分功能有单独的设置面板，不随[`📍 定位服务`](./location-service)模块内的配置而变更
 
 ## 配置方法
 * 基础: 直接使用
-  * 采用[默认配置](#默认设置)
+  * 采用[默认配置](#默认设置v47)
 * 进阶: 配合`Loon`设置面板或`Surge`参数设置功能进行个性化设置
-  * 提供一定的自定义设置，如`数据源`选择、`需要替换的供应商`选择等
+  * 正式版模块提供 10 项稳定设置
 * 高级: 配合`BoxJs`及订阅使用
   <details>
   <summary>ℹ️ 用前须知：使用`BoxJs`进行配置将被视为专业用户，官方不受理因使用`BoxJs`配置导致的各种问题</summary>
@@ -95,8 +91,93 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
   2. 在`BoxJs`的配置面板中进行个性化设置:
      1. 浏览器访问[BoxJs.com](http://boxjs.com)
      2. 在[`应用`](http://boxjs.com/#/app)页面点开` iRingo`折叠
-     3. 在[`🗺 地图`](http://boxjs.com/#/app/iRingo.Maps)根据需要填写您的设置信息
+     3. 在[`🗺 MapKit`](http://boxjs.com/#/app/iRingo.MapKit)根据需要填写您的设置信息
   </details>
+
+## BoxJs 设置说明
+
+:::warning ⚠️ 当前版本
+
+本节功能说明与默认设置已按最新预发布版 `v4.7.0-beta1` 更新，稳定版安装链接仍指向 `v4.6.1`。
+
+:::
+
+:::danger ‼️ Breaking Changes
+
+升级到 `v4.7.0-beta1` 后，原 `@iRingo.Maps.Settings` 与 `@iRingo.Maps.Caches` 配置不会自动迁移到新的 `MapKit` 命名空间。
+
+:::
+
+### 动态配置与公告
+
+* `[动态配置] 资源清单的国家或地区代码`（默认 `US`）
+  * 决定“地图”整体采用哪个国家或地区的功能与服务配置。
+  * `AUTO`跟随用户当前所在地区；也可固定为中国大陆、中国香港、中国台湾、新加坡、美国、日本、澳大利亚、英国、韩国、加拿大或爱尔兰。
+  * 此项决定目标资源清单，但下方各类瓦片仍可分别选择`CN`或`XX`数据源。
+* `[公告] 服务环境`（默认 `AUTO`）
+  * `AUTO`: 保留请求与资源清单中的原值。
+  * `CN`: 使用中国大陆环境`prod-cn`。
+  * `XX`: 使用国际版环境`prod`。
+
+### URL 信息集
+
+* `[URL信息集] 调度器`（默认 `AutoNavi`）
+  * `AUTO`: 保留资源清单原值。
+  * `AutoNavi`: 使用高德、互动百科、大众点评与携程等中国大陆服务，影响搜索、公共指南、兴趣点和位置信息。
+  * `Apple`: 使用 Apple、维基百科、Yelp 与 Booking 等国际版服务。
+* `[URL信息集] 导航与 ETA`（默认 `AutoNavi`）
+  * `AutoNavi`: 使用高德地图与 TomTom。
+  * `Apple`: 使用 Apple 与 TomTom。
+* `[URL信息集] 评分和照片`（默认 `Apple`）
+  * 在高德与 Apple 的评分、照片及问题反馈服务之间切换。
+* `[URL信息集] 定位漂移`（默认 `AUTO`）
+  * `AUTO`: watchOS 使用 Apple，其他系统使用高德。
+  * `AutoNavi`: 使用高德定位漂移服务与`GCJ-02`坐标。
+  * `Apple`: 使用 Apple 服务与`WGS-84`坐标，可用于指南针显示经纬度。
+
+### 瓦片数据集
+
+每个瓦片选项都独立决定对应类别从中国版资源清单（`CN`）还是国际版资源清单（`XX`）取得。选择只影响该类别，不会自动联动其他类别。
+
+* `[瓦片数据集] 地图`（默认 `CN`）
+  * 控制标准地图、地貌、建筑、室内地图及相关底图。
+  * `CN`适合中国大陆；`XX`使用国际版地图数据。
+* `[瓦片数据集] 2D 卫星图像`（默认 `CN`）
+  * `CN`: 使用中国四维的中国大陆 2D 卫星图，图像较新且与国内道路坐标对齐，但不提供海外 2D 卫星图。
+  * `XX`: 使用国际版 DigitalGlobe 2D 卫星图，提供全球覆盖；中国大陆区域的图像较旧，并存在坐标偏移。
+* `[瓦片数据集] 3D 卫星图像`（默认 `XX`）
+  * `CN`: 使用中国版资源清单中的 3D 模型、地表模型与边界数据，不补入国际版主要城市的 3D 数据。
+  * `XX`: 使用国际版 3D 数据，可显示海外主要城市的 3D 卫星模型与地球边界数据。
+  * 此项不提供 2D 底图；海外是否有普通 2D 卫星图仍由`[2D 卫星图像]`决定。
+
+| 2D / 3D 组合 | 中国大陆 2D 卫星图 | 海外 2D 卫星图 | 海外主要城市 3D | 适用场景 |
+| --- | --- | --- | --- | --- |
+| `CN` / `XX`（默认） | 较新、无偏移 | 无 | 有 | 优先保证国内图像质量，同时保留海外 3D |
+| `XX` / `XX` | 较旧、有偏移 | 有 | 有 | 需要全球 2D 覆盖与海外 3D |
+| `CN` / `CN` | 较新、无偏移 | 无 | 无 | 只使用中国版卫星资源 |
+| `XX` / `CN` | 较旧、有偏移 | 有 | 无 | 需要全球 2D，但不需要国际版 3D |
+
+* `[瓦片数据集] 交通状况`（默认 `CN`）
+  * 控制实时交通、交通事件、历史交通与限速数据；`CN`使用中国版，`XX`使用国际版。
+* `[瓦片数据集] 兴趣点`（默认 `CN`）
+  * 控制兴趣点、街道兴趣点、区域选择与繁忙程度数据；`CN`使用中国版，`XX`使用国际版。
+* `[瓦片数据集] 俯瞰`（默认 `XX`）
+  * 控制 Flyover 模型、纹理、可见性、天空盒、导航图与元数据。
+  * `XX`用于国际版 Flyover 数据；iOS 26 及以上已移除 Flyover 入口，设置不会恢复系统已移除的功能。
+* `[瓦片数据集] 四处看看`（默认 `XX`）
+  * 控制 Look Around 的元数据、可用道路与分桶数据；`XX`用于国际版四处看看覆盖。
+* `[瓦片数据集] 道路`（默认 `CN`）
+  * 控制道路、道路标签及道路选区数据；在中国大陆使用`CN`可保持道路与国内地图数据一致。
+* `[瓦片数据集] 地球`（默认 `CN`）
+  * 控制地球视图模型、材质、行政区划名称与极地数据。
+  * `CN`偏向中国版行政区划与资源，`XX`使用国际版地球视图资源。
+* `[瓦片数据集] 公共交通`（默认 `CN`）
+  * 控制公共交通线路及选区数据；`CN`使用中国版，`XX`使用国际版。
+
+### 调试
+
+* `[调试] 日志等级`（默认 `WARN`）
+  * 可选`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`或`ALL`；排查问题时再提高日志详细程度。
 
 ## 功能列表
 * 修改默认(Defaults)配置
@@ -108,49 +189,32 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
       * `地图`-`为“地图”提供助力`-`显示评分和照片建议`
 * 指定通告(Announcements)配置版本
   * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/config/announcements
-  * 已知影响的功能
-    - [ ] 无已知影响
 * 指定动态(Dynamic)配置版本
   * 终结点(Endpoint): https://gspe35-ssl.ls.apple.com/geo_manifest/dynamic/config
-* 指定`调度器(Dispatcher)`API版本
-  * 终结点(Endpoint): 
-    * 国际版: https://gsp-ssl.ls.apple.com/dispatcher.arpc
-    * 高德版: https://dispatcher.is.autonavi.com/dispatcher
+  * 可指定资源清单的国家或地区代码，影响地图整体功能与服务配置
+* 指定`URL 信息集`服务版本
+  * 调度器(Dispatcher)
   * 已知影响的功能
     - [x] `地图`内公共`指南`(来自第三方机构的城市与景点旅游指南)
     - [x] `地图`内查询与搜索功能
     - [x] `地图`内地标与地点的基础信息
     - [x] `地图`内兴趣点(POI)的高级信息(来自`大众点评`或`Yelp`等第三方的商户信息)
-* ~~指定`导航与ETA(Directions & ETA)`API版本~~
-  * 终结点(Endpoint): 
-    * 国际版: https://gsp-ssl.ls.apple.com/directions.arpc
-    * 高德版: https://direction2.is.autonavi.com/direction
-  * 已知影响的功能
-    - [x] `地图`的导航功能
-* ~~指定`评分和照片(Rating and Photo, RAP)`API版本~~
-* 指定`定位漂移(Location Shift)`API版本
-  * 终结点(Endpoint):
-    * 高德版: https://shift.is.autonavi.com/localshift
-* ~~指定`瓦片地图(Tiles Map)`数据源~~
-  * 终结点(Endpoint):
-    * 国际版: https://gspe19-ssl.ls.apple.com/tile.vf
-    * 高德版: https://gspe19-cn-ssl.ls.apple.com/tiles
-  * 已知影响的功能
-    - [x] `地图`的图层数据
-* 指定`卫星图像(Satellite Map)`数据源
-* ~~指定`交通状况(Traffic)`数据源~~
-  * 终结点(Endpoint):
-    * 国际版: https://gspe12-ssl.ls.apple.com/traffic
-    * 高德版: https://gspe12-cn-ssl.ls.apple.com/traffic
-  * 已知影响的功能
-    - [x] `地图`的交通浏览与路况信息
-* ~~指定`兴趣点(Point of Interest, POI)`数据源~~
-* ~~指定`飞行俯瞰(Flyover)`数据源~~
-* ~~指定`四处看看(Look Around)`数据源~~
+  * 导航与 ETA(Directions & ETA)
+  * 评分和照片(Rating and Photo, RAP)
+  * 定位漂移(Location Shift)
+* 按类别指定`瓦片数据集`版本
+  * 基础地图、地图、2D 卫星图像、3D 卫星图像
+  * 交通状况、兴趣点、俯瞰、四处看看
+  * 道路、地球、公共交通
+  * 每一类均可独立选择`中国版(CN)`或`国际版(XX)`，不再提供`HYBRID`模式
+* Rewrite 版服务端点
+  * `mapkit.pages.dev`: 正式版 Pages（默认，直连）
+  * `dev.mapkit.pages.dev`: 开发版 Pages
+  * `mapkit.nanocat.cloud`: Worker 版（需要代理）
 
-## 安装链接
+## 安装链接（v4.7.0-beta1）
 
-<ModuleInstall urlPrefix="https://github.com/NSRingo/MapKit/releases/latest/download/">
+<ModuleInstall urlPrefix="https://github.com/NSRingo/MapKit/releases/download/v4.7.0-beta1/">
   <ModuleInstall.Tab type="loon">
     <ModuleInstall.Item
       url="iRingo.MapKit.plugin"
@@ -165,15 +229,11 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
           text: "脚本",
           outline: true,
         },
-        {
-          type: "info",
-          text: "需要 2.1.20(406) 及以上版本",
-        },
       ]}
     />
   </ModuleInstall.Tab>
   <ModuleInstall.Tab type="surge">
-    <ModuleInstall.Item 
+    <ModuleInstall.Item
       url="iRingo.MapKit.sgmodule"
       badge={[
         {
@@ -233,7 +293,92 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
   </ModuleInstall.Tab>
 </ModuleInstall>
 
-## 安装链接(Rewrite 版)
+## 安装链接（稳定版）
+
+<ModuleInstall urlPrefix="https://github.com/NSRingo/MapKit/releases/latest/download/">
+  <ModuleInstall.Tab type="loon">
+    <ModuleInstall.Item
+      url="iRingo.Maps.plugin"
+      badge={[
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "需要 2.1.20(406) 及以上版本",
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="surge">
+    <ModuleInstall.Item 
+      url="iRingo.Maps.sgmodule"
+      badge={[
+        {
+          type: "danger",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "warning",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="stash">
+    <ModuleInstall.Item
+      url="iRingo.Maps.stoverride"
+      badge={[
+        {
+          type: "info",
+          text: "覆写",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "MitM",
+          outline: true,
+        },
+        {
+          type: "info",
+          text: "脚本",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="egern">
+    <ModuleInstall.Item url="iRingo.Maps.yaml" />
+  </ModuleInstall.Tab>
+  <ModuleInstall.Tab type="qx">
+    <ModuleInstall.Item
+      url="iRingo.Maps.snippet"
+      badge={[
+        {
+          type: "danger",
+          text: "重写",
+          outline: true,
+        },
+        {
+          type: "tip",
+          text: "MitM",
+          outline: true,
+        },
+      ]}
+    />
+  </ModuleInstall.Tab>
+</ModuleInstall>
+
+## 安装链接（Rewrite 版）
 
 <ModuleInstall urlPrefix="https://github.com/NSRingo/MapKit/raw/main/modules/">
   <ModuleInstall.Tab type="shadowrocket">
@@ -307,5 +452,27 @@ iOS 15.1起，`指南针`的`海拔与经纬度`受`动态(Dynamic)配置文件`
 </ModuleInstall>
 
 ## [更新日志](/changelog/GeoServices/map-kit)
+
+## 默认设置（v4.7）
+* [动态配置] 资源清单的国家或地区代码: US
+* [公告] 服务环境: AUTO（保留请求与资源清单原值）
+* [URL 信息集]
+  * 调度器: AutoNavi
+  * 导航与 ETA: AutoNavi
+  * 评分和照片: Apple
+  * 定位漂移: AUTO（watchOS 使用 Apple，其他系统使用高德）
+* [瓦片数据集]
+  * 地图: CN
+  * 2D 卫星图像: CN
+  * 3D 卫星图像: XX
+  * 交通状况: CN
+  * 兴趣点: CN
+  * 俯瞰: XX
+  * 四处看看: XX
+  * 道路: CN
+  * 地球: CN
+  * 公共交通: CN
+* [储存] 配置类型: Argument
+* [调试] 日志等级: WARN
 
 <_Footer />
